@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <h2>Contact Form</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" name= "name" [(ngModel)]="user.name">
+      </div>
+      <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" class="form-control" id="age" placeholder="Enter your age" name="age" [(ngModel)]="user.age">
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" name="phone" [(ngModel)]="user.phone">
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <textarea class="form-control" id="address" rows="3" placeholder="Enter your address" name="address" [(ngModel)]="user.address"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
