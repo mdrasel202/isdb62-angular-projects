@@ -1,33 +1,38 @@
 <div class="container mt-5">
     <h2>Person Information</h2>
+    @if(users.length>0){
     <table class="table table-bordered">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>Age</th>
           <th>Phone</th>
           <th>Address</th>
+          <th>Data</th>
         </tr>
       </thead>
       <tbody>
+        @for(user of users; track users){
         <tr>
-          <td>John Doe</td>
-          <td>30</td>
-          <td>(123) 456-7890</td>
-          <td>1234 Elm Street, Springfield, IL</td>
+          <td>{{users.indexOf(user)+1}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.age}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.address}}</td>
+          <td>
+            
+              <button class="btn btn-success" style="margin: 0 15px;" (click)="editUser(user)">Update</button>
+              <button class="btn btn-danger" (click)="deleteSource(user)">Delete</button>
+           
+          </td>
         </tr>
-        <tr>
-          <td>Jane Smith</td>
-          <td>25</td>
-          <td>(987) 654-3210</td>
-          <td>5678 Oak Avenue, Springfield, IL</td>
-        </tr>
-        <tr>
-          <td>Sam Wilson</td>
-          <td>40</td>
-          <td>(555) 123-4567</td>
-          <td>9101 Pine Lane, Springfield, IL</td>
-        </tr>
+      }
       </tbody>
     </table>
+  }@else {
+    <div class="alert">
+      <p>data not found</p>
+    </div>
+  }
   </div>
