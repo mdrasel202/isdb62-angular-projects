@@ -1,0 +1,17 @@
+<h2>{{ title }}</h2>
+
+<div class="user_list">  
+  <ul>
+    <li [ngClass]="user.Active? 'user-active' : 'user-inactive'" *ngFor="let user of newStyle">
+    
+      <div class="user_details">
+      <span class="user-title">{{ user.Title }}</span>
+      <span class="user-name">{{ user.Name }}</span>
+      <span class="user-age">{{ user.Age }}</span>
+      <span class="user-address">{{ user.Address }}</span>
+      <span [ngStyle]="{color:user.Active? 'green': 'red'}" class="user-active">{{ user.Active ? "Active" : "Inactive" }}</span>
+    </div>
+  </li>
+  </ul>
+  
+</div>
