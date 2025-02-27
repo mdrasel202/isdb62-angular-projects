@@ -1,0 +1,109 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 50px; margin-top: 20px;">
+    Add Teacher
+</button>
+  
+
+<div class="container mt-4">
+    <h2 class="text-center">Harry Potter Spells</h2>
+
+    <table class="table table-bordered">
+    
+       <thead class="table-dark">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>schoolName</th>
+            <th>isHeadTeacher</th>
+            <th>assignedSubject</th>
+            <th>salary</th>
+            <th>joiningDate</th>
+            <th>isAggressive</th>
+        </tr>
+       </thead>
+       <tbody>
+        @for(teacher of teachers; track teachers){
+            <tr>
+               <!-- <td>{{teachers.indexOf(teacher)+1}}</td> -->
+                <td>{{teacher.id}}</td>
+                <td>{{teacher.name}}</td>
+                <td>{{teacher.schoolName}}</td>
+                <td>{{teacher.isHeadTeacher ? 'yes': 'no'}}</td>
+                <td>{{teacher.assignedSubject}}</td>
+                <td>{{teacher.salary}}</td>
+                <td>{{teacher.joiningDate}}</td>
+                <td>{{teacher.isAggressive? 'yes':'no'}}</td>
+            </tr>
+        }
+       </tbody>
+    </table>
+</div>
+
+
+<!--modal-->
+<!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Teacher Information Form</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (submit)="addTeacher()">
+                <div class="mb-3">
+                  <label for="teacherName" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="teacherName" name="name" placeholder="Enter Teacher Name" [(ngModel)]="newTeacher.name">
+                </div>
+          
+                <div class="mb-3">
+                  <label for="teacherSchoolName" class="form-label">School Name</label>
+                  <input type="text" class="form-control" id="teacherSchoolName" placeholder="Enter School Name" name="schoolName" [(ngModel)]="newTeacher.schoolName">
+                </div>
+          
+                <div class="mb-3">
+                  <label for="teacherHeadTeacher" class="form-label">Is Head Teacher</label>
+                  <select class="form-select" id="teacherHeadTeacher" name="isHeadTeacher" [(ngModel)]="newTeacher.isHeadTeacher">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </div>
+          
+                <div class="mb-3">
+                  <label for="teacherAssignedSubject" class="form-label">Assigned Subject</label>
+                  <input type="text" class="form-control" id="teacherAssignedSubject" placeholder="Enter Assigned Subject" name="assignedSubject" [(ngModel)]="newTeacher.assignedSubject">
+                </div>
+          
+                <div class="mb-3">
+                  <label for="teacherSalary" class="form-label">Salary</label>
+                  <input type="number" class="form-control" id="teacherSalary" placeholder="Enter Teacher's Salary" name="salary" [(ngModel)]="newTeacher.salary">
+                </div>
+          
+                <div class="mb-3">
+                  <label for="teacherJoiningDate" class="form-label">Joining Date</label>
+                  <input type="date" class="form-control" id="teacherJoiningDate" name="joiningDate" [(ngModel)]="newTeacher.joiningDate">
+                </div>
+          
+                <div class="mb-3">
+                  <label for="teacherAggressive" class="form-label">Is Aggressive</label>
+                  <select class="form-select" id="teacherAggressive" name="isAggressive" [(ngModel)]="newTeacher.isAggressive">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                  </select>
+                </div>
+          
+                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+              </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
