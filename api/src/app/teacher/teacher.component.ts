@@ -14,6 +14,8 @@ export class TeacherComponent implements OnInit{
  
  teachers : Teacher[]=[];
 
+ isEditing: boolean = false;
+
  newTeacher: Teacher ={
   id: 0,
   name: '',
@@ -36,21 +38,21 @@ export class TeacherComponent implements OnInit{
   this.fetchSpells();
 }
 
-addTeacher(){
-  console.log('Adding teacher:', this.newTeacher);
-  //debugger;
-  this.teacherervice.addTeacher(this.newTeacher).subscribe(
-    (response) =>{
-      debugger;
-      this.teachers.push(response);
-      this.modal?.hide();
-      this.resetForm();
-    },
-    (error) =>{
-      console.error('Errot adding teacher:', error);
-    }
-  );
-}
+// addTeacher(){
+//   console.log('Adding teacher:', this.newTeacher);
+//   //debugger;
+//   this.teacherervice.addTeacher(this.newTeacher).subscribe(
+//     (response) =>{
+//       debugger;
+//       this.teachers.push(response);
+//       this.modal?.hide();
+//       this.resetForm();
+//     },
+//     (error) =>{
+//       console.error('Errot adding teacher:', error);
+//     }
+//   );
+// }
 
 resetForm(){
   this.newTeacher = new Teacher(0, '', '', false, '', 0, new Date(), false);
@@ -66,13 +68,13 @@ resetForm(){
   }
 }
 
-openModal(){
-  const modalElement = document.getElementById('teacherModal');
-  if(modalElement){
-    this.modal = new bootstrap.Modal(modalElement);
-    this.modal.show();
-  }
-}
+// openModal(){
+//   const modalElement = document.getElementById('teacherModal');
+//   if(modalElement){
+//     this.modal = new bootstrap.Modal(modalElement);
+//     this.modal.show();
+//   }
+// }
 
 getSpells(){
   this.teacherervice.getSpells().subscribe(teachers => this.teachers = teachers);
@@ -86,6 +88,70 @@ fetchSpells(){
     }
   )
 }
+
+deleteTeacher(id:number){
+  this.teacherervice.deleteTeacher(id).subscribe(
+    () => {
+      this.teachers = this.teachers.filter(t => t.id !== id);
+    },
+    (error) => {
+      console.error('Error deleting teacher : ', error);
+    }
+  )
+}
+
+
+openModal(teacher?: Teacher){
+  if(teacher){
+    this.newTeacher = {...teacher};
+    this.isEditing = true;
+  }else{
+    this.newTeacher = new Teacher(0, '', '', false, '', 0, new Date(), false);
+    this.isEditing = false;
+  }
+
+  const modalElement = document.getElementById('teacherModal');
+  if(modalElement){
+    this.modal = new bootstrap.Modal(modalElement);
+    this.modal.show();
+  }
+}
+
+saveTeacher(){
+  if(this.newTeacher){
+    if(this.isEditing){
+      console.log('Updating teacher:', this.newTeacher);
+      this.teacherervice.updateTeacher(this.newTeacher).subscribe(
+        (reponse) => {
+          const index = this.teachers.findIndex(t => t.id === reponse.id);
+          if(index !== -1){
+            this.teachers[index] = reponse;
+          }
+          this.modal?.hide();
+        },
+        (error) => {
+          console.error('error updatinf teacher : ', error);
+        }
+      );
+    }else{
+      console.log('Adding teacher:', this.newTeacher);
+  //debugger;
+  this.teacherervice.addTeacher(this.newTeacher).subscribe(
+    (response) =>{
+      debugger;
+      this.teachers.push(response);
+      this.modal?.hide();
+      this.resetForm();
+    },
+    (error) =>{
+      console.error('Errot adding teacher:', error);
+    }
+  );
+    }
+  }
+}
+
+
 }
 
 export class Teacher{
@@ -117,4 +183,6 @@ export class Teacher{
     this.joiningDate = joiningDate;
     this.isAggressive = isAggressive;
   }
+
+  
 }
