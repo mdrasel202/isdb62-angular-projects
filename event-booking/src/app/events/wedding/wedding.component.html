@@ -1,1 +1,42 @@
-<p>wedding works!</p>
+<div class="container">
+    <header class="header">
+      <h1>You're Invited to Our Wedding!</h1>
+      <h2>Join us for a magical celebration of love</h2>
+    </header>
+    <section class="event-info">
+        <h3>Wedding Details:</h3>
+        <p>We are excited to share our special day with you!</p>
+        <ul>
+          <li><strong>Date:</strong> June 25, 2025</li>
+          <li><strong>Time:</strong> 4:00 PM</li>
+          <li><strong>Location:</strong> 456 Dream Venue Street, Love Town</li>
+        </ul>
+      </section>
+      
+      <section class="event-details">
+        <h3>Schedule of Events:</h3>
+        <p>It will be a day to remember with fun activities, food, dancing, and plenty of love!</p>
+        <ul>
+          <li><strong>4:00 PM:</strong> Ceremony Begins</li>
+          <li><strong>5:00 PM:</strong> Cocktail Hour</li>
+          <li><strong>6:00 PM:</strong> Reception & Dinner</li>
+          <li><strong>8:00 PM:</strong> Dancing and Entertainment</li>
+        </ul>
+      </section>
+      <section class="rsvp-form">
+        <h3>RSVP</h3>
+        <form (ngSubmit)="onSubmit()" #rsvpForm="ngForm">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" [(ngModel)]="name" required>
+      
+          <label for="attendance">Will you attend?</label>
+          <select id="attendance" name="attendance" [(ngModel)]="attendance" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+      
+          <button type="submit" [disabled]="!rsvpForm.form.valid">Submit RSVP</button>
+        </form>
+      </section>
+      
+  </div>

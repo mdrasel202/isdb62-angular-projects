@@ -1,0 +1,18 @@
+#icon{
+    font-size: 30px;
+    color: rgb(20, 92, 193);
+    font-weight: 800;
+}
+.collapse{
+    margin-left: 70px;
+}
+#navmanu{
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+#navmanu:hover{
+    color: blue;
+}
+.navbar{
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
