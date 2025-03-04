@@ -1,40 +1,42 @@
 <!-- birthday-event.component.html -->
 <div class="form-container">
+   <form (ngSubmit)="onSubmit()">
     <h2>Birthday Event Form</h2>
     <form >
       <div>
         <label for="name">Name:</label>
-        <input id="name"  type="text" />
+        <input id="name"  type="text" name="event_name" [(ngModel)]="event.event_name" />
       </div>
 
       <div>
         <label for="name">Email:</label>
-        <input id="email"  type="email" />
+        <input id="email"  type="email" name="email" [(ngModel)]="event.event_email"/>
       </div>
   
       <div>
         <label for="phonenumber">Phone Number:</label>
-        <input id="phonenumber"  type="text" />
+        <input id="phonenumber"  type="text" name="phone" [(ngModel)]="event.event_pnoneNumber"/>
       </div>
 
       <div>
         <label for="date">Event Date:</label>
-        <input id="date"  type="date" />
+        <input id="date"  type="date" name="date" [(ngModel)]="event.event_date"/>
       </div>
   
       <div>
         <label for="eventDescription">Event Description:</label>
-        <textarea id="eventDescription" ></textarea>
+        <textarea id="eventDescription" name="text" [(ngModel)]="event.event_description"></textarea>
       </div>
   
       <div>
         <label for="location">Event Location:</label>
-        <input id="location" formControlName="location" type="text" />
+        <input id="location" type="text"  name="location" [(ngModel)]="event.event_location"/>
       </div>
   
       <div>
         <button type="submit">Submit</button>
       </div>
     </form>
+   </form>
   </div>
   
