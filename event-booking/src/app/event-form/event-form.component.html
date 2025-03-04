@@ -1,15 +1,25 @@
 <!-- birthday-event.component.html -->
-<div class="container">
+<div class="form-container">
     <h2>Birthday Event Form</h2>
     <form >
       <div>
         <label for="name">Name:</label>
         <input id="name"  type="text" />
       </div>
+
+      <div>
+        <label for="name">Email:</label>
+        <input id="email"  type="email" />
+      </div>
   
       <div>
-        <label for="birthdate">Birthdate:</label>
-        <input id="birthdate"  type="date" />
+        <label for="phonenumber">Phone Number:</label>
+        <input id="phonenumber"  type="text" />
+      </div>
+
+      <div>
+        <label for="date">Event Date:</label>
+        <input id="date"  type="date" />
       </div>
   
       <div>
@@ -20,12 +30,6 @@
       <div>
         <label for="location">Event Location:</label>
         <input id="location" formControlName="location" type="text" />
-      </div>
-  
-      <div>
-        <label for="email">Email:</label>
-        <input id="email" formControlName="email" type="email" />
-        
       </div>
   
       <div>

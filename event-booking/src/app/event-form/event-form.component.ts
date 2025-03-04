@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './event-form.component.css'
 })
 export class EventFormComponent {
-
+  event: Event = new Event(0, '', '', '', new Date(), '', '');
 }
