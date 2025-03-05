@@ -30,8 +30,11 @@ export class EventFormComponent {
       events.push(this.event);
     }
 
+    // console.log(events);
+      
     localStorage.setItem('events', JSON.stringify(events));
     this.event = new Event(0, '', '', '', new Date(), '', '');
-    this.router.navigate(['/booking-list']);
+    // this.router.navigate(['/booking-list']);
+    window.location.href="/booking-list";
   }
 }

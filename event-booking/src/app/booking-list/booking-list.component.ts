@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Event } from '../app.component';
 
 @Component({
   selector: 'app-booking-list',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './booking-list.component.html',
   styleUrl: './booking-list.component.css'
 })
-export class BookingListComponent {
+export class BookingListComponent implements OnInit{
+ events: Event[] = [];
+
+  ngOnInit(): void {
+    this.events = JSON.parse(localStorage.getItem('events') || '[]');
+  }
 
 }

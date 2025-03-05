@@ -1,6 +1,7 @@
 <div class="container">
+  @if(events.length>0){
     <table class="table table-striped" style="margin-top: 10px;">
-        <thead>
+        <thead >
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
@@ -11,5 +12,19 @@
             <th scope="col">Event Location</th>
           </tr>
         </thead>
+        <tbody>
+          @for( evts of events; track evts){
+          <tr >
+            <td>{{events.indexOf(evts)+1}}</td>
+            <td>{{evts.event_name}}</td>
+            <td>{{evts.event_email}}</td>
+            <td>{{evts.event_pnoneNumber}}</td>
+            <td>{{evts.event_date}}</td>
+            <td>{{evts.event_description}}</td>
+            <td>{{evts.event_location}}</td>
+          </tr>
+        }
+        </tbody>
       </table>
+    }
 </div>
