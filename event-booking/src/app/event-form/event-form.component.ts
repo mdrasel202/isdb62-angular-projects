@@ -30,7 +30,7 @@ export class EventFormComponent {
       events.push(this.event);
     }
 
-    // console.log(events);
+    console.log(events);
       
     localStorage.setItem('events', JSON.stringify(events));
     this.event = new Event(0, '', '', '', new Date(), '', '');
