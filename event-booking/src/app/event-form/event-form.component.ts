@@ -30,12 +30,15 @@ export class EventFormComponent {
       events.push(this.event);
     }
 
-    console.log(events);
+    alert('Event successfully added!');
    
       
     localStorage.setItem('events', JSON.stringify(events));
     this.event = new Event(0, '', '', '', new Date(), '', '');
     // this.router.navigate(['/booking-list']);
-    window.location.href="/booking-list";
+    // window.location.href="/booking-list";
+    window.location.reload();
+    
+
   }
 }
