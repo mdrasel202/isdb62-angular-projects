@@ -3,29 +3,35 @@
     <span><i class="bi bi-envelope-fill"></i>infokofeforst.com</span>
   </div>
   <div class="single-right">
-    <i class="bi bi-facebook"></i>
-    <i class="bi bi-twitter"></i>
+    <a href="#"><i class="bi bi-facebook"></i></a>
+    <a href="#"><i class="bi bi-twitter"></i></a>
+    <a href="#"><i class="bi bi-instagram"></i></a>
+    <a href="#"><i class="bi bi-linkedin"></i></a>
   </div>
 </div>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container">
-      <a class="navbar-brand" id="icon" href="#">IDA Town Hall</a>
+<nav class="navbar navbar-expand-lg ">
+    
+      <a class="navbar-brand" id="icon" href="#"><img src="images/logo-black.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" id="navmanu" aria-current="page" href="home">Home</a>
+            <a class="nav-link active"   routerLink="/home"><i class="bi bi-house-gear-fill"></i> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="navmanu" href="event-page">Events</a>
+            <a class="nav-link"  routerLink="/event-page"><i class="bi bi-shop"></i> Events</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="navmanu" href="booking-list">My Booking</a>
+            <a class="nav-link"  routerLink="/booking-list"><i class="bi bi-folder-fill"></i> My Booking</a>
           </li>
         </ul>
       </div>
-    </div>
+    
+      <div class="loging">
+        <a routerLink="/loging"> <i class="bi bi-arrow-right-square-fill"></i>Log in</a>
+        <a routerLink="/registration"> <i class="bi bi-arrow-left-square-fill"></i>Create new account</a>
+      </div>
   </nav>

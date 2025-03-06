@@ -1,0 +1,17 @@
+.regis{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 83vh;
+    background: #eceffc;
+}
+form{
+    width: 450px;
+    height: 350px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 70px 50px;
+    border-radius: 10px;
+}
+button{
+   width: 100%; 
+}

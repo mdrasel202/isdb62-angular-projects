@@ -38,7 +38,5 @@ export class EventFormComponent {
     // this.router.navigate(['/booking-list']);
     // window.location.href="/booking-list";
     window.location.reload();
-    
-
   }
 }

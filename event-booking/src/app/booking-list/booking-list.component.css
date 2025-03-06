@@ -1,0 +1,15 @@
+.table{
+    background-color: #327a81;
+}
+h2{
+   margin-top: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    background: green;
+    margin: 0;
+    height: 61px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
