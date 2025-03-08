@@ -1,0 +1,37 @@
+<div class="heading">
+    <h2>Login / Sinup with local storage</h2>
+</div>
+
+<div class="loging_register">
+    <!--REGISTER FORM-->
+    <form action="#" *ngIf="activeForm == 'register'">
+        <h2>REGISTER</h2>
+        <div class="form_group">
+            <input name="name" [(ngModel)]="registerObj.name" type="text" placeholder="Name">
+        </div>
+        <div class="form_group">
+            <input name="email" [(ngModel)]="registerObj.email" type="email" placeholder="Email">
+        </div>
+        <div class="form_group">
+            <input name="password" [(ngModel)]="registerObj.password" type="text" placeholder="Password">
+        </div>
+        <button (click)="regisForm()" type="submit">Register</button>
+        <p (click)="toggleForm('loging')">
+            Already have an account ? <span class="hilight">Loging</span>
+        </p>
+    </form>
+    <!--LOGIGN FORM-->
+    <form action="#" *ngIf="activeForm == 'loging'">
+        <h2>Loging</h2>
+        <div class="form_group">
+            <input name="email" [(ngModel)]="logingObj.email" type="email" placeholder="Email">
+        </div>
+        <div class="form_group">
+            <input name="password" [(ngModel)]="logingObj.password" type="text" placeholder="Password">
+        </div>
+        <button (click)="logingForm()"  type="submit">Log In</button>
+        <p (click)="toggleForm('register')">
+            Already have an account ? <span class="hilight">Register</span>
+        </p>
+    </form>
+</div>
