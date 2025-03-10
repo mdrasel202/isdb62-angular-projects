@@ -55,6 +55,7 @@
 .collapse ul li a{
     font-size: 19px;
     font-weight: 500;
+    margin: 10px;
 }
 .collapse ul li a:hover{
     color: rgb(76, 186, 186);

@@ -1,9 +1,10 @@
 .regis{
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     min-height: 83vh;
     background: #eceffc;
+    padding: 70px 0;
 }
 form{
     width: 450px;
