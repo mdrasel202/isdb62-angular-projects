@@ -18,12 +18,12 @@ export class BookingListComponent implements OnInit{
   }
 
   updateEvent(event : Event){
-    this.router.navigate(['event'], {state:{event}});
+    this.router.navigate(['/event'], {state:{event}});
   }
 
   deleteEvent(singleEvent: Event){
     if(confirm('Cancle this event?')){
-      this.events =  this.events.filter(x => x ! == singleEvent);
+      this.events =  this.events.filter(x => x !== singleEvent);
       localStorage.setItem('events', JSON.stringify(this.events));
     }
   }
