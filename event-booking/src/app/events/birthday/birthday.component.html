@@ -13,30 +13,13 @@
           <li><strong>Location:</strong> 123 Party Lane, Fun Town</li>
         </ul>
       </section>
-
       <section class="event-details">
         <h3>What's Happening:</h3>
         <p>Expect delicious food, awesome music, games, and surprises! We have a photographer, so don't forget to smile!</p>
       </section>
-      
-      <!-- <section class="rsvp-form">
-        <h3>RSVP</h3>
-        <form (ngSubmit)="onSubmit()" #rsvpForm="ngForm">
-          <label for="name">Your Name:</label>
-          <input type="text" id="name" name="name" [(ngModel)]="name" required>
-      
-          <label for="attendance">Will you attend?</label>
-          <select id="attendance" name="attendance" [(ngModel)]="attendance" required>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-      
-          <button type="submit" [disabled]="!rsvpForm.form.valid">Submit RSVP</button>
-        </form>
-      </section> -->
 
-      <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Booking
+      <button type="submit" id="sub" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Booking Now
       </button>
 
 </div>
@@ -52,10 +35,6 @@
       <div class="modal-body">
         <app-event-form></app-event-form>
       </div>
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
     </div>
   </div>
 </div>

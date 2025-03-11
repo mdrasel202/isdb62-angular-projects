@@ -6,6 +6,7 @@ import { EventPageComponent } from './event-page/event-page.component';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { LogingComponent } from './loging/loging.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ConferenceComponent } from './events/conference/conference.component';
 
 export const routes: Routes = [
     {path: 'home', component:HomeComponent},
@@ -14,5 +15,6 @@ export const routes: Routes = [
     {path: 'event-page', component:EventPageComponent},
     {path: 'booking-list', component:BookingListComponent},
     {path: 'loging', component:LogingComponent},
-    {path: 'registration', component:RegistrationComponent}
+    {path: 'registration', component:RegistrationComponent},
+    {path: 'event/conference', component:ConferenceComponent}
 ];

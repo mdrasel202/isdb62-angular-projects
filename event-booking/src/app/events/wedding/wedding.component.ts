@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { EventFormComponent } from '../../event-form/event-form.component';
 
 @Component({
   selector: 'app-wedding',
-  imports: [FormsModule],
+  imports: [FormsModule, EventFormComponent],
   templateUrl: './wedding.component.html',
   styleUrl: './wedding.component.css'
 })

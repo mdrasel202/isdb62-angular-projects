@@ -1,0 +1,40 @@
+.header{
+    text-align: center;
+      background-color: #1a7c8d;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+  }
+  .event-info h1{
+    font-size: 3rem;
+  }
+  .event-info h2 {
+    font-size: 1.5rem;
+  }
+  
+  .event-info{
+    background-color: white;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event-details{
+    background-color: white;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  #sub{
+      background-color: #0ea09b;
+      color: white;
+      cursor: pointer;
+      border:none;
+  }
+  #sub:hover{
+    background-color: #1a7c8d;
+    color: #ffff;
+  }
+  
