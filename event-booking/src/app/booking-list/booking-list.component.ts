@@ -23,7 +23,7 @@ export class BookingListComponent implements OnInit{
 
   deleteEvent(singleEvent: Event){
     if(confirm('Cancle this event?')){
-      this.events =  this.events.filter(x => x ! == singleEvent);
+      this.events =  this.events.filter(x => x !== singleEvent);
       localStorage.setItem('events', JSON.stringify(this.events));
     }
   }
