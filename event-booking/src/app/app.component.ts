@@ -47,12 +47,14 @@ export class Event{
 }
 
 export class User {
+  isAdmin: boolean;
   userId: string;
   userName: string;
   userEmail: string;
   userPassword: string;
 
-  constructor(userId: string, userName: string, userEmail: string, userPassword: string) {
+  constructor(isAdmin: boolean, userId: string, userName: string, userEmail: string, userPassword: string) {
+    this.isAdmin = isAdmin;
     this.userId = userId;
     this.userName = userName;
     this.userEmail = userEmail;

@@ -11,11 +11,11 @@ import { ConferenceComponent } from './events/conference/conference.component';
 export const routes: Routes = [
     {path: '', component:HomeComponent},
     {path: 'home', component:HomeComponent},
-    {path: 'event/birthday', component: BirthdayComponent},
-    {path: 'event/wedding', component: WeddingComponent},
     {path: 'event-page', component:EventPageComponent},
     {path: 'booking-list', component:BookingListComponent},
     {path: 'loging', component:LogingComponent},
     {path: 'registration', component:RegistrationComponent},
+    {path: 'event/birthday', component: BirthdayComponent},
+    {path: 'event/wedding', component: WeddingComponent},
     {path: 'event/conference', component:ConferenceComponent}
 ];

@@ -76,3 +76,10 @@
 .loging a i{
     margin: 8px;
 }
+.loggedInUser:hover {
+    color: #262626 !important;
+}
+.loggedInUserLogout {
+    color: #ff8482 !important;
+    cursor: pointer;
+}

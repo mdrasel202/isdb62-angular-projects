@@ -3,6 +3,7 @@
       <!-- <div class="mb-3">
           <input type="text" class="form-control"  placeholder="Name">
         </div> -->
+      <h3 style="margin-top: -30px; margin-bottom: 30px; color: #fff;">Login</h3>
       <div class="mb-3">
         <input type="email" class="form-control"  placeholder="Email address" id="email" name="email" [(ngModel)]="userEmail">    
       </div>
@@ -10,5 +11,40 @@
         <input type="password" class="form-control"  placeholder="Password" id="password" name="password" [(ngModel)]="userPassword">
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
+
+      <!-- <div class="for">
+        <a href="#">Forget Your Password</a>
+        <a href="#">Create Account</a>
+      </div> -->
+      <p class="text-primary" style="padding: 20px 0; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#adminModal">
+        <i class="bi bi-person-fill-lock"></i> Admin Login
+      </p>
     </form>
+   
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form (submit)="adminLogin()">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="adminModalLabel">Admin Login</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+              <input type="email" class="form-control"  placeholder="Email address" id="email" name="email" [(ngModel)]="adminEmail">    
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control"  placeholder="Password" id="password" name="password" [(ngModel)]="adminPassword">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

@@ -19,19 +19,33 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active"   routerLink="/home"><i class="bi bi-house-gear-fill"></i> Home</a>
+            <a class="nav-link"   routerLink="/home"><i class="bi bi-house-gear-fill"></i> Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link"  routerLink="/event-page"><i class="bi bi-shop"></i> Events</a>
           </li>
+
+          @if (isUserLoggedIn && isAdmin) {
           <li class="nav-item">
             <a class="nav-link"  routerLink="/booking-list"><i class="bi bi-folder-fill"></i> My Booking</a>
           </li>
+          }
+          
         </ul>
       </div>
     
       <div class="loging">
+        @if (isUserLoggedIn) {
+
+        <a class="loggedInUser"><i class="bi bi-person-fill"></i>{{loggedInUserName}}</a>
+        |
+        <a (click)="logoutUser()" class="loggedInUserLogout"><i class="bi bi-power"></i> Logout</a>
+
+        } @else {
+
         <a routerLink="/loging"> <i class="bi bi-arrow-right-square-fill"></i>Log in</a>
         <a routerLink="/registration"> <i class="bi bi-arrow-left-square-fill"></i>Create new account</a>
+
+        }
       </div>
   </nav>

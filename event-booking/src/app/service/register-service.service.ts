@@ -5,7 +5,7 @@ import { User } from '../app.component';
   providedIn: 'root'
 })
 export class RegisterServiceService {
-  user: User = new User('', '', '', '');
+  user: User = new User(false, '', '', '', '');
 
   constructor() { }
 

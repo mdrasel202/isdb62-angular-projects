@@ -17,6 +17,7 @@ export class LoginServiceService {
     const user = users.find((u: any) => u.userEmail === userEmail && u.userPassword === userPassword);
 
     if (user) {
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
       return true;
     }
 
