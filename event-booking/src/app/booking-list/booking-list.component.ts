@@ -18,7 +18,7 @@ export class BookingListComponent implements OnInit{
   }
 
   updateEvent(event : Event){
-    this.router.navigate(['event'], {state:{event}});
+    this.router.navigate(['/event-form'], {state:{event}});
   }
 
   deleteEvent(singleEvent: Event){
