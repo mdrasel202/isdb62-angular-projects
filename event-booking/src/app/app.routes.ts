@@ -8,6 +8,7 @@ import { LogingComponent } from './loging/loging.component';
 import { RegistrationComponent } from './registration/registration.component';
 
 export const routes: Routes = [
+    {path: '', component:HomeComponent},
     {path: 'home', component:HomeComponent},
     {path: 'event/birthday', component: BirthdayComponent},
     {path: 'event/wedding', component: WeddingComponent},
