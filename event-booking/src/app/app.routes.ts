@@ -9,6 +9,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ConferenceComponent } from './events/conference/conference.component';
 
 export const routes: Routes = [
+    {path: '', component:HomeComponent},
     {path: 'home', component:HomeComponent},
     {path: 'event/birthday', component: BirthdayComponent},
     {path: 'event/wedding', component: WeddingComponent},

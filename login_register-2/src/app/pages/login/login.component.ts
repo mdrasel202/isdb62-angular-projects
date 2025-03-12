@@ -39,6 +39,7 @@ export class LoginComponent {
   }
 
   logingForm(){
+    debugger;
     
     const localActive = localStorage.getItem('user');
     if(localActive != null){
