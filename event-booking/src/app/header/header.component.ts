@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
 
   logoutUser() {
     this.loggedInUserService.logout();
-    window.location.reload();
+    window.location.href = "/home"; 
   }
 
 }
