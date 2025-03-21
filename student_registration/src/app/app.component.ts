@@ -31,10 +31,40 @@ export class AppComponent implements OnInit{
       model.style.display = 'block';
     }
   }
+
+  OnEdit(item : Student){
+    this.studentObj = item;
+    this.openModel();
+  }
+
   closeMode(){
+    this.studentObj = new Student();
     if(this.model != null){
       this.model.nativeElement.style.display = 'none';
     }
+  }
+
+  OnDelete(item : Student ){
+    const isDelete = confirm("Are you sure want to delete");
+   
+    if (isDelete) {
+      // Filter out the student from the list based on the ID
+      this.studentlist = this.studentlist.filter(m => m.id !== this.studentObj.id);
+      
+      // Update localStorage with the modified list
+      localStorage.setItem('angular19', JSON.stringify(this.studentlist));
+    }
+    
+  }
+
+  updateModel(){
+    const currentRecord = this.studentlist.find(m=> m.id === this.studentObj.id);
+    if(currentRecord != undefined){
+      currentRecord.name = this.studentObj.name;
+      currentRecord.address = this.studentObj.address;
+      currentRecord.phoneNo = this.studentObj.phoneNo;
+    };
+    localStorage.setItem('angular19', JSON.stringify(this.studentlist));
   }
 
   saveModel(){
@@ -42,12 +72,14 @@ export class AppComponent implements OnInit{
     const localStor = localStorage.getItem('angular19');
     if(localStor != null){
       const localArry = JSON.parse(localStor);
+      this.studentObj.id = localArry.length +1;
       localArry.push(this.studentObj);
       this.studentlist = localArry;
       localStorage.setItem('angular19', JSON.stringify(localArry));
     }else{
       const newArr = [];
       newArr.push(this.studentObj);
+      this.studentObj.id = 1;
       this.studentlist = newArr;
       localStorage.setItem('angular19', JSON.stringify(newArr));
     }
@@ -55,6 +87,7 @@ export class AppComponent implements OnInit{
 }
 
 export class Student{
+  id:number;
   name: string;
   phoneNo: string;
   email: string;
@@ -64,6 +97,7 @@ export class Student{
   address: string;
 
   constructor(){
+    this.id = 0;
     this.name = '';
     this.phoneNo = '';
     this.email = '';
