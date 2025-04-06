@@ -1,1 +1,33 @@
 
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Product Listings</h1>
+  
+    <div class="row">
+      <!-- Loop over displayProducts instead of directly using ngFor on products -->
+      <div class="col-md-4 mb-4" *ngFor="let product of products">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <!-- Product Name -->
+            <h5 class="card-title text-primary">{{ product.name }}</h5>
+  
+            <!-- Product Details -->
+            <p class="card-text"><strong>Description:</strong> {{ product.description }}</p>
+            <p class="card-text"><strong>Brand:</strong> {{ product.brand }}</p>
+            <p class="card-text"><strong>Category:</strong> {{ product.category }}</p>
+            <p class="card-text"><strong>Price:</strong> ${{ product.price.toFixed(2) }}</p>
+            <p class="card-text"><strong>Release Date:</strong> {{ product.releaseDate | date:'longDate' }}</p>
+            <p class="card-text"><strong>Available:</strong> 
+              <span [ngClass]="{'text-success': product.available, 'text-danger': !product.available}">
+                {{ product.available ? 'Yes' : 'No' }}
+              </span>
+            </p>
+            <p class="card-text"><strong>Quantity in Stock:</strong> {{ product.quantity }}</p>
+          </div>
+          <div class="card-footer text-center">
+            <button class="btn btn-primary" [disabled]="!product.available">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

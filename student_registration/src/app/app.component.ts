@@ -48,10 +48,8 @@ export class AppComponent implements OnInit{
     const isDelete = confirm("Are you sure want to delete");
    
     if (isDelete) {
-      // Filter out the student from the list based on the ID
-      this.studentlist = this.studentlist.filter(m => m.id !== this.studentObj.id);
-      
-      // Update localStorage with the modified list
+      const currentRecord = this.studentlist.find(m=> m.id === this.studentObj.id);
+     this.studentlist.splice(currentRecord,1) 
       localStorage.setItem('angular19', JSON.stringify(this.studentlist));
     }
     
