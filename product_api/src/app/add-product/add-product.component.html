@@ -1,0 +1,65 @@
+<div class="product-container pt-4">
+    <h2 style="text-align: center;">Add New Product</h2>
+    <form action="#">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="#">Name</label>
+                <input type="text" name="name" placeholder="Enter product name" required>
+            </div>
+            <div class="col-md-6">
+                <label for="#">Brand</label>
+                <input type="text" name="brand" placeholder="Enter product brand">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label for="#">Description</label>
+                <input type="text" class="descrip" name="description" placeholder="Enter description">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="#">Price</label>
+                <input type="number" name="price" placeholder="Enter price" required>
+            </div>
+            <div class="col-md-6">
+                <label for="#">Category</label>
+                <select name="cate" id="category" class="control" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="computer">Computer</option>
+                    <option value="car">Car</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="#">Stock Quantity</label>
+                <input type="number" name="stock" placeholder="Enter Stock" required>
+            </div>
+            <div class="col-md-6">
+                <label for="#">Release Date</label>
+                <input type="date" name="release" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="#">Image</label>
+                <input type="file" name="image" required>
+            </div>
+            <!-- <div class="col-md-6 form-group">
+                <label>Available</label><br />
+                <label style="font-weight: normal;">
+                  <input type="radio" value="true" required /> Yes
+                </label>
+                <br>
+                <label style="font-weight: normal;">
+                  <input type="radio"  value="false" required /> No
+                </label>
+              </div> -->
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Add Product</button>
+        </div>
+    </form>
+</div>
