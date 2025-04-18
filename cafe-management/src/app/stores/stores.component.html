@@ -1,0 +1,72 @@
+<div class="container mt-6">
+    <h2>Stores</h2>
+    <div class="table-info">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <p>Stores Data</p>
+            <button class="btn btn-primary" (click)="openModal()"><i class="fa-solid fa-plus" style="color: #08A9AE;"></i>Add Store</button>
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Product Name</th>
+                    <!-- <th>Location</th>
+                    <th>Manager</th>
+                    <th>Phone</th> -->
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example row -->
+                <tr>
+                  <td></td>
+                  <td>SuperMart</td>
+                  <!-- <td>New York, NY</td>
+                  <td>Jane Doe</td>
+                  <td>(123) 456-7890</td> -->
+                  <td><span class="badge bg-success">Active</span></td>
+                  <td>
+                    <button style="padding: 2px 9px;" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
+                    <button style="padding: 2px 9px;" class="btn btn-sm btn-danger"><i class="bi bi-trash3"></i></button>
+                  </td>
+                </tr>
+                <!-- Add more rows as needed -->
+              </tbody>
+        </table>
+    </div>
+</div>
+
+<!--modal-->
+<div class="modal fade" id="cafeModal" #cafeModal data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Update Store</p>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-container">
+              <form action="#">
+                <div>
+                  <label for="name">Product Name:</label>
+                  <input type="text" name="name" placeholder="Enter Product name : ">
+                </div>
+                <div>
+                  <label for="#">Status</label>
+                  <input type="text" name="status" placeholder="Status : ">
+                </div>
+                <div>
+                  <button type="submit">Update</button>
+                </div>
+              </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>

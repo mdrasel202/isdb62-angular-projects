@@ -1,0 +1,27 @@
+.table-info{
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.d-flex p{
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.d-flex button{
+    background: #08A9AE;
+    border: none;
+    letter-spacing: 1px;
+}
+.d-flex button:hover{
+    background: rgb(11, 94, 117);
+}
+.d-flex button i{
+    background: #ffff;
+    border-radius: 50px;
+    padding: 2px;
+    font-size: 13px;
+    margin-right: 5px;
+}
