@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Stores } from '../app.component';
 
+declare var bootstrap: any;
+
 @Component({
   selector: 'app-stores',
   imports: [],
@@ -32,8 +34,12 @@ export class StoresComponent{
     }
 
     const modalElement = document.getElementById('cafeModal');
-      if(modalElement != null){
-        modalElement.style.display = 'block';
+      // if(modalElement != null){
+      //   modalElement.style.display = 'block';
+      // }
+      if (modalElement) {
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
       }
   }
 
