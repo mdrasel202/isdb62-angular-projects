@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Stores } from '../app.component';
+import { Stores } from '../modal/stores';
+
 
 declare var bootstrap: any;
 

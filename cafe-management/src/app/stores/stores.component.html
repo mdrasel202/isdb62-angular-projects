@@ -15,6 +15,7 @@
                     <th>Manager</th>
                     <th>Phone</th> -->
                     <th>Status</th>
+                    <th>Images</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -26,6 +27,7 @@
                   <!-- <td>New York, NY</td>
                   <td>Jane Doe</td>
                   <td>(123) 456-7890</td> -->
+                  <td></td>
                   <td><span class="badge bg-success">Active</span></td>
                   <td>
                     <button style="padding: 2px 9px;" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></button>
@@ -39,7 +41,7 @@
 </div>
 
 <!--modal-->
-<div class="modal fade" id="cafeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade des" id="cafeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -49,13 +51,17 @@
         <div class="modal-body">
             <div class="form-container">
               <form action="#">
-                <div>
+                <div style="padding: 6px 0;">
                   <label for="name">Product Name:</label>
-                  <input type="text" name="name" placeholder="Enter Product name : ">
+                  <input type="text" name="name" placeholder="Enter Product name">
+                </div>
+                <div style="padding: 6px 0;">
+                  <label for="#">Status:</label>
+                  <input type="text" name="status" placeholder="Status">
                 </div>
                 <div>
-                  <label for="#">Status</label>
-                  <input type="text" name="status" placeholder="Status : ">
+                  <label for="#">Images:</label>
+                  <input type="file" name="images" placeholder="Images">
                 </div>
                 <!-- <div>
                   <button type="submit">Update</button>
@@ -65,7 +71,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
+          <button type="button" class="btn btn-primary">Update</button>
         </div>
       </div>
     </div>

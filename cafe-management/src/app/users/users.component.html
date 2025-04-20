@@ -1,7 +1,7 @@
 <div class="container mt-6">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <p>User Information</p>
-        <button class="btn btn-primary"><i class="fa-solid fa-plus" style="color: #08A9AE;"></i>Add User</button>
+        <button class="btn btn-primary" (click)="openModal()"><i class="fa-solid fa-plus" style="color: #08A9AE;"></i>Add User</button>
     </div>
     <div class="table-info">
         <table class="table table-bordered table-hover">
@@ -9,7 +9,6 @@
                 <tr>
                     <th>ID</th>
                     <th>NAME</th>
-                    <th>USER NAME</th>
                     <th>E-MAIL</th>
                     <th>ROLE</th>
                     <th>ACTION</th>
@@ -34,4 +33,38 @@
     </div>
 </div>
 
+<!--modal-->
+<!--modal-->
+<div class="modal fade des" id="cafeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="staticBackdropLabel">Update Users</p>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-container">
+              <form action="#">
+                <div style="padding: 6px 0;">
+                  <label for="name">Name:</label>
+                  <input type="text" name="name" placeholder="Enter user name">
+                </div>
+                <div style="padding: 6px 0;">
+                  <label for="#">Email:</label>
+                  <input type="email" name="email" placeholder="Enter email">
+                </div>
+                <div>
+                  <label for="#">Role:</label>
+                  <input type="text" name="role" placeholder="Enter your role">
+                </div>
+              </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
