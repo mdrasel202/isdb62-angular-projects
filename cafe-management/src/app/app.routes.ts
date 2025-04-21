@@ -8,6 +8,8 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { ViewControllerComponent } from './settings/view-controller/view-controller.component';
 import { UserViewControllerComponent } from './settings/user-view-controller/user-view-controller.component';
 import { UserHomeComponent } from './user-home/user-home.component';
+import { CardMenuComponent } from './card-menu/card-menu.component';
+import { ContactComponent } from './contact/contact.component';
 
 export const routes: Routes = [
     {
@@ -22,6 +24,14 @@ export const routes: Routes = [
           {
             path: 'home',
             component: UserHomeComponent
+          },
+          {
+            path: 'card-menu',
+            component: CardMenuComponent
+          },
+          {
+            path: 'contact', 
+            component: ContactComponent
           }
         ]
     },

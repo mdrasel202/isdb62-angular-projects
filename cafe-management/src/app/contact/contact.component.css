@@ -1,0 +1,54 @@
+.contact{
+    background-color: #E5E5E5;
+    height: 89vh;
+}
+.text h2{
+    text-align: center;
+}
+.text p{
+    text-align: center;
+}
+ .from{
+     /* text-align: center;  */
+}
+.from textarea{
+    width: 100%;
+    margin-top: 10px;
+    height: 90px;
+    border-radius: 0px;
+    border: none;
+    /* margin-top: 10px; */
+    padding: 10px 10px;
+}
+.from label{
+ color: #000;
+ margin-top: 10px;
+}
+.from input{
+    height: 50px;
+    border-radius: 0px;
+    border: none;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+.from input:hover{
+    border: 1px solid green;
+}
+
+button {
+    background: #ff7f50;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 0 #c7512d;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  button:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #c7512d;
+  }
+  

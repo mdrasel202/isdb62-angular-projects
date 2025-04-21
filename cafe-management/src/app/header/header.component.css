@@ -4,5 +4,15 @@ nav{
 .header{
     display: flex;
     align-items: center;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    width: 100%;
+}
+.right-side a{
+    color: green;
+    font-size: 22px;
+    margin-right: 10px;
+}
+.right-side span{
+    color: #323232;
+    font-size: 20px;
 }
