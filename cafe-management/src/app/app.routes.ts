@@ -10,6 +10,7 @@ import { UserViewControllerComponent } from './settings/user-view-controller/use
 import { UserHomeComponent } from './user-home/user-home.component';
 import { CardMenuComponent } from './card-menu/card-menu.component';
 import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +33,10 @@ export const routes: Routes = [
           {
             path: 'contact', 
             component: ContactComponent
+          },
+          {
+            path: 'about',
+            component: AboutComponent
           }
         ]
     },

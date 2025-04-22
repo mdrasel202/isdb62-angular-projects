@@ -1,6 +1,6 @@
 .card_menu{
     background-color: #E5E5E5;
-    height: 89vh;
+    height: 120vh;
 }
 .col-md-3{
     display: flex;
@@ -8,13 +8,24 @@
     flex-direction: column;
     background: #fff;
     border-radius: 12px;
-    padding: 10px 22px;
+    padding: 23px 10px;
     justify-content: center;
-    margin-right: 15px;
+    margin-right: 20px;
     margin-top: 40px;
+    width: 265px;
+}
+.img {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
 }
 .img img{
-    width: 288px;
+    width: 200px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.img:hover img {
+    transform: scale(1.1);
+    opacity: 0.8;
 }
 .img-tex a{
     text-decoration: none;

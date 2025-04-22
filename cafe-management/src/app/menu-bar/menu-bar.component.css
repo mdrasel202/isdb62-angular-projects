@@ -1,7 +1,12 @@
-.logo h2{
-    color: #ffff;
-    padding: 15px 0px;
+.logo{
     text-align: center;
+}
+.logo img{
+    width: 110px;
+    margin-top: 20px;
+}
+.menu-list{
+    margin-top: 15px;
 }
 .menu-list ul{
     padding: 0;

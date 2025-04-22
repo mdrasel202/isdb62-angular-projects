@@ -1,15 +1,19 @@
 .contact{
     background-color: #E5E5E5;
-    height: 89vh;
+    height: 92vh;
 }
 .text h2{
     text-align: center;
+    font-family: 'FontAwesome';
+    letter-spacing: 3px;
+    line-height: 57px;
 }
 .text p{
     text-align: center;
+    font-family: math;
 }
- .from{
-     /* text-align: center;  */
+.from{
+     /* text-align: center;*/
 }
 .from textarea{
     width: 100%;
@@ -17,8 +21,11 @@
     height: 90px;
     border-radius: 0px;
     border: none;
-    /* margin-top: 10px; */
+    /* margin-top: 10px;*/ 
     padding: 10px 10px;
+}
+.from textarea:hover{
+    border: 1px solid green;
 }
 .from label{
  color: #000;
@@ -34,21 +41,86 @@
 .from input:hover{
     border: 1px solid green;
 }
-
-button {
-    background: #ff7f50;
-    border: none;
-    padding: 14px 28px;
-    font-size: 16px;
-    color: white;
+.submit a{
+    text-decoration: none;
+    color: #fff;
+    width: 296px;
+    height: 51px;
+    background: rgb(9, 110, 9);
+    /* align-items: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 42px;
     border-radius: 10px;
-    box-shadow: 0 5px 0 #c7512d;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-  }
-  
-  button:active {
-    transform: translateY(4px);
-    box-shadow: 0 1px 0 #c7512d;
-  }
-  
+}
+.submit a:hover{
+    background: green;
+}
+
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    padding: 40px;
+    color: #333;
+}
+
+/* .contact-info-section {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    height: 160px;
+} */
+
+/* .contact-info-section h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #2c3e50;
+} */
+
+.info-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.info-box {
+    flex: 1 1 250px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #f0f4f8;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    background: #e0ecf6;
+}
+
+.icon {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.info-box h4 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.info-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
