@@ -11,6 +11,7 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import { CardMenuComponent } from './card-menu/card-menu.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
+import { LogingComponent } from './loging/loging.component';
 
 export const routes: Routes = [
     {
@@ -40,6 +41,7 @@ export const routes: Routes = [
           }
         ]
     },
+
     {
         path: 'admin',
         component: ViewControllerComponent,
@@ -71,6 +73,10 @@ export const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'loging',
+        component: LogingComponent
+      }
     // {path: 'dashboard', component:DashboardComponent},
     // {path: 'stores', component: StoresComponent},
     // {path: 'products', component: ProductsComponent},

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-loging',
@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './loging.component.css'
 })
 export class LogingComponent {
+  @ViewChild('container') containerRef!: ElementRef<HTMLDivElement>;
 
+  onSignUp(): void {
+    this.containerRef.nativeElement.classList.add('right-panel-active');
+  }
+
+  onSignIn(): void {
+    this.containerRef.nativeElement.classList.remove('right-panel-active');
+  }
 }
