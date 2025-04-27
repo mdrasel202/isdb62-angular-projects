@@ -1,0 +1,15 @@
+<div class="student-view">
+    <h2>Student Resources</h2>
+
+    <div *ngIf="resourceKeys.length > 0; else noData">
+        <ul>
+            <li *ngFor="let key of resourceKeys">
+                <strong>{{ key }}:</strong> {{ resources[key] }}
+            </li>
+        </ul>
+    </div>
+
+    <ng-template #noData>
+        <p>No resources available.</p>
+    </ng-template>
+</div>

@@ -1,0 +1,22 @@
+.student-view {
+    h2 {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+    }
+
+    p {
+        color: #666;
+    }
+}
