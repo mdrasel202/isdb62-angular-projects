@@ -1,0 +1,11 @@
+.container{
+    margin-top: 30px;
+    margin-left: 40px;
+    width: 100%;
+}
+/*left side*/
+.left-side{
+    height: 96vh;
+    /* background: #08A9AE; */
+    border-radius: 10px;
+}
