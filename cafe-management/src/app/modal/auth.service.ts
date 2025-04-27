@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
+import { Register } from "../model/register";
 
 
 @Injectable({
@@ -18,6 +19,11 @@ export class AuthService{
         return this.http.post<any>('http://localhost:8081/api/auth/login', credentials);
 
     }
+
+    signUp(register: Register){
+      return this.http.post<any>('http://localhost:8081/api/auth/register', register);
+
+  }
 
     setToken(token: string){
         localStorage.setItem(this.tokenKey, token);
