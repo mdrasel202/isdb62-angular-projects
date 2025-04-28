@@ -7,7 +7,7 @@ import { MainLayoutComponent } from './user-admin/main-layout/main-layout.compon
 export const routes: Routes = [
     //user-panal
     {
-        path: 'main',
+        path: '',
         component:MainLayoutComponent,
         children: [
             {
