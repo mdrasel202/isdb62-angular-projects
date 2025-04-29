@@ -6,6 +6,9 @@ import { MainLayoutComponent } from './user-admin/main-layout/main-layout.compon
 import { TransactionsComponent } from './user-admin/transactions/transactions.component';
 import { CardsComponent } from './user-admin/cards/cards.component';
 import { BankAccountComponent } from './user-admin/bank-account/bank-account.component';
+import { HomeViewControllerComponent } from './settings/home-view-controller/home-view-controller.component';
+import { LogingComponent } from './loging-register/loging/loging.component';
+import { RegisterComponent } from './loging-register/register/register.component';
 
 export const routes: Routes = [
     //user-panal
@@ -38,6 +41,26 @@ export const routes: Routes = [
                 component: BankAccountComponent
             }
         ]
+    },
+    {
+        path: 'home',
+        component:HomeViewControllerComponent,
+        children:[
+           {
+            path: '',
+            redirectTo:'home',
+            pathMatch: 'full'
+           }
+        ]
+    },
+
+    {
+        path: 'loging',
+        component:LogingComponent
+    },
+    {
+        path: 'resgister',
+        component:RegisterComponent
     }
    
 ];

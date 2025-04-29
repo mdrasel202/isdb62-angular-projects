@@ -1,0 +1,31 @@
+<div class="overlay" *ngIf="showOverlay">
+<div class="form-container">
+    <button (click)="closeOverlay()" class="close-btn" type="button" aria-label="Close form">
+        x
+    </button>
+    <form action="#">
+        <h1>Create Account</h1>
+        <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your email for registration</span>
+        <input type="text" placeholder="First Name" required />
+        <input type="text" placeholder="Last Name" required />
+        <input type="tel" placeholder="Phone Number" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <div class="role-container">
+            <label for="role" class="form-label">Role</label>
+            <select id="role" required>
+                <option value="">Select Role</option>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="guest">Guest</option>
+            </select>
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+</div>
