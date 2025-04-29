@@ -1,1 +1,223 @@
-<p>cards works!</p>
+<div class="add_form">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal"  (click)="openModal()" data-bs-target="#exampleModal">Add Filter</button>
+</div>
+<!--model-->
+<div class="modal fade" id="cardModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         <h2>Add Payment Card</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="card-preview">
+            <div class="card-number-preview" id="cardNumberPreview">**** **** **** ****</div>
+            <div class="card-details-preview">
+                <span id="cardTypePreview">Card Type</span>
+                <span id="expiryPreview">MM/YY</span>
+                <span id="activePreview">Status: Inactive</span>
+            </div>
+        </div>
+        <div class="modal-body">
+           <form id="cardForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="id">ID</label>
+                <input
+                    type="text"
+                    id="id" 
+                    name="id"
+                    placeholder="CARD123"
+                    required
+                    pattern="[A-Z0-9]{6,10}"
+                    autocomplete="off"
+                >
+                <div class="error">Please enter a valid ID (6-10 alphanumeric characters)</div>
+            </div>
+            <div class="form-group">
+                <label for="accountId">Account ID</label>
+                <input
+                    type="text"
+                    id="accountId"
+                    name="accountId"
+                    placeholder="ACC456"
+                    required
+                    pattern="[A-Z0-9]{6,10}"
+                    autocomplete="off"
+                >
+                <div class="error">Please enter a valid Account ID (6-10 alphanumeric characters)</div>
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input
+                    type="text"
+                    id="cardNumber"
+                    name="cardNumber"
+                    placeholder="1234 5678 9012 3456"
+                    maxlength="19"
+                    pattern="[0-9\s]{13,19}"
+                    required
+                    autocomplete="off"
+                    oninput="updateCardPreview(this, 'cardNumberPreview', '**** **** **** ####'); formatCardNumber(this)"
+                >
+                <div class="error">Please enter a valid card number</div>
+            </div>
+            <div class="form-group">
+                <label for="cardType">Card Type</label>
+                <select
+                    id="cardType"
+                    name="cardType"
+                    required
+                    oninput="updateCardPreview(this, 'cardTypePreview', 'Card Type')"
+                >
+                    <option value="" disabled selected>Select Card Type</option>
+                    <option value="Visa">Visa</option>
+                    <option value="MasterCard">MasterCard</option>
+                    <option value="American Express">American Express</option>
+                    <option value="Discover">Discover</option>
+                </select>
+                <div class="error">Please select a card type</div>
+            </div>
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date</label>
+                <input
+                    type="text"
+                    id="expiryDate"
+                    name="expiryDate"
+                    placeholder="MM/YY"
+                    maxlength="5"
+                    pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
+                    required
+                    autocomplete="off"
+                    oninput="updateCardPreview(this, 'expiryPreview', 'MM/YY'); formatExpiryDate(this)"
+                >
+                <div class="error">Please enter a valid expiry date (MM/YY)</div>
+            </div>
+            <div class="form-group checkbox">
+                <input
+                    type="checkbox"
+                    id="isActive"
+                    name="isActive"
+                    oninput="updateActivePreview(this)"
+                >
+                <label for="isActive">Is Active</label>
+            </div>
+            <button type="submit" class="submit-btn">Add Card</button>
+            <!-- <div class="security-note">
+                <span>Secured by Payment Gateway</span>
+                <img src="https://via.placeholder.com/20?text=🔒" alt="Secure">
+            </div> -->
+        </form>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+
+ <!-- <div id="cardModal" class="modal" >
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add Payment Card</h2>
+             <span class="close-btn" onclick="closeModal()">×</span>
+        </div>
+        <div class="card-preview">
+            <div class="card-number-preview" id="cardNumberPreview">**** **** **** ****</div>
+            <div class="card-details-preview">
+                <span id="cardTypePreview">Card Type</span>
+                <span id="expiryPreview">MM/YY</span>
+                <span id="activePreview">Status: Inactive</span>
+            </div>
+        </div>
+        <form id="cardForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="id">ID</label>
+                <input
+                    type="text"
+                    id="id" 
+                    name="id"
+                    placeholder="CARD123"
+                    required
+                    pattern="[A-Z0-9]{6,10}"
+                    autocomplete="off"
+                >
+                <div class="error">Please enter a valid ID (6-10 alphanumeric characters)</div>
+            </div>
+            <div class="form-group">
+                <label for="accountId">Account ID</label>
+                <input
+                    type="text"
+                    id="accountId"
+                    name="accountId"
+                    placeholder="ACC456"
+                    required
+                    pattern="[A-Z0-9]{6,10}"
+                    autocomplete="off"
+                >
+                <div class="error">Please enter a valid Account ID (6-10 alphanumeric characters)</div>
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input
+                    type="text"
+                    id="cardNumber"
+                    name="cardNumber"
+                    placeholder="1234 5678 9012 3456"
+                    maxlength="19"
+                    pattern="[0-9\s]{13,19}"
+                    required
+                    autocomplete="off"
+                    oninput="updateCardPreview(this, 'cardNumberPreview', '**** **** **** ####'); formatCardNumber(this)"
+                >
+                <div class="error">Please enter a valid card number</div>
+            </div>
+            <div class="form-group">
+                <label for="cardType">Card Type</label>
+                <select
+                    id="cardType"
+                    name="cardType"
+                    required
+                    oninput="updateCardPreview(this, 'cardTypePreview', 'Card Type')"
+                >
+                    <option value="" disabled selected>Select Card Type</option>
+                    <option value="Visa">Visa</option>
+                    <option value="MasterCard">MasterCard</option>
+                    <option value="American Express">American Express</option>
+                    <option value="Discover">Discover</option>
+                </select>
+                <div class="error">Please select a card type</div>
+            </div>
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date</label>
+                <input
+                    type="text"
+                    id="expiryDate"
+                    name="expiryDate"
+                    placeholder="MM/YY"
+                    maxlength="5"
+                    pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
+                    required
+                    autocomplete="off"
+                    oninput="updateCardPreview(this, 'expiryPreview', 'MM/YY'); formatExpiryDate(this)"
+                >
+                <div class="error">Please enter a valid expiry date (MM/YY)</div>
+            </div>
+            <div class="form-group checkbox">
+                <input
+                    type="checkbox"
+                    id="isActive"
+                    name="isActive"
+                    oninput="updateActivePreview(this)"
+                >
+                <label for="isActive">Is Active</label>
+            </div>
+            <button type="submit" class="submit-btn">Add Card</button>
+            <div class="security-note">
+                <span>Secured by Payment Gateway</span>
+                <img src="https://via.placeholder.com/20?text=🔒" alt="Secure">
+            </div>
+        </form>
+    </div>
+</div> -->
