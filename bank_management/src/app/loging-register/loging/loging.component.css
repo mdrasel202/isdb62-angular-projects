@@ -72,7 +72,7 @@ body {
     text-align: center;
     animation: fadeIn 1s ease-in-out;
     position: absolute;
-    top: 35%;
+    top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -83,13 +83,13 @@ body {
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 25px;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .social-container {
-    margin: 20px 0;
+    /* margin: 20px 0; */
 }
 
 .social {
@@ -120,11 +120,11 @@ span {
 
 input {
     width: 100%;
-    padding: 12px;
+    padding: 8px;
     margin: 10px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 13px;
     transition: border-color 0.3s ease;
 }
 
@@ -138,7 +138,7 @@ input:focus {
     display: block;
     color: #6e8efb;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
     margin: 15px 0;
     transition: color 0.3s ease;
 }
@@ -149,12 +149,12 @@ input:focus {
 
 button {
     width: 100%;
-    padding: 12px;
+    padding: 9px;
     background: #ff6b6b;
     border: none;
     border-radius: 5px;
     color: #fff;
-    font-size: 16px;
+    font-size: 13px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
     margin-top: 11px;
