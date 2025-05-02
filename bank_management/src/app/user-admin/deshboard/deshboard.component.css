@@ -1,0 +1,152 @@
+.deshboard{
+    margin-top: 30px;
+}
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .actions button {
+    background: #8854ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .card-container {
+    display: flex;
+    gap: 30px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    flex: 1;
+  }
+
+  .card:hover{
+    border: 1px solid rgba(12, 180, 43, 0.3);
+  }
+
+  .card h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #8a8fa6;
+    font-weight: bold;
+  }
+
+  .card h1 {
+    font-size: 32px;
+    margin: 10px 0;
+  }
+
+  .card p {
+    color: #677294;
+    margin-bottom: 20px;
+  }
+
+  .btn-purple {
+    background-color: #8854ff;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(136, 84, 255, 0.3);
+  }
+
+  .balance {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .green-text {
+    color: #4caf50;
+    font-weight: 500;
+  }
+
+  .chart {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #c8b8ff, #f5f8ff);
+    border-radius: 10px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chart::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/area_basic.svg');
+    background-size: cover;
+    opacity: 0.5;
+  }
+
+/*money transactions*/
+
+.card-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card h4 {
+    color: #8a8fa6;
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .card .amount {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1f2b4d;
+    margin-bottom: 10px;
+  }
+
+  .card .description {
+    color: #677294;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .card .line {
+    height: 2px;
+    background-color: #e4e9f2;
+    margin-bottom: 15px;
+  }
+
+  .card .view-link {
+    color: #8854ff;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    font-size: 14px;
+  }

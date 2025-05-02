@@ -1,11 +1,23 @@
-.sidebar {
-    background: #b6e1ee;
-    /* padding: 1rem; */
-    width: 250px;
-    height: 100vh;
+.side-menu{
     border-radius: 10px;
 }
-
+.sidebar {
+    margin-top: 20px;
+}
+.logo{
+    margin-top: 38px;
+}
+.logo a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo a img{
+   width: 53px;
+}
+.manu_list{
+    margin-top: 35px;
+}
 ul {
     list-style: none;
     padding: 0;
@@ -17,18 +29,20 @@ li {
     padding: 10px 0;
 }
 li:hover{
-    background-color: rgb(11, 94, 117);
-    color: #fff;
+    background-color: #F3FCF7;
+    color: #22C55E;
 }
 
-a {
+li a {
     text-decoration: none;
     cursor: pointer;
     color: inherit;
     margin-left: 22px;
-
-
-    &:hover {
-        color: #fff;
-    }
+    font-size: 17px;
+}
+li a i{
+    margin-right: 15px;
+}
+li a:hover{
+    color: #22C55E;
 }
