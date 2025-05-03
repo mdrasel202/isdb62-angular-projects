@@ -1,0 +1,45 @@
+
+ 
+ <div class="dropdown" >
+    <div class="header">
+      <div class="search-bar">
+        <input type="text" placeholder="🔍 Search for anything..."/>
+      </div>
+    </div>
+  
+     <div class="pro">
+      <a class="notification" href="#"><i class="bi bi-bell-fill"></i></a>
+     <div class="profile" (click)="toggleDropdown()">
+      <a>
+        <img src="user_profile/user.png" alt="">
+        <!-- <span>Jack</span> -->
+       </a>
+     </div>
+     </div>
+     <!-- <i class="bi bi-arrow-down-short"></i> -->
+  
+     <!--dropdown menu-->
+      <div class="sub-menu" *ngIf="dropdownopen">
+        <div class="sub">
+          <div class="uer-info">
+            <img src="user_profile/user.png" alt="">
+            <span>Jack</span>
+          </div>
+          <hr>
+          <div class="info">
+            <a href="#" class="dropdown-item">
+              <i class="bi bi-person"></i>Profile
+            </a>
+            <a href="#" class="dropdown-item">
+              <i class="bi bi-gear"></i>Account Settings
+            </a>
+            <a href="#" class="dropdown-item">
+              <i class="bi bi-question-circle"></i>Help Center
+            </a>
+            <a href="#" class="dropdown-item">
+              <i class="bi bi-box-arrow-left"></i>Logout
+            </a>
+          </div>
+        </div>
+      </div>
+  </div>

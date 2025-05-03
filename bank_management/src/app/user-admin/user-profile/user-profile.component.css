@@ -106,6 +106,10 @@
   opacity: 1;
 }
 
+.profile {
+  cursor: pointer;
+}
+
 @keyframes slideIn {
   from {
     opacity: 0;

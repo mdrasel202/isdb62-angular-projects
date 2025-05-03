@@ -1,8 +1,72 @@
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
+<div class="header">
+  <span>User Account Create</span>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="bi bi-arrow-right-square-fill" style="margin-right: 8px;"></i>Open an Account
   </button>
+</div>
+
+<!--table-->
+<div class="table-container">
+  <div class="table-wrapper">
+      <table>
+          <thead>
+              <tr>
+                  <th>Account Number</th>
+                  <th>User Name</th>
+                  <th>Balance</th>
+                  <th>Account Type</th>
+                  <th>Status</th>
+                  <th>Available Balance</th>
+                  <th>Opened Date</th>
+                  <th>Currency</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>1001234567</td>
+                  <td>John Doe</td>
+                  <td class="balance">$12,345.67</td>
+                  <td>Savings</td>
+                  <td><span class="status-active">Active</span></td>
+                  <td class="available-balance">$12,000.00</td>
+                  <td>2023-05-15</td>
+                  <td>USD</td>
+              </tr>
+              <tr>
+                  <td>1009876543</td>
+                  <td>Jane Smith</td>
+                  <td class="balance">$8,765.43</td>
+                  <td>Checking</td>
+                  <td><span class="status-active">Active</span></td>
+                  <td class="available-balance">$8,500.00</td>
+                  <td>2022-11-20</td>
+                  <td>USD</td>
+              </tr>
+              <tr>
+                  <td>1004567890</td>
+                  <td>Alice Johnson</td>
+                  <td class="balance">$5,432.10</td>
+                  <td>Savings</td>
+                  <td><span class="status-inactive">Inactive</span></td>
+                  <td class="available-balance">$5,000.00</td>
+                  <td>2021-03-10</td>
+                  <td>EUR</td>
+              </tr>
+              <tr>
+                  <td>1001122334</td>
+                  <td>Bob Williams</td>
+                  <td class="balance">$15,678.90</td>
+                  <td>Business</td>
+                  <td><span class="status-active">Active</span></td>
+                  <td class="available-balance">$15,000.00</td>
+                  <td>2024-01-25</td>
+                  <td>GBP</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+<!--table end-->
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

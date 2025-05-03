@@ -11,79 +11,42 @@ import { RegisterComponent } from './loging-register/register/register.component
 import { AdminMainLayoutComponent } from './admin/admin-main-layout/admin-main-layout.component';
 import { AdminDeshboardComponent } from './admin/admin-deshboard/admin-deshboard.component';
 import { AccountCreateComponent } from './admin/account-create/account-create.component';
+import { DepositComponent } from './admin/deposit/deposit.component';
+import { LoanComponent } from './admin/loan/loan.component';
 
 export const routes: Routes = [
+
     //user-panal
-     {
-        path: '',
-        component:MainLayoutComponent,
+    {path: '', component:MainLayoutComponent,
         children: [
-            {
-                path: '',
-                redirectTo: 'deshboard',
-                pathMatch: 'full'
-            },
-            {
-                path: 'dashboard',
-                component: DeshboardComponent
-            },
-            {path: 'user',
-                component:UserComponent
-            },
-            {
-                path: 'transactions',
-                component: TransactionsComponent
-            },
-            {
-                path: 'cards',
-                component: CardsComponent
-            },
-            {
-                path: 'bank-account',
-                component: BankAccountComponent
-            }
-        ]
-    },
-    //home
-    {
-        path: 'home',
-        component:HomeViewControllerComponent,
-        children:[
-           {
-            path: '',
-            redirectTo:'home',
-            pathMatch: 'full'
-           }
+            {path: '', redirectTo: 'deshboard', pathMatch: 'full'},
+            {path: 'dashboard', component: DeshboardComponent},
+            {path: 'user', component:UserComponent},
+            {path: 'transactions', component: TransactionsComponent},
+            {path: 'cards', component: CardsComponent},
+            {path: 'bank-account', component: BankAccountComponent}
         ]
     },
 
-    {
-        path: 'loging',
-        component:LogingComponent
+    //home
+    {path: 'home', component:HomeViewControllerComponent,
+        children: [
+           {path: '', redirectTo: 'home', pathMatch: 'full'}
+        ]
     },
-    {
-        path: 'resgister',
-        component:RegisterComponent
-    },
+    
     //admin
-    {
-        path:'admin',
-        component: AdminMainLayoutComponent,
+    {path:'admin', component: AdminMainLayoutComponent,
         children : [
-            {
-                path: '' ,
-                redirectTo:'admin-deshboard',
-                pathMatch: 'full'
-            },
-            {
-             path:'admin-deshboard',
-             component: AdminDeshboardComponent
-            },
-            {
-                path:'account-create',
-                component:AccountCreateComponent
-            }
+            {path: '' , redirectTo:'admin-deshboard', pathMatch: 'full'},
+            {path:'admin-deshboard', component: AdminDeshboardComponent},
+            {path:'account-create', component:AccountCreateComponent},
+            {path: 'deposit', component:DepositComponent},
+            {path: 'loan', component:LoanComponent}
         ] 
-    }
+    },
+
+    {path: 'loging', component:LogingComponent},
+    {path: 'resgister', component:RegisterComponent}
    
 ];
