@@ -10,6 +10,7 @@ import { LogingComponent } from './loging-register/loging/loging.component';
 import { RegisterComponent } from './loging-register/register/register.component';
 import { AdminMainLayoutComponent } from './admin/admin-main-layout/admin-main-layout.component';
 import { AdminDeshboardComponent } from './admin/admin-deshboard/admin-deshboard.component';
+import { AccountCreateComponent } from './admin/account-create/account-create.component';
 
 export const routes: Routes = [
     //user-panal
@@ -77,6 +78,10 @@ export const routes: Routes = [
             {
              path:'admin-deshboard',
              component: AdminDeshboardComponent
+            },
+            {
+                path:'account-create',
+                component:AccountCreateComponent
             }
         ] 
     }

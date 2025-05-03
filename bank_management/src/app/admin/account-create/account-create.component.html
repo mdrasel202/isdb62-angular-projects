@@ -1,0 +1,80 @@
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form >
+            <div class="form-sections">
+              
+              <div>
+                <div class="section-title">Account Info</div>
+                <div class="form-group">
+                  <label>Account Number</label>
+                  <input type="text" name="account_number" ngModel required />
+                </div>
+                <div class="form-group">
+                  <label>Account Type</label>
+                  <select name="type" ngModel required>
+                    <option value="">-- Select --</option>
+                    <option value="SAVINGS">Savings</option>
+                    <option value="CURRENT">Current</option>
+                    <option value="BUSINESS">Business</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Opened Date</label>
+                  <input type="date" name="opened_date" ngModel required />
+                </div>
+              </div>
+      
+            
+              <div>
+                <div class="section-title">User Info</div>
+                <div class="form-group">
+                  <label>User Name</label>
+                  <input type="text" name="user" ngModel required />
+                </div>
+                <div class="form-group">
+                  <label>Status</label>
+                  <select name="status" ngModel required>
+                    <option value="">-- Select --</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Blocked">Blocked</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Currency</label>
+                  <input type="text" name="currency" ngModel required />
+                </div>
+              </div>
+      
+       
+              <div>
+                <div class="section-title">Financial Info</div>
+                <div class="form-group">
+                  <label>Balance</label>
+                  <input type="number" name="balance" step="0.01" ngModel required />
+                </div>
+                <div class="form-group">
+                  <label>Available Balance</label>
+                  <input type="number" name="available_balance" step="0.01" ngModel required />
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="submit-btn">Create Account</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

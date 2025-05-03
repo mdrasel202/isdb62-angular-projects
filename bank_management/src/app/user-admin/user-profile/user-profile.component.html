@@ -1,6 +1,6 @@
 
  
- <div class="dropdown" (click)="toggleDropdown()">
+ <div class="dropdown" >
   <div class="header">
     <div class="search-bar">
       <input type="text" placeholder="🔍 Search for anything..."/>
@@ -8,10 +8,12 @@
   </div>
 
 
-   <a href="#">
-    <img src="user_profile/user.png" alt="">
-    <!-- <span>Jack</span> -->
-   </a>
+   <div class="profile" (click)="toggleDropdown()">
+    <a href="#">
+      <img src="user_profile/user.png" alt="">
+      <!-- <span>Jack</span> -->
+     </a>
+   </div>
    <!-- <i class="bi bi-arrow-down-short"></i> -->
 
    <!--dropdown menu-->

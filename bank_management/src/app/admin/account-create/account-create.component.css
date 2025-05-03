@@ -1,0 +1,103 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f2f6fa;
+  margin: 0;
+  padding: 40px;
+}
+
+/* Modal Trigger Button */
+.open-modal-btn {
+  background: #6a5acd;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.open-modal-btn:hover {
+  background: #5941c5;
+}
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Form Styles */
+.form-sections {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #fdfdfd;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #6a5acd;
+  outline: none;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #444;
+  border-left: 4px solid #6a5acd;
+  padding-left: 10px;
+}
+
+.submit-btn {
+  display: block;
+  width: 200px;
+  margin: 30px auto 0;
+  padding: 12px;
+  font-size: 16px;
+  background: #6a5acd;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: #5941c5;
+}
+
+@media (max-width: 900px) {
+  .form-sections {
+    grid-template-columns: 1fr;
+  }
+}
