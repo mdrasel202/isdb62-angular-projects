@@ -1,0 +1,98 @@
+/* Existing styles remain unchanged, add this at the end */
+
+/* Footer Styles */
+footer {
+    background: linear-gradient(90deg, #2c3e50, #34495e);
+    color: #ecf0f1;
+    padding: 40px 20px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C300,0 1140,0 1440,50 L1440,0 L0,0 Z" fill="%23ecf0f1"/></svg>');
+    background-size: cover;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.footer-section h3 {
+    color: #e74c3c;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e74c3c;
+    padding-bottom: 5px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: #ecf0f1;
+    font-size: 20px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #e74c3c;
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(236, 240, 241, 0.2);
+    font-size: 12px;
+    color: #bdc3c7;
+}
+
+/* Ensure footer stays at the bottom */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+}

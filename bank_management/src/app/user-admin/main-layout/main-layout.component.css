@@ -1,7 +1,6 @@
 .container{
-    /* margin-top: 30px; */
-    /* margin-left: 40px; */
-    width: 100%;
+    max-width: 1330px;
+    background-color: #fff;
 }
 /*left side*/
 .col-md-3{
@@ -13,3 +12,4 @@
     /* border-radius: 10px; */
     
 }
+
