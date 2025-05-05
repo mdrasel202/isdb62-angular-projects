@@ -12,13 +12,13 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <span>or use your account</span>
-            <input type="email"  placeholder="Email" />
-            <input type="password"  placeholder="Password" />
+            <input type="email" id="email" name="email" [(ngModel)]="email"  placeholder="Email" />
+            <input type="password" name="password" id="password" [(ngModel)]="password"  placeholder="Password" />
             <div class="create">
                 <a href="#" style="margin-right: 78px; text-decoration: none; font-size: 13px;">Forgot your password?</a>
                 <a routerLink="/resgister" href="#" style="text-decoration: none; font-size: 13px;">Create a account?</a>
             </div>
-            <button >Log In</button>
+            <button  (click)="onLogin()">Log In</button>
         </form>
     </div>
 </div>

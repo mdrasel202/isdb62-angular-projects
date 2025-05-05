@@ -4,7 +4,7 @@
         <button (click)="closeOverlay()" class="close-btn" type="button" aria-label="Close form">
             x
         </button>
-        <form action="#">
+        <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
             <h1>Create Account</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -12,19 +12,20 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <span>or use your email for registration</span>
-            <input type="text" placeholder="First Name" required />
-            <input type="text" placeholder="Last Name" required />
-            <input type="tel" placeholder="Phone Number" required />
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
-            <div class="role-container">
+            <input type="text" placeholder="First Name" id="firstName" name="firstName" [(ngModel)]="user.firstName" required />
+            <input type="text" placeholder="Last Name" id="lastName" name="lastName" [(ngModel)]="user.lastName" required />
+            <input type="tel" placeholder="Phone Number" id="phone" name="phone" [(ngModel)]="user.phone" required />
+            <input type="email" placeholder="Email" id="email" name="email" [(ngModel)]="user.email" required />
+            <input type="password" placeholder="Password" id="password" name="password" [(ngModel)]="user.password" required />
+            <!-- <input type="hidden" id="role" name="role" [(ngModel)]="user.role" value="USER" /> -->
+            <!-- <div class="role-container">
                 <label for="role" class="form-label">Role</label>
                 <select id="role" required>
                     <option value="">Select Role</option>
                     <option value="user">User</option>
                     <option value="admin">Admin</option>
                 </select>
-            </div>
+            </div> -->
             <button type="submit">Sign Up</button>
         </form>
     </div>

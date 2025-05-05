@@ -13,11 +13,22 @@ import { AdminDeshboardComponent } from './admin/admin-deshboard/admin-deshboard
 import { AccountCreateComponent } from './admin/account-create/account-create.component';
 import { DepositComponent } from './admin/deposit/deposit.component';
 import { LoanComponent } from './admin/loan/loan.component';
+import { DepositsComponent } from './home/deposit/deposit.component';
+import { HomePageComponent } from './home/home-page/home-page.component';
 
 export const routes: Routes = [
 
+    //home
+    {path: '', component:HomeViewControllerComponent,
+        children: [
+           {path: '', redirectTo: 'home', pathMatch: 'full'},
+           {path: 'home', component:HomePageComponent},
+           {path: 'deposits', component:DepositsComponent}
+        ]
+    },
+
     //user-panal
-    {path: '', component:MainLayoutComponent,
+    {path: 'user', component:MainLayoutComponent,
         children: [
             {path: '', redirectTo: 'deshboard', pathMatch: 'full'},
             {path: 'dashboard', component: DeshboardComponent},
@@ -25,13 +36,6 @@ export const routes: Routes = [
             {path: 'transactions', component: TransactionsComponent},
             {path: 'cards', component: CardsComponent},
             {path: 'bank-account', component: BankAccountComponent}
-        ]
-    },
-
-    //home
-    {path: 'home', component:HomeViewControllerComponent,
-        children: [
-           {path: '', redirectTo: 'home', pathMatch: 'full'}
         ]
     },
     

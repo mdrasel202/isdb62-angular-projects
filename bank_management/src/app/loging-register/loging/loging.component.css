@@ -70,7 +70,7 @@ body {
     width: 100%;
     max-width: 400px;
     text-align: center;
-    animation: fadeIn 1s ease-in-out;
+    /* animation: fadeIn 1s ease-in-out; */
     position: absolute;
     top: 43%;
     left: 50%;
