@@ -12,16 +12,18 @@
           <thead>
               <tr>
                   <th>Account Number</th>
-                  <th>User Name</th>
-                  <th>Balance</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
                   <th>Account Type</th>
-                  <th>Status</th>
+                  <th>Accout Status</th>
+                  <th>Address</th>
                   <th>Available Balance</th>
                   <th>Opened Date</th>
-                  <th>Currency</th>
               </tr>
           </thead>
-          <tbody>
+          <!-- <tbody>
               <tr>
                   <td>1001234567</td>
                   <td>John Doe</td>
@@ -62,7 +64,7 @@
                   <td>2024-01-25</td>
                   <td>GBP</td>
               </tr>
-          </tbody>
+          </tbody> -->
       </table>
   </div>
 </div>
@@ -77,62 +79,77 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form >
+          <form (ngSubmit)="onSubmit()">
             <div class="form-sections">
               
               <div>
                 <div class="section-title">Account Info</div>
                 <div class="form-group">
                   <label>Account Number</label>
-                  <input type="text" name="account_number" ngModel required />
+                  <input type="text" [(ngModel)]="account.accountNumber" name="accountNumber"  required />
                 </div>
+                
                 <div class="form-group">
-                  <label>Account Type</label>
-                  <select name="type" ngModel required>
-                    <option value="">-- Select --</option>
-                    <option value="SAVINGS">Savings</option>
-                    <option value="CURRENT">Current</option>
-                    <option value="BUSINESS">Business</option>
+                  <label>Status</label>
+                  <select [(ngModel)]="account.accountStatus" name="accountStatus" required>
+                    <option *ngFor="let status of accountStatuses" [value]="status">{{ status }}</option>
+                    <!-- <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Blocked">Blocked</option> -->
                   </select>
                 </div>
+
                 <div class="form-group">
-                  <label>Opened Date</label>
-                  <input type="date" name="opened_date" ngModel required />
+                  <label>Account Type</label>
+                  <select [(ngModel)]="account.accountType" name="accountType" required>
+                    <option *ngFor="let type of accountType" [value]="type">{{ type}}</option>
+                     <!-- <option value="SAVINGS">Savings</option>
+                    <option value="CURRENT">Current</option>
+                    <option value="BUSINESS">Business</option> -->
+                  </select>
                 </div>
               </div>
       
             
               <div>
                 <div class="section-title">User Info</div>
+               
                 <div class="form-group">
-                  <label>User Name</label>
-                  <input type="text" name="user" ngModel required />
+                  <label>First Name</label>
+                  <input type="text" [(ngModel)]="account.firstName" name="firstName"  required />
+                </div>
+                 <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" [(ngModel)]="account.lastName" name="lastName"  required />
                 </div>
                 <div class="form-group">
-                  <label>Status</label>
-                  <select name="status" ngModel required>
-                    <option value="">-- Select --</option>
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
-                    <option value="Blocked">Blocked</option>
-                  </select>
+                  <label>Email</label>
+                  <input type="text" [(ngModel)]="account.email" name="email"  required />
                 </div>
                 <div class="form-group">
-                  <label>Currency</label>
-                  <input type="text" name="currency" ngModel required />
+                  <label>Address</label>
+                  <input type="text" [(ngModel)]="account.address" name="address" required />
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input type="text" [(ngModel)]="account.phone" name="phone"  required />
                 </div>
               </div>
       
        
               <div>
                 <div class="section-title">Financial Info</div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label>Balance</label>
                   <input type="number" name="balance" step="0.01" ngModel required />
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label>Available Balance</label>
-                  <input type="number" name="available_balance" step="0.01" ngModel required />
+                  <input type="number" [(ngModel)]="account.availableBalance" name="availableBalance" required />
+                </div>
+                 <div class="form-group">
+                  <label>Open Date</label>
+                  <input type="text" [(ngModel)]="account.openedDate" name="openedDate"  required />
                 </div>
               </div>
             </div>
