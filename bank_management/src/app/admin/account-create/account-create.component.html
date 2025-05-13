@@ -23,48 +23,25 @@
                   <th>Opened Date</th>
               </tr>
           </thead>
-          <!-- <tbody>
-              <tr>
-                  <td>1001234567</td>
-                  <td>John Doe</td>
-                  <td class="balance">$12,345.67</td>
-                  <td>Savings</td>
-                  <td><span class="status-active">Active</span></td>
-                  <td class="available-balance">$12,000.00</td>
-                  <td>2023-05-15</td>
-                  <td>USD</td>
+          <tbody>
+              <tr *ngFor="let acc of accounts">
+                  <td>{{acc.accountNumber}}</td>
+                  <td>{{acc.user.firstName}}</td>
+                  <td>{{acc.user.lastName}}</td>
+                  <td>{{acc.user.email}}</td>
+                  <td>{{acc.user.phone}}</td>
+                  <td>{{acc.type}}</td>
+                  <td>
+                    <span [ngClass]="{'status-acive': acc.status}">
+                      {{acc.status}}
+                    </span>
+                  </td>
+                  <!-- <td><span class="status-active"></span></td> -->
+                  <td>{{acc.user.address}}</td>
+                  <td>{{acc.availableBalance | currency}}</td>
+                  <td>{{acc.openedDate}}</td>
               </tr>
-              <tr>
-                  <td>1009876543</td>
-                  <td>Jane Smith</td>
-                  <td class="balance">$8,765.43</td>
-                  <td>Checking</td>
-                  <td><span class="status-active">Active</span></td>
-                  <td class="available-balance">$8,500.00</td>
-                  <td>2022-11-20</td>
-                  <td>USD</td>
-              </tr>
-              <tr>
-                  <td>1004567890</td>
-                  <td>Alice Johnson</td>
-                  <td class="balance">$5,432.10</td>
-                  <td>Savings</td>
-                  <td><span class="status-inactive">Inactive</span></td>
-                  <td class="available-balance">$5,000.00</td>
-                  <td>2021-03-10</td>
-                  <td>EUR</td>
-              </tr>
-              <tr>
-                  <td>1001122334</td>
-                  <td>Bob Williams</td>
-                  <td class="balance">$15,678.90</td>
-                  <td>Business</td>
-                  <td><span class="status-active">Active</span></td>
-                  <td class="available-balance">$15,000.00</td>
-                  <td>2024-01-25</td>
-                  <td>GBP</td>
-              </tr>
-          </tbody> -->
+          </tbody>
       </table>
   </div>
 </div>
@@ -92,10 +69,7 @@
                 <div class="form-group">
                   <label>Status</label>
                   <select [(ngModel)]="account.accountStatus" name="accountStatus" required>
-                    <option *ngFor="let status of accountStatuses" [value]="status">{{ status }}</option>
-                    <!-- <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
-                    <option value="Blocked">Blocked</option> -->
+                    <option *ngFor="let status of accountStatus" [value]="status">{{ status }}</option>
                   </select>
                 </div>
 
@@ -103,9 +77,6 @@
                   <label>Account Type</label>
                   <select [(ngModel)]="account.accountType" name="accountType" required>
                     <option *ngFor="let type of accountType" [value]="type">{{ type}}</option>
-                     <!-- <option value="SAVINGS">Savings</option>
-                    <option value="CURRENT">Current</option>
-                    <option value="BUSINESS">Business</option> -->
                   </select>
                 </div>
               </div>
@@ -139,10 +110,6 @@
        
               <div>
                 <div class="section-title">Financial Info</div>
-                <!-- <div class="form-group">
-                  <label>Balance</label>
-                  <input type="number" name="balance" step="0.01" ngModel required />
-                </div> -->
                 <div class="form-group">
                   <label>Available Balance</label>
                   <input type="number" [(ngModel)]="account.availableBalance" name="availableBalance" required />

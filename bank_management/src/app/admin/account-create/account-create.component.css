@@ -260,3 +260,15 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+
+/*active inactive*/
+.status-active {
+  color: green;
+  font-weight: bold;
+}
+
+.status-inactive {
+  color: red;
+  font-weight: bold;
+}

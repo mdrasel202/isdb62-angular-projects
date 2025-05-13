@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BankAccount } from '../model/bank_account.model';
+import { Account, BankAccount } from '../model/bank_account.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,13 @@ export class BankAccountService {
 
   constructor(private http: HttpClient) { }
 
-  saveAccount(data: BankAccount):Observable<any>{
-    return this.http.post(this.baseUrl, data);
+   // POST: Create new account
+  saveAccount(account: BankAccount):Observable<any>{
+    return this.http.post(this.baseUrl, account);
+  }
+
+   // GET: Fetch all accounts
+  getAccounts(): Observable<Account[]> {
+    return this.http.get<Account[]>(this.baseUrl);
   }
 }
