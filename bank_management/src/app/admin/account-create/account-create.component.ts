@@ -32,20 +32,6 @@ export class AccountCreateComponent implements OnInit{
     phone: '',
     address: ''
   };
-// account: BankAccount ={
-//     accountNumber: '',
-//     availableBalance: 0,
-//     openedDate: new Date(),
-//     accountStatus: AccountStatus.ACTIVE,
-//     accountType: AccountType.SAVING,
-//        user: {
-//            firstName: '',
-//            lastName: '',
-//            email: '',
-//            phone: '',
-//            address: ''
-//   }
-// };
 
   constructor(private bankAccountService : BankAccountService){}
 
@@ -60,21 +46,6 @@ export class AccountCreateComponent implements OnInit{
       error: (err) => console.error('Failed to load accounts:', err)
     })
   }
-
-  // onSubmit(): void{
-  //   console.log('Sending account data:', this.account);
-  //   this.bankAccountService.saveAccount(this.account).subscribe(
-  //     response => {
-  //       console.log('Account create successfully', response);
-  //       this.fetchAccounts();
-  //     },
-  //     error =>{
-  //       console.error('Error creating account', error);
-  //     }
-      
-  //   );
-  // }
-
 
   onSubmit(): void {
   const newAccount = new BankAccount(

@@ -1,8 +1,8 @@
 <div class="header">
-    <span>Deposit</span>
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <span>Loan</span>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <i class="bi bi-arrow-right-square-fill" style="margin-right: 8px;"></i>Open an Account
-    </button> -->
+    </button>
   </div>
 
 
@@ -12,39 +12,95 @@
         <table>
             <thead>
                 <tr>
+                    <th>User ID</th>
                     <th>Account Number</th>
-                    <th>User Name</th>
                     <th>Amount</th>
                     <th>Approved Amount</th>
-                    <th>Interest Rate</th>
                     <th>Available Balance</th>
-                    <th>Application Date</th>
+                    <th>Interest Rate</th>
                     <th>Due Date</th>
+                    <th>Accept Date</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1001234567</td>
-                    <td>John Doe</td>
-                    <td class="balance">100000tk</td>
-                    <td>100000tk</td>
-                    <td>8.5%</td>
-                    <td>2025-04-01</td>
-                    <td> 2025-04-05</td>
-                    <td>2027-04-05</td>
-                </tr>
-                <tr>
-                    <td>1001234567</td>
-                    <td>John Doe</td>
-                    <td class="balance">100000tk</td>
-                    <td>100000tk</td>
-                    <td>8.5%</td>
-                    <td>2025-04-01</td>
-                    <td> 2025-04-05</td>
-                    <td>2027-04-05</td>
+                <tr *ngFor="let lone of allLoans">
+                    <td>{{lone.userId}}</td>
+                    <td>{{lone.accountNumber}}</td>
+                    <td>{{lone.amount}}</td>
+                    <td class="balance">{{lone.approvedAmount}}</td>
+                    <td>{{lone.availableAmount}}</td>
+                    <td>{{lone.interestRate}}</td>
+                    <td>{{lone.dueDate}}</td>
+                    <td>{{lone.acceptDate}}</td>
+                    <td>{{lone.status}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
   </div>
   <!--table end-->
+
+
+  <!--modal-->
+   <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmit()" >
+            <div class="form-sections">
+              
+              <div>
+                <!-- <div class="section-title">Account Info</div> -->
+                <div class="form-group">
+                  <label>Account Number:</label>
+                  <input type="text" name="accountNumber" [(ngModel)]="loneResponse.accountNumber" required>
+                </div>
+                
+                <div class="form-group">
+                  <label>Amount:</label>
+                  <input type="number" name="amount" [(ngModel)]="loneResponse.amount" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Approved Amount:</label>
+                  <input type="number" name="approvedAmount" [(ngModel)]="loneResponse.approvedAmount" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Available Amount:</label>
+                  <input type="number" name="availableAmount" [(ngModel)]="loneResponse.availableAmount" required>
+                </div>
+              </div>
+      
+            
+              <div>
+                <!-- <div class="section-title">User Info</div> -->
+               
+                <div class="form-group">
+                 <label>Interest Rate (%):</label>
+                 <input type="number" name="interestRate" [(ngModel)]="loneResponse.interestRate" required>
+                </div>
+                 <div class="form-group">
+                  <label>Due Date:</label>
+                  <input type="date" name="dueDate" [(ngModel)]="loneResponse.dueDate" required>
+                </div>
+                <div class="form-group">
+                   <label>Status:</label>
+                    <select name="status" [(ngModel)]="loneResponse.status" required>
+                    <option *ngFor="let status of loanStatus" [value]="status">{{ status }}</option>
+                    </select>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="submit-btn">Submit Loan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

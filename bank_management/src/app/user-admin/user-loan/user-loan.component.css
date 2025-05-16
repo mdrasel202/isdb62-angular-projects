@@ -139,8 +139,8 @@
         background: #388e3c; /* Deep green scrollbar */
         border-radius: 4px;
       }
-    /*table end*/
-    /*modal*/
+
+        /*modal*/
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f2f6fa;
@@ -182,7 +182,7 @@ body {
 .form-sections {
   display: grid;
   /* grid-template-columns: repeat(3, 1fr); */
-  /* gap: 30px; */
+  gap: 30px;
 }
 
 .form-group {

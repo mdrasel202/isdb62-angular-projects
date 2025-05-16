@@ -31,7 +31,23 @@ export class LogingComponent {
       .subscribe({
         next: (res) => {
           this.auth.setToken(res.access_token);
-          this.router.navigate(['/admin']);
+          // this.router.navigate(['/admin']);
+          const role = this.auth.getUserRole();
+
+          //role based navigation
+          switch(role){
+            case 'admin':
+              window.location.href="/admin";
+
+              break;
+
+            case 'user':
+              window.location.href="/user";
+              break;
+
+            default:
+              alert('Unknow role. Please contact support.');  
+          }
         },
         error: (error) => {
           alert('Invalid credentials')

@@ -15,6 +15,8 @@ import { DepositComponent } from './admin/deposit/deposit.component';
 import { LoanComponent } from './admin/loan/loan.component';
 import { DepositsComponent } from './home/deposit/deposit.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
+import { AdminCardComponent } from './admin/admin-card/admin-card.component';
+import { UserLoanComponent } from './user-admin/user-loan/user-loan.component';
 
 export const routes: Routes = [
 
@@ -35,7 +37,8 @@ export const routes: Routes = [
             {path: 'user', component:UserComponent},
             {path: 'transactions', component: TransactionsComponent},
             {path: 'cards', component: CardsComponent},
-            {path: 'bank-account', component: BankAccountComponent}
+            {path: 'bank-account', component: BankAccountComponent},
+            {path: 'user-loan', component: UserLoanComponent}
         ]
     },
     
@@ -46,7 +49,8 @@ export const routes: Routes = [
             {path:'admin-deshboard', component: AdminDeshboardComponent},
             {path:'account-create', component:AccountCreateComponent},
             {path: 'deposit', component:DepositComponent},
-            {path: 'loan', component:LoanComponent}
+            {path: 'loan', component:LoanComponent},
+            {path: 'admin_card', component:AdminCardComponent}
         ] 
     },
 

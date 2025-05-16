@@ -1,41 +1,32 @@
 import { Component } from '@angular/core';
-import { Cards } from '../modal/cards';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CardService } from '../../service/card.service';
+import { CommonModule } from '@angular/common';
 
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-cards',
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule ],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css'
 })
 export class CardsComponent {
 
-  card: Cards[]=[];
-  isEditing: boolean=false;
+  form: FormGroup;
 
-  newCard: Cards={
-    account_id:0,
-    card_number:'',
-    card_type:'',
-    expiry_date:new Date,
-    is_active:false
+  constructor(private fb: FormBuilder, private cardService: CardService) {
+    this.form = this.fb.group({
+      bankAccountId: [null, Validators.required],
+      cardType: ['DEBIT', Validators.required]
+    });
   }
 
-  openModal(card?: Cards){
-    if(card){
-      this.newCard = {...card};
-      this.isEditing = true;
-    }else{
-      this.newCard = new Cards(0,'','',new Date(), false); 
-      this.isEditing = false;
-    }
-
-    const modalElement = document.getElementById('cardModal');
-    if(modalElement){
-      const modal = new bootstrap.Modal(modalElement);
-      modal.show();
-    }
+  requestCard(): void {
+    this.cardService.requestCard(this.form.value).subscribe(() => {
+      alert('Card request submitted!');
+      this.form.reset({ cardType: 'DEBIT' });
+    });
   }
 }
