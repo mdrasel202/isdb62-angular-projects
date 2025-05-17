@@ -1,24 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Account, BankAccount } from '../model/bank_account.model';
+import { AccountRequest, AccountResponce } from '../model/bank_account.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BankAccountService {
 
-   private baseUrl = 'http://localhost:8081/bank';
+   private approve = 'http://localhost:8081/bank/approve';
+   private accountRequest = 'http://localhost:8081/bank/request'
+   private getAll = 'http://localhost:8081/bank/requests'
 
   constructor(private http: HttpClient) { }
 
    // POST: Create new account
-  saveAccount(account: BankAccount):Observable<any>{
-    return this.http.post(this.baseUrl, account);
+  requestAccount(account: {userId: number; type: string}):Observable<any>{
+    return this.http.post(this.accountRequest, account);
   }
 
-   // GET: Fetch all accounts
-  getAccounts(): Observable<Account[]> {
-    return this.http.get<Account[]>(this.baseUrl);
+  getAllAccount():Observable<AccountResponce[]>{
+    return this.http.get<AccountResponce[]>(this.getAll);
   }
+
+
+  // approveAccount(data : ): Observable<Account[]> {
+  //   return this.http.get<Account[]>(this.baseUrl);
+  // }
 }
