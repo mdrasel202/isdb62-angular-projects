@@ -23,8 +23,18 @@ export class BankAccountService {
     return this.http.get<AccountResponce[]>(this.getAll);
   }
 
+  approveAccount(id: number): Observable<AccountResponce> {
+  const url = `http://localhost:8081/bank/approve/${id}`;
+  return this.http.post<AccountResponce>(url, null);
+}
 
-  // approveAccount(data : ): Observable<Account[]> {
-  //   return this.http.get<Account[]>(this.baseUrl);
+
+  // approveAccount(id: number): Observable<AccountResponce[]> {
+  //   return this.http.post<AccountResponce[]>(this.approve);
   // }
+
+//   approveAccount(id: number): Observable<AccountResponce> {
+//   const url = `${this.approve}/${id}`;
+//   return this.http.post<AccountResponce>(url, null);
+// }
 }

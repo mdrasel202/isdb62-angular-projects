@@ -1,11 +1,112 @@
-<div class="header">
+<!-- <div class="container mt-4">
+  <h2>Bank Accounts Management</h2>
+
+  <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Account Number</th>
+        <th>User Name</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Balance</th>
+        <th>Opened Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let account of accounts">
+        <td>{{ account.id }}</td>
+        <td>{{ account.accountNumber }}</td>
+        <td>{{ account.userName }}</td>
+        <td>{{ account.type }}</td>
+        <td>
+          <select [(ngModel)]="account.status" class="form-select form-select-sm">
+            <option value="ACTIVE">ACTIVE</option>
+            <option value="INACTIVE">INACTIVE</option>
+            <option value="SUSPEND">SUSPEND</option>
+            <option value="REQUESTED">REQUESTED</option>
+          </select>
+        </td>
+        <td>{{ account.availableBalance | currency }}</td>
+        <td>{{ account.openedDate | date: 'yyyy-MM-dd' }}</td>
+        <td>
+          <button class="btn btn-success btn-sm me-1"
+            (click)="approveAccount(account.id)"
+            [disabled]="account.status !== 'REQUESTED'">
+            Approve
+          </button>
+
+          <button class="btn btn-primary btn-sm"
+            (click)="updateAccountStatus(account)">
+            Save Status
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+
+
+
+<div class="container mt-4">
+  <h2 class="mb-3">Bank Account Management (Admin Panel)</h2>
+
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Account Number</th>
+        <th>User</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Balance</th>
+        <th>Opened Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let acc of accounts">
+        <td>{{ acc.id }}</td>
+        <td>{{ acc.accountNumber }}</td>
+        <td>{{ acc.userName }}</td>
+        <td>{{ acc.type }}</td>
+        <td>{{ acc.status }}</td>
+        <td>{{ acc.availableBalance | currency }}</td>
+        <td>{{ acc.openedDate }}</td>
+        <td>
+          <button
+            class="btn btn-success btn-sm"
+            *ngIf="acc.status === 'REQUESTED'"
+            (click)="approveAccount(acc.id)"
+          >
+            Approve
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="message" class="alert alert-info mt-3">
+    {{ message }}
+  </div>
+</div>
+
+
+
+
+<!-- <div class="header">
   <span>User Account Create</span>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     <i class="bi bi-arrow-right-square-fill" style="margin-right: 8px;"></i>Open an Account
   </button>
 </div>
 
-<!--table-->
+
 <div class="table-container">
   <div class="table-wrapper">
       <table>
@@ -35,8 +136,7 @@
                     <span [ngClass]="{'status-acive': acc.status}">
                       {{acc.status}}
                     </span>
-                  </td>
-                  <!-- <td><span class="status-active"></span></td> -->
+                  </td>>
                   <td>{{acc.user.address}}</td>
                   <td>{{acc.availableBalance | currency}}</td>
                   <td>{{acc.openedDate}}</td>
@@ -45,9 +145,8 @@
       </table>
   </div>
 </div>
-<!--table end-->
-  
-  <!-- Modal -->
+
+
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -125,4 +224,4 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->

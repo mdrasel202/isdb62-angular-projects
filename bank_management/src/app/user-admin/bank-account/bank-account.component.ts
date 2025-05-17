@@ -1,99 +1,102 @@
 import { Component} from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AccountRequest, AccountResponce } from '../../model/bank_account.model';
+import { NgFor, NgIf } from '@angular/common';
 import { BankAccountService } from '../../service/bank-account.service';
-import { FormsModule } from '@angular/forms';
-import { CommonModule, NgClass, NgFor } from '@angular/common';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-bank-account',
-  imports: [FormsModule, NgFor, NgClass,CommonModule],
+  imports: [FormsModule, ReactiveFormsModule,  FormsModule, NgFor ],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.css'
 })
 export class BankAccountComponent{
-  
-  id = Number(localStorage.getItem('id'));
-  type : string = '';
 
+  accounts: AccountResponce[] = [];
+  userId = 1; // from auth/session
 
-  constructor(private bankAccountService : BankAccountService){}
+accountRequest: AccountRequest = {
+  userId: this.userId,
+  type: 'SAVING',
+  balance: 0,
+  name: '',
+  requestDate : new Date() // today yyyy-MM-dd
+};
 
-accountRequest(){
+constructor(private accountService: BankAccountService) {}
 
-  const requestBody = {
-     userId: this.id,
-     type: this.type
-
-  }
-  this.bankAccountService.requestAccount(requestBody).subscribe({
-next: (res) =>{
-  console.log("request sent successfully.", res);
-}
+requestAccount() {
+  this.accountService.requestAccount(this.accountRequest).subscribe({
+    next: (res) => {
+      alert('Account requested successfully');
+      this.loadUserAccounts();
+    },
+    error: (err) => {
+      console.error(err);
+      alert('Failed to request account');
+    }
   });
 }
 
+loadUserAccounts() {
+  this.accountService.getAllAccount().subscribe(accounts => {
+    this.accounts = accounts;
+  });
+}
 
-  // accounts : Account[] = [];
-   
-  
-  //   accountStatus = Object.values(AccountStatus);  // Dropdown options
-  //   accountType = Object.values(AccountType);
-  
-  //   account: BankAccount ={
-  //     accountNumber: '',
-  //     availableBalance: 0,
-  //     openedDate: new Date(),
-  //     accountStatus: AccountStatus.ACTIVE,  // ✅ Default assigned
-  //     accountType: AccountType.SAVING,
-  //     firstName: '',
-  //     lastName: '',
-  //     email: '',
-  //     phone: '',
-  //     address: ''
-  //   };
-  
-  
-  //   constructor(private bankAccountService : BankAccountService){}
-  
-  
-  //   ngOnInit(): void {
-  //     this.fetchAccounts();
+ngOnInit() {
+  this.loadUserAccounts();
+}
+
+
+  // accountForm: FormGroup;
+  // message: string = '';
+
+  // constructor(
+  //   private fb: FormBuilder,
+  //   private accountService: BankAccountService
+  // ) {
+  //   this.accountForm = this.fb.group({
+  //     userId: ['', Validators.required],
+  //     type: ['SAVING', Validators.required]
+  //   });
+  // }
+
+  // onSubmit(): void {
+  //   if (this.accountForm.valid) {
+  //     const requestData: AccountRequest = this.accountForm.value;
+
+  //     this.accountService.requestAccount(requestData).subscribe({
+  //       next: () => {
+  //         this.message = 'Account request submitted successfully.';
+  //         this.accountForm.reset({ type: 'SAVING' });
+  //       },
+  //       error: (err) => {
+  //         console.error('Error:', err);
+  //         this.message = 'Failed to submit account request.';
+  //       }
+  //     });
   //   }
-  
-  //   fetchAccounts(): void{
-  //     this.bankAccountService.getAccounts().subscribe({
-  //       next: (data) => this.accounts = data,
-  //       error: (err) => console.error('Failed to load accounts:', err)
-  //     })
-  //   }
-  //   onSubmit(): void {
-  //   const newAccount = new BankAccount(
-  //     this.account.accountNumber,
-  //     this.account.availableBalance,
-  //     this.account.openedDate,
-  //     this.account.accountStatus,
-  //     this.account.accountType,
-  //     this.account.firstName,
-  //     this.account.lastName,
-  //     this.account.email,
-  //     this.account.phone,
-  //     this.account.address
-  //   );
-  
-  //   this.bankAccountService.saveAccount(newAccount).subscribe(
-  //     (response) => {
-  //       console.log('Account created successfully', response);
-  //     },
-  //     (error) => {
-  //       console.error('Error creating account', error);
-  //     }
-  //   );
   // }
   
-  
-  //   formatDate(date: Date): string {
-  //   return new Date(date).toISOString().split('T')[0]; // e.g., "2025-05-13"
-  // }
-  
+//   id = Number(localStorage.getItem('id'));
+//   type : string = '';
+
+
+//   constructor(private bankAccountService : BankAccountService){}
+
+// accountRequest(){
+
+//   const requestBody = {
+//      userId: this.id,
+//      type: this.type
+
+//   }
+//   this.bankAccountService.requestAccount(requestBody).subscribe({
+// next: (res) =>{
+//   console.log("request sent successfully.", res);
+// }
+//   });
 }

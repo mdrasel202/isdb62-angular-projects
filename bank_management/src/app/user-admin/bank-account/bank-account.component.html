@@ -1,129 +1,116 @@
-
 <div class="header">
-  <span>User Account Create</span>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <i class="bi bi-arrow-right-square-fill" style="margin-right: 8px;"></i>Open an Account
+  <span>User Card Info</span>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+    <i class="bi bi-arrow-right-square-fill" style="margin-right: 8px;"></i> Request 
   </button>
 </div>
 
-<!--table-->
-<div class="table-container">
-  <div class="table-wrapper">
-      <table>
-          <thead>
-              <tr>
-                  <th>Account Number</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Phone Number</th>
-                  <th>Account Type</th>
-                  <th>Accout Status</th>
-                  <th>Address</th>
-                  <th>Available Balance</th>
-                  <th>Opened Date</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let acc of accounts">
-                  <td>{{acc.accountNumber}}</td>
-                  <td>{{acc.user.firstName}}</td>
-                  <td>{{acc.user.lastName}}</td>
-                  <td>{{acc.user.email}}</td>
-                  <td>{{acc.user.phone}}</td>
-                  <td>{{acc.type}}</td>
-                  <td>
-                    <span [ngClass]="{'status-acive': acc.status}">
-                      {{acc.status}}
-                    </span>
-                  </td>
-                  <!-- <td><span class="status-active"></span></td> -->
-                  <td>{{acc.user.address}}</td>
-                  <td>{{acc.availableBalance | currency}}</td>
-                  <td>{{acc.openedDate}}</td>
-              </tr>
-          </tbody>
-      </table>
-  </div>
-</div>
-<!--table end-->
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form (ngSubmit)="onSubmit()">
-            <div class="form-sections">
-              
-              <div>
-                <div class="section-title">Account Info</div>
-                <div class="form-group">
-                  <label>Account Number</label>
-                  <input type="text" [(ngModel)]="account.accountNumber" name="accountNumber"  required />
-                </div>
-                
-                <div class="form-group">
-                  <label>Status</label>
-                  <select [(ngModel)]="account.accountStatus" name="accountStatus" required>
-                    <option *ngFor="let status of accountStatus" [value]="status">{{ status }}</option>
-                  </select>
-                </div>
 
-                <div class="form-group">
-                  <label>Account Type</label>
-                  <select [(ngModel)]="account.accountType" name="accountType" required>
-                    <option *ngFor="let type of accountType" [value]="type">{{ type}}</option>
-                  </select>
-                </div>
-              </div>
-      
-            
-              <div>
-                <div class="section-title">User Info</div>
-               
-                <div class="form-group">
-                  <label>First Name</label>
-                  <input type="text" [(ngModel)]="account.firstName" name="firstName"  required />
-                </div>
-                 <div class="form-group">
-                  <label>Last Name</label>
-                  <input type="text" [(ngModel)]="account.lastName" name="lastName"  required />
-                </div>
-                <div class="form-group">
-                  <label>Email</label>
-                  <input type="text" [(ngModel)]="account.email" name="email"  required />
-                </div>
-                <div class="form-group">
-                  <label>Address</label>
-                  <input type="text" [(ngModel)]="account.address" name="address" required />
-                </div>
-                <div class="form-group">
-                  <label>Phone Number</label>
-                  <input type="text" [(ngModel)]="account.phone" name="phone"  required />
-                </div>
-              </div>
-      
-       
-              <div>
-                <div class="section-title">Financial Info</div>
-                <div class="form-group">
-                  <label>Available Balance</label>
-                  <input type="number" [(ngModel)]="account.availableBalance" name="availableBalance" required />
-                </div>
-                 <div class="form-group">
-                  <label>Open Date</label>
-                  <input type="text" [(ngModel)]="account.openedDate" name="openedDate"  required />
-                </div>
-              </div>
+<!-- <div class="container">
+        <h3>Request New Account</h3>
+        <form (ngSubmit)="requestAccount()">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" [(ngModel)]="accountRequest.name" name="name" required/>
             </div>
-            <button type="submit" class="submit-btn">Create Account</button>
-          </form>
-        </div>
+            <div class="form-group">
+                <label for="type">Account Type:</label>
+                <select id="type" [(ngModel)]="accountRequest.type" name="type" required>
+                    <option value="" disabled selected>Select Account Type</option>
+                    <option value="SAVING">Saving</option>
+                    <option value="CURRENT">Current</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" [(ngModel)]="accountRequest.balance" name="amount" min="0" required />
+            </div>
+            <div class="form-group">
+                <label for="date">Requested Open Date:</label>
+                <input type="date" id="date" [(ngModel)]="accountRequest.requestDate" name="date" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Request Account</button>
+        </form> -->
+
+        <h3>Your Accounts</h3>
+        <ul *ngFor="let account of accounts">
+            <!-- Sample data for display -->
+            <li >
+              {{account.accountNumber}} - {{account.userName}} - {{account.type}} - {{account.status}} - 
+               Balance: {{account.availableBalance}} - Opened: {{account.openedDate || 'Pending'}}
+            </li>
+        </ul>
+ 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Request New Card</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <form (ngSubmit)="requestAccount()">
+                <div class="mb-3">
+                <label for="name">Name:</label>
+                <input type="text" [(ngModel)]="accountRequest.name" name="name" required/>
+                </div>
+                <div class="mb-3">
+                <label for="type">Account Type:</label>
+                <select id="type" [(ngModel)]="accountRequest.type" name="type" required>
+                    <option value="" disabled selected>Select Account Type</option>
+                    <option value="SAVING">Saving</option>
+                    <option value="CURRENT">Current</option>
+                </select>
+                </div>
+                <div class="mb-3">
+                  <label for="amount">Amount:</label>
+                   <input type="number" id="amount" [(ngModel)]="accountRequest.balance" name="amount" min="0" required />
+                </div>
+                <div class="mb-3">
+                 <label for="date">Requested Open Date:</label>
+                 <input type="date" id="date" [(ngModel)]="accountRequest.requestDate" name="date" required />
+                </div>
+                   <button type="submit" class="btn btn-primary">Request Account</button>
+            </form>
       </div>
     </div>
   </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <form (ngSubmit)="requestAccount()">
+  <label>Name:</label>
+  <input [(ngModel)]="accountRequest.name" name="name" required />
+
+  <label>Account Type:</label>
+  <select [(ngModel)]="accountRequest.type" name="type" required>
+    <option value="SAVING">Saving</option>
+    <option value="CURRENT">Current</option>
+  </select>
+
+  <label>Initial Amount:</label>
+  <input type="number" [(ngModel)]="accountRequest.balance" name="amount" min="0" required />
+
+  <label>Requested Open Date:</label>
+  <input type="date" [(ngModel)]="accountRequest.requestDate" name="date" required />
+
+  <button type="submit">Request Account</button>
+</form>
+
+<h3>Your Accounts</h3>
+<ul>
+  <li *ngFor="let account of accounts">
+    {{account.accountNumber}} - {{account.userName}} - {{account.type}} - {{account.status}} - 
+    Balance: {{account.availableBalance}} - Opened: {{account.openedDate || 'Pending'}}
+  </li>
+</ul> -->
+

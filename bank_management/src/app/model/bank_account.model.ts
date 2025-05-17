@@ -4,6 +4,9 @@
 export interface AccountRequest{
   userId : number;
   type : 'SAVING' | 'CURRENT';
+  name : string;
+  balance : number;
+  requestDate : Date;
 }
 
 export interface AccountResponce{
