@@ -5,7 +5,59 @@
   </button>
 </div>
 
-<h3>Request a New Card</h3>
+
+<hr />
+
+<table *ngIf="userCards.length > 0; else noCards">
+  <tr *ngFor="let card of userCards">
+    <td>{{ card.cardNumber }}</td>
+    <td>{{ card.cardType }}</td>
+    <td>{{ card.openedDate | date: 'shortDate' }}</td>
+    <td>{{ card.availableBalance | currency }}</td>
+  </tr>
+</table>
+
+<ng-template #noCards>
+  <p>No approved cards available.</p>
+</ng-template>
+
+<!-- <h2>My Approved Cards</h2>
+<table *ngIf="userCards.length > 0; else noCards">
+  <thead>
+    <tr>
+      <th>Card Number</th>
+      <th>Card Type</th>
+      <th>Opened Date</th>
+      <th>Available Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let card of userCards">
+      <td>{{ card.cardNumber }}</td>
+      <td>{{ card.cardType }}</td>
+      <td>{{ card.openedDate | date: 'mediumDate' }}</td>
+      <td>{{ card.availableBalance | currency }}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+<ng-template #noCards>
+  <p>No approved cards available.</p>
+</ng-template>
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Request New Card</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+           <h3>Request a New Card</h3>
 <form (ngSubmit)="requestCard()" #cardForm="ngForm">
   <div class="form-group">
     <label for="bankAccountId">Bank Account ID</label>
@@ -25,88 +77,10 @@
   <button class="btn btn-primary" type="submit">Submit Request</button>
 </form>
 
-<hr />
-
-<h4>Your Approved Cards</h4>
-<div *ngFor="let card of approvedCards" class="card p-2 my-2 border">
-  <p><strong>Card Number:</strong> {{ card.cardNumber }}</p>
-  <p><strong>Type:</strong> {{ card.card }}</p>
-  <p><strong>Status:</strong> {{ card.status }}</p>
-  <p><strong>Balance:</strong> {{ card.availableBalance }}</p>
-  <p><strong>Expires:</strong> {{ card.expiry_date | date }}</p>
-</div>
-
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Request New Card</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <form [formGroup]="form">
-                <div class="mb-3">
-                <label>Bank Account ID</label>
-                <input type="number" class="form-control" formControlName="bankAccountId" />
-                </div>
-                <div class="mb-3">
-                <label>Card Type</label>
-                <select class="form-control" formControlName="cardType">
-                    
-                    <option value="DEBIT">DEBIT</option>
-                    <option value="CREDIT">CREDIT</option>
-                </select>
-                </div>
-                <button class="btn btn-primary res" (click)="requestCard()">Request Card</button>
-            </form>
       </div>
     </div>
   </div>
-</div> -->
-
-<!-- <h3>Request a New Card</h3>
-<form (ngSubmit)="requestCard()">
-  <label>Card Type:</label>
-  <select [(ngModel)]="cardRequest.cardType" name="cardType" required>
-    <option value="VISA">VISA</option>
-    <option value="MASTERCARD">MASTERCARD</option>
-    <option value="DEBIT">DEBIT</option>
-    <option value="CREDIT">CREDIT</option>
-  </select>
-
-  <label>Bank Account:</label>
-  <select [(ngModel)]="cardRequest.bankAccountId" name="bankAccountId" required>
-    <option *ngFor="let acc of userAccounts" [value]="acc.id">
-      {{ acc.accountNumber }} - ₹{{ acc.availableBalance }}
-    </option>
-  </select>
-
-  <button type="submit">Request Card</button>
-</form>
-
-<h3>Your Card Requests</h3>
-<table class="card-table" *ngIf="cards.length > 0">
-  <thead>
-    <tr>
-      <th>Card Number</th>
-      <th>Type</th>
-      <th>Status</th>
-      <th>Expiry</th>
-      <th>Balance</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let card of cards">
-      <td>{{ card.cardNumber || 'Pending' }}</td>
-      <td>{{ card.card }}</td>
-      <td>{{ card.status }}</td>
-      <td>{{ card.expiry_date ? (card.expiry_date | date:'yyyy-MM') : 'N/A' }}</td>
-      <td>₹{{ card.availableBalance }}</td>
-    </tr>
-  </tbody>
-</table> -->
+</div>
 
 
 

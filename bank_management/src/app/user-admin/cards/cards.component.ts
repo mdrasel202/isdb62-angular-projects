@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CardService } from '../../service/card.service';
 import { CommonModule } from '@angular/common';
-import { CardRequest, CardResponse } from '../../model/bank_card.model';
+import { CardRequest, CardResponse, GetAllInfo} from '../../model/bank_card.model';
 import { BankAccountService } from '../../service/bank-account.service';
 
 
@@ -16,6 +16,9 @@ declare var bootstrap: any;
 })
 export class CardsComponent implements OnInit{
 
+  userCards: GetAllInfo[] = [];
+  // allcard: GetAllInfo[] = [];
+
  cardRequest: CardRequest = { bankAccountId: 0, cardType: 'VISA' };
   approvedCards: CardResponse[] = [];
 
@@ -23,6 +26,10 @@ export class CardsComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadApprovedCards();
+
+  //   this.cardService.getAllCard().subscribe(data => {
+  //   this.allcard = data.filter(c => c.status === 'APPROVED');
+  // });
   }
 
   requestCard(): void {
@@ -37,7 +44,8 @@ export class CardsComponent implements OnInit{
 
   loadApprovedCards(): void {
     this.cardService.getAllCard().subscribe(cards => {
-      this.approvedCards = cards.filter(card => card.status === 'APPROVED');
+    console.log('Response:', cards);
+    this.userCards = cards.filter(card => card.status === 'APPROVED');
     });
   }
 

@@ -306,3 +306,14 @@
         gap: 5px;
     }
 }
+
+/*design*/
+/* pending-cards.component.css */
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.container {
+  max-width: 900px;
+}

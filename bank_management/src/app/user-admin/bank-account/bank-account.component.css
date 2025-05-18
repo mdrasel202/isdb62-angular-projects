@@ -35,50 +35,23 @@
   background-color: #000;
   color: #fff;
 }
-/* Reset default styles */
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/*modal*/
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem;
-    overflow-y: auto;
-} */
 
 .container {
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.card {
-    background: #ffffff;
-    border-radius: 16px;
+    background-color: #ffffff;
     padding: 2rem;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.5);
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
 }
 
 h3 {
-    color: #2c3e50;
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
     text-align: center;
-    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .form-group {
@@ -87,182 +60,64 @@ h3 {
 
 label {
     display: block;
-    font-size: 0.95rem;
-    color: #34495e;
+    font-size: 0.9rem;
+    color: #555;
     margin-bottom: 0.5rem;
-    font-weight: 500;
 }
 
 .form-control {
     width: 100%;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 8px;
-    background: #e0e0e0;
-    box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     font-size: 1rem;
-    color: #2c3e50;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease;
 }
 
 .form-control:focus {
     outline: none;
-    background: #d1d1d1;
-    box-shadow: inset 3px 3px 6px #b0b0b0, inset -3px -3px 6px #f0f0f0;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
 select.form-control {
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c3e50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
-    background-position: right 0.8rem center;
-    background-size: 1.2rem;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    opacity: 1;
-}
-
-.btn {
+.res {
+    display: block;
     width: 100%;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(45deg, #6e8efb, #a777e3);
+    padding: 0.75rem;
+    background-color: #007bff;
     color: #fff;
+    border: none;
+    border-radius: 4px;
     font-size: 1rem;
-    font-weight: 500;
     cursor: pointer;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-    background: linear-gradient(45deg, #5a75e0, #8f5bc7);
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+.res:hover {
+    background-color: #0056b3;
 }
 
-.btn:focus {
+.res:focus {
     outline: none;
-    box-shadow: 0 0 8px rgba(110, 142, 251, 0.5);
-}
-
-.btn:disabled {
-    background: #bdc3c7;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-.accounts-card ul {
-    list-style: none;
-}
-
-.accounts-card li {
-    background: #f5f6fa;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 0.75rem;
-    font-size: 0.95rem;
-    color: #2c3e50;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    box-shadow: 3px 3px 6px #d1d1d1, -3px -3px 6px #ffffff;
-    transition: transform 0.3s ease;
-}
-
-.accounts-card li:hover {
-    background: #e8ecef;
-    transform: scale(1.02);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Responsive Design */
 @media (max-width: 480px) {
-    body {
-        padding: 1rem;
-    }
-
     .container {
-        max-width: 100%;
-    }
-
-    .card {
         padding: 1.5rem;
+        margin: 1rem;
     }
 
     h3 {
-        font-size: 1.3rem;
-    }
-
-    .form-control, .btn {
-        font-size: 0.9rem;
-        padding: 0.7rem;
-    }
-
-    .accounts-card li {
-        font-size: 0.85rem;
-        padding: 0.8rem;
+        font-size: 1.25rem;
     }
 }
-
-/*list*/
-.account-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  font-size: 14px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.account-table thead {
-  background-color: #f5f5f5;
-  color: #333;
-}
-
-.account-table th, .account-table td {
-  text-align: left;
-  padding: 12px 15px;
-  border-bottom: 1px solid #eee;
-}
-
-.account-table tr:hover {
-  background-color: #fafafa;
-}
-
-@media (max-width: 768px) {
-  .account-table, .account-table thead, .account-table tbody, .account-table th, .account-table td, .account-table tr {
-    display: block;
-  }
-
-  .account-table thead {
-    display: none;
-  }
-
-  .account-table tr {
-    margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 10px;
-    background-color: #fff;
-  }
-
-  .account-table td {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 10px;
-    border: none;
-    border-bottom: 1px solid #eee;
-  }
-
-  .account-table td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    color: #666;
-  }
-}
-

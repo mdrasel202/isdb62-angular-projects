@@ -1,26 +1,43 @@
-<h3>Pending Card Requests</h3>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Card ID</th>
-      <th>Account ID</th>
-      <th>Card Type</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let card of pendingCards">
-      <td>{{ card.id }}</td>
-      <td>{{ card.cardNumber }}</td>
-      <td>{{ card.card }}</td>
-      <td>{{ card.status }}</td>
-      <td>
-        <button class="btn btn-success btn-sm" (click)="approve(card)">Approve</button>
-        <button class="btn btn-danger btn-sm" (click)="reject(card)">Reject</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Pending Card Requests</h2>
 
+  <div *ngIf="pendingCards.length === 0" class="alert alert-info">
+    No pending card requests.
+  </div>
+
+  <div *ngIf="pendingCards.length > 0" class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Card Type</th>
+          <th>Account ID</th>
+          <th>Available Balance</th>
+          <th>Expiry Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let card of pendingCards">
+          <td>{{ card.cardType }}</td>
+          <td>{{ card.accountId }}</td>
+          <td>${{ card.availableBalance }}</td>
+          <td>{{ card.expiry_date | date: 'mediumDate' }}</td>
+          <td>
+            <button class="btn btn-success btn-sm me-2" (click)="approve(card)">Approve</button>
+            <button class="btn btn-danger btn-sm" (click)="reject(card)">Reject</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<table>
+  <tr *ngFor="let card of approvedCards">
+    <td>{{ card.cardNumber }}</td>
+    <td>{{ card.cardType }}</td>
+    <td>{{ card.openedDate | date: 'shortDate' }}</td>
+    <td>{{ card.availableBalance }}</td>
+  </tr>
+</table>
 

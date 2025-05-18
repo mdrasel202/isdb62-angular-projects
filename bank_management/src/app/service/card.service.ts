@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CardRequest, CardResponse } from '../model/bank_card.model';
+import { CardRequest, CardResponse, GetAllInfo} from '../model/bank_card.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +21,11 @@ export class CardService {
   }
 
   approveCard(data: CardRequest): Observable<CardResponse>{
-    return this.http.post<CardResponse>(this.cardCreate, data);
+    return this.http.put<CardResponse>(this.updateCar, data);
   }
 
-  getAllCard(): Observable<CardResponse[]>{
-    return this.http.get<CardResponse[]>(this.getAll);
+  getAllCard(): Observable<GetAllInfo[]>{
+    return this.http.get<GetAllInfo[]>(this.getAll);
   }
 
   rejectCard(data: CardRequest): Observable<CardResponse> {
@@ -35,5 +35,9 @@ export class CardService {
   updateCard(data: CardRequest): Observable<CardResponse> {
     return this.http.put<CardResponse>(this.updateCar, data);
   }
+
+  getPendingCards(): Observable<CardResponse[]> {
+  return this.http.get<CardResponse[]>('http://localhost:8081/cards/pending');
+}
 
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cards } from '../../user-admin/modal/cards';
-import { CardRequest, CardResponse } from '../../model/bank_card.model';
+import { CardRequest, CardResponse, GetAllInfo } from '../../model/bank_card.model';
 import { CardService } from '../../service/card.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 
@@ -14,36 +13,65 @@ declare var bootstrap: any;
 })
 export class AdminCardComponent implements OnInit{
 
- pendingCards: CardResponse[] = [];
+  approvedCards: GetAllInfo[] = [];
+
+  pendingCards: CardResponse[] = [];
 
   constructor(private cardService: CardService) {}
 
   ngOnInit(): void {
     this.loadPendingCards();
+
+    this.cardService.getAllCard().subscribe(cards => {
+    this.approvedCards = cards.filter(c => c.status === 'APPROVED');
+  });
   }
 
-  loadPendingCards(): void {
-    this.cardService.getAllCard().subscribe(cards => {
-      this.pendingCards = cards.filter(card => card.status === 'PENDING');
+  loadPendingCards() {
+    this.cardService.getPendingCards().subscribe({
+      next: (data) => this.pendingCards = data,
+      error: (err) => console.error('Error fetching pending cards', err)
     });
   }
 
-  approve(card: CardResponse): void {
-    const request: CardRequest = {
-      bankAccountId: card.id,
-      cardType: card.card as any,
-      cardStatus: 'APPROVED'
-    };
-    this.cardService.approveCard(request).subscribe(() => this.loadPendingCards());
-  }
 
-  reject(card: CardResponse): void {
-    const request: CardRequest = {
-      bankAccountId: card.id,
-      cardType: card.card as any,
-      cardStatus: 'REJECTED'
+ approve(card: CardResponse) {
+  const req: CardRequest = {
+    bankAccountId: card.accountId,
+    cardType: card.cardType,
+  };
+
+  this.cardService.approveCard(req).subscribe({
+    next: () => {
+      this.pendingCards = this.pendingCards.filter(c => c.id !== card.id);
+    },
+    error: (err) => console.error('Approval failed', err)
+  });
+}
+
+
+  // approve(card: CardResponse) {
+  //   const req: CardRequest = {
+  //     bankAccountId: card.accountId,
+  //     cardType: card.cardType
+  //   };
+
+  //   this.cardService.approveCard(req).subscribe({
+  //     next: () => this.loadPendingCards(),
+  //     error: (err) => console.error('Approval error', err)
+  //   });
+  // }
+
+  reject(card: CardResponse) {
+    const req: CardRequest = {
+      bankAccountId: card.accountId,
+      cardType: card.cardType
     };
-    this.cardService.rejectCard(request).subscribe(() => this.loadPendingCards());
+
+    this.cardService.rejectCard(req).subscribe({
+      next: () => this.loadPendingCards(),
+      error: (err) => console.error('Rejection error', err)
+    });
   }
 }
 

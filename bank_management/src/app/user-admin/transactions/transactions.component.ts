@@ -1,48 +1,88 @@
-import { Component, Input } from '@angular/core';
-import { Transaction } from '../modal/transaction';
+import { Component, Input, NgModule } from '@angular/core';
+import { BankTraferService } from '../../service/bank-trafer.service';
+import { TransferRequest } from '../../model/bank_transfer.model';
+import { FormBuilder, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgIf } from '@angular/common';;
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-transactions',
-  imports: [],
+  imports: [FormsModule, NgIf, ReactiveFormsModule],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
 export class TransactionsComponent {
-  transaction: Transaction[]=[];
+  transferForm: FormGroup;
+  message: string = '';
+  error: string = '';
 
-  isEditing: boolean = false;
-
-  newtransaction: Transaction ={
-    tranaction_id:0,
-    tranaction_date:new Date,
-    tranaction_from:'',
-    tranaction_amount:0,
-    tranaction_account:'',
-    tranaction_status:'',
-    tranaction_payment:''
+  constructor(
+    private fb: FormBuilder,
+    private transactionService: BankTraferService
+  ) {
+    this.transferForm = this.fb.group({
+      fromAccountId: ['', Validators.required],
+      toAccountId: ['', Validators.required],
+      amount: ['', [Validators.required, Validators.min(1)]]
+    });
   }
 
-  openModal(transaction?: Transaction){
-    if(transaction){
-      this.newtransaction = {...transaction};
-      this.isEditing = true;
-    }else{
-      this.newtransaction = new Transaction(0,new Date(),'',0,'','','');
-      this.isEditing = false;
-    }
+  onTransfer(): void {
+    if (this.transferForm.invalid) return;
 
-    const modalElement = document.getElementById('tranaction');
-    if(modalElement){
-      const modal = new bootstrap.Modal(modalElement);
-      modal.show();
-    }
+    const request: TransferRequest = this.transferForm.value;
+
+    this.transactionService.transfer(request).subscribe({
+      next: (res) => {
+        this.message = res;
+        this.error = '';
+        this.transferForm.reset();
+      },
+      error: (err) => {
+        this.error = err.error;
+        this.message = '';
+      }
+    });
   }
+  }
+
+
+
+
+  // transaction: Transaction[]=[];
+
+  // isEditing: boolean = false;
+
+  // newtransaction: Transaction ={
+  //   tranaction_id:0,
+  //   tranaction_date:new Date,
+  //   tranaction_from:'',
+  //   tranaction_amount:0,
+  //   tranaction_account:'',
+  //   tranaction_status:'',
+  //   tranaction_payment:''
+  // }
+
+  // openModal(transaction?: Transaction){
+  //   if(transaction){
+  //     this.newtransaction = {...transaction};
+  //     this.isEditing = true;
+  //   }else{
+  //     this.newtransaction = new Transaction(0,new Date(),'',0,'','','');
+  //     this.isEditing = false;
+  //   }
+
+  //   const modalElement = document.getElementById('tranaction');
+  //   if(modalElement){
+  //     const modal = new bootstrap.Modal(modalElement);
+  //     modal.show();
+  //   }
+  // }
 
   // @Input() isOpen = false;
 
   // closeModal() {
   //   this.isOpen = false;
   // }
-}
+
