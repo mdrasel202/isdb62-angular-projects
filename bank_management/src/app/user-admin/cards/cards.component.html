@@ -5,38 +5,36 @@
   </button>
 </div>
 
-<h2>Request Card</h2>
-<form (ngSubmit)="requestCard()">
-  <select [(ngModel)]="cardRequest.cardType" name="cardType">
-    <option value="VISA">VISA</option>
-    <option value="MASTERCARD">MASTERCARD</option>
-    <option value="DEBIT">DEBIT</option>
-    <option value="CREDIT">CREDIT</option>
-  </select>
+<h3>Request a New Card</h3>
+<form (ngSubmit)="requestCard()" #cardForm="ngForm">
+  <div class="form-group">
+    <label for="bankAccountId">Bank Account ID</label>
+    <input type="number" id="bankAccountId" name="bankAccountId" [(ngModel)]="cardRequest.bankAccountId" required />
+  </div>
 
-  <select [(ngModel)]="cardRequest.bankAccountId" name="bankAccountId">
-    <option *ngFor="let acc of userAccounts" [value]="acc.id">
-      {{ acc.accountNumber }} - ₹{{ acc.availableBalance }}
-    </option>
-  </select>
+  <div class="form-group">
+    <label for="cardType">Card Type</label>
+    <select id="cardType" name="cardType" [(ngModel)]="cardRequest.cardType" required>
+      <option value="VISA">VISA</option>
+      <option value="MASTERCARD">MASTERCARD</option>
+      <option value="DEBIT">DEBIT</option>
+      <option value="CREDIT">CREDIT</option>
+    </select>
+  </div>
 
-  <button type="submit">Request</button>
+  <button class="btn btn-primary" type="submit">Submit Request</button>
 </form>
 
-<h3>Your Card Requests</h3>
-<table>
-  <thead>
-    <tr><th>Card</th><th>Status</th><th>Expires</th><th>Balance</th></tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let card of cards">
-      <td>{{ card.cardNumber || 'Pending' }}</td>
-      <td>{{ card.status }}</td>
-      <td>{{ card.expiry_date | date:'yyyy-MM' }}</td>
-      <td>₹{{ card.availableBalance }}</td>
-    </tr>
-  </tbody>
-</table>
+<hr />
+
+<h4>Your Approved Cards</h4>
+<div *ngFor="let card of approvedCards" class="card p-2 my-2 border">
+  <p><strong>Card Number:</strong> {{ card.cardNumber }}</p>
+  <p><strong>Type:</strong> {{ card.card }}</p>
+  <p><strong>Status:</strong> {{ card.status }}</p>
+  <p><strong>Balance:</strong> {{ card.availableBalance }}</p>
+  <p><strong>Expires:</strong> {{ card.expiry_date | date }}</p>
+</div>
 
 
 <!-- Modal -->

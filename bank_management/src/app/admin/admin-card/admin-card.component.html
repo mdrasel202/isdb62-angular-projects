@@ -1,7 +1,8 @@
-<h3>Card Requests to Approve</h3>
-<table class="card-table" *ngIf="pendingCards.length > 0">
+<h3>Pending Card Requests</h3>
+<table class="table table-bordered">
   <thead>
     <tr>
+      <th>Card ID</th>
       <th>Account ID</th>
       <th>Card Type</th>
       <th>Status</th>
@@ -11,11 +12,15 @@
   <tbody>
     <tr *ngFor="let card of pendingCards">
       <td>{{ card.id }}</td>
+      <td>{{ card.cardNumber }}</td>
       <td>{{ card.card }}</td>
       <td>{{ card.status }}</td>
       <td>
-        <button (click)="approveCard(card)">Approve</button>
+        <button class="btn btn-success btn-sm" (click)="approve(card)">Approve</button>
+        <button class="btn btn-danger btn-sm" (click)="reject(card)">Reject</button>
       </td>
     </tr>
   </tbody>
 </table>
+
+

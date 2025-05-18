@@ -16,20 +16,20 @@ export class CardService {
 
   constructor(private http : HttpClient) { }
 
-  requestCard(data: CardRequest): Observable<any>{
-    return this.http.post(this.cardRequest, data);
+  requestCard(data: CardRequest): Observable<CardResponse>{
+    return this.http.post<CardResponse>(this.cardRequest, data);
   }
 
-  approveCard(data: CardRequest): Observable<any>{
-    return this.http.post(this.cardCreate, data);
+  approveCard(data: CardRequest): Observable<CardResponse>{
+    return this.http.post<CardResponse>(this.cardCreate, data);
   }
 
   getAllCard(): Observable<CardResponse[]>{
     return this.http.get<CardResponse[]>(this.getAll);
   }
 
-  rejectCard(data: CardRequest): Observable<any> {
-  return this.http.post(this.rejectCar, data);
+  rejectCard(data: CardRequest): Observable<CardResponse> {
+  return this.http.post<CardResponse>(this.rejectCar, data);
 }
 
   updateCard(data: CardRequest): Observable<CardResponse> {

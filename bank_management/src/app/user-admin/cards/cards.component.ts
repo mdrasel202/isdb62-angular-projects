@@ -16,43 +16,30 @@ declare var bootstrap: any;
 })
 export class CardsComponent implements OnInit{
 
-  cardRequest: CardRequest = {
-    bankAccountId: 0,
-    cardType: 'VISA'
-  };
-  userId = 1; // or from Auth
-  userAccounts: any[] = [];
-  cards: CardResponse[] = [];
+ cardRequest: CardRequest = { bankAccountId: 0, cardType: 'VISA' };
+  approvedCards: CardResponse[] = [];
 
-  constructor(private cardService: CardService, private accountService: BankAccountService) {}
+  constructor(private cardService: CardService) {}
 
-  ngOnInit() {
-    this.loadUserAccounts();
-    this.loadUserCards();
+  ngOnInit(): void {
+    this.loadApprovedCards();
   }
 
-  requestCard() {
+  requestCard(): void {
     this.cardService.requestCard(this.cardRequest).subscribe({
       next: () => {
-        alert('Card requested.');
-        this.loadUserCards();
+        alert('Card request submitted successfully!');
+        this.loadApprovedCards();
       },
-      error: err => console.error(err)
+      error: () => alert('Error submitting request.')
     });
   }
 
-  loadUserAccounts() {
-    this.accountService.getAllAccount().subscribe(accounts => {
-      this.userAccounts = accounts.filter(acc => acc.userId === this.userId);
-    });
-  }
-
-  loadUserCards() {
+  loadApprovedCards(): void {
     this.cardService.getAllCard().subscribe(cards => {
-      this.cards = cards.filter(c => this.userAccounts.some(acc => acc.id === c.id));
+      this.approvedCards = cards.filter(card => card.status === 'APPROVED');
     });
   }
-
 
 // cardRequest: CardRequest = {
 //   bankAccountId: 0,

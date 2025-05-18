@@ -1,46 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Cards } from '../../user-admin/modal/cards';
 import { CardRequest, CardResponse } from '../../model/bank_card.model';
 import { CardService } from '../../service/card.service';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-admin-card',
-  imports: [NgFor, NgIf],
+  imports: [NgFor,CommonModule  ],
   templateUrl: './admin-card.component.html',
   styleUrl: './admin-card.component.css'
 })
-export class AdminCardComponent {
+export class AdminCardComponent implements OnInit{
 
  pendingCards: CardResponse[] = [];
 
-constructor(private cardService: CardService) {}
+  constructor(private cardService: CardService) {}
 
-ngOnInit() {
-  this.loadPendingCards();
-}
+  ngOnInit(): void {
+    this.loadPendingCards();
+  }
 
-loadPendingCards() {
-  this.cardService.getAllCard().subscribe(cards => {
-    this.pendingCards = cards.filter(c => c.status === 'PENDING');
-  });
-}
+  loadPendingCards(): void {
+    this.cardService.getAllCard().subscribe(cards => {
+      this.pendingCards = cards.filter(card => card.status === 'PENDING');
+    });
+  }
 
-approveCard(card: CardResponse) {
-  const request: CardRequest = {
-    bankAccountId: card.id,
-    cardType: card.card as any // You may need a mapping function if card !== cardType
-  };
+  approve(card: CardResponse): void {
+    const request: CardRequest = {
+      bankAccountId: card.id,
+      cardType: card.card as any,
+      cardStatus: 'APPROVED'
+    };
+    this.cardService.approveCard(request).subscribe(() => this.loadPendingCards());
+  }
 
-  this.cardService.approveCard(request).subscribe({
-    next: () => {
-      alert('Card approved successfully');
-      this.loadPendingCards();
-    },
-    error: err => console.error(err)
-  });
+  reject(card: CardResponse): void {
+    const request: CardRequest = {
+      bankAccountId: card.id,
+      cardType: card.card as any,
+      cardStatus: 'REJECTED'
+    };
+    this.cardService.rejectCard(request).subscribe(() => this.loadPendingCards());
+  }
 }
 
   // requestedCards: CardResponse[] = [];
@@ -68,4 +72,4 @@ approveCard(card: CardResponse) {
   //     this.loadRequestedCards();
   //   });
   // }
-}
+
