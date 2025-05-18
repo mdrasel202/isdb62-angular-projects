@@ -1,26 +1,21 @@
-<div class="card p-4 m-4 shadow rounded">
-  <h3>Requested Cards (Pending Approval)</h3>
-
-  <table class="table table-bordered mt-3">
-    <thead>
-      <tr>
-        <th>Account ID</th>
-        <th>Card Type</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let card of requestedCards">
-        <td>{{ card.id }}</td>
-        <td>{{ card.card }}</td>
-        <td>{{ card.status }}</td>
-        <td>
-          <button class="btn btn-success btn-sm" (click)="approveCard(card)">
-            Approve
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<h3>Card Requests to Approve</h3>
+<table class="card-table" *ngIf="pendingCards.length > 0">
+  <thead>
+    <tr>
+      <th>Account ID</th>
+      <th>Card Type</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let card of pendingCards">
+      <td>{{ card.id }}</td>
+      <td>{{ card.card }}</td>
+      <td>{{ card.status }}</td>
+      <td>
+        <button (click)="approveCard(card)">Approve</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
