@@ -36,7 +36,7 @@
   color: #fff;
 }
 /* Reset default styles */
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -51,7 +51,7 @@ body {
     align-items: flex-start;
     padding: 2rem;
     overflow-y: auto;
-}
+} */
 
 .container {
     width: 100%;
