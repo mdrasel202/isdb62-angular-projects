@@ -23,7 +23,8 @@ export class AdminCardComponent implements OnInit{
     this.loadPendingCards();
 
     this.cardService.getAllCard().subscribe(cards => {
-    this.approvedCards = cards.filter(c => c.status === 'APPROVED');
+    // this.approvedCards = cards.filter(c => c.status === 'APPROVED');
+    this.approvedCards = cards;
   });
   }
 
@@ -48,20 +49,6 @@ export class AdminCardComponent implements OnInit{
     error: (err) => console.error('Approval failed', err)
   });
 }
-
-
-  // approve(card: CardResponse) {
-  //   const req: CardRequest = {
-  //     bankAccountId: card.accountId,
-  //     cardType: card.cardType
-  //   };
-
-  //   this.cardService.approveCard(req).subscribe({
-  //     next: () => this.loadPendingCards(),
-  //     error: (err) => console.error('Approval error', err)
-  //   });
-  // }
-
   reject(card: CardResponse) {
     const req: CardRequest = {
       bankAccountId: card.accountId,

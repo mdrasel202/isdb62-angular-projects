@@ -12,52 +12,7 @@ import { AccountResponce } from '../../model/bank_account.model';
 })
 export class AccountCreateComponent implements OnInit{
 
-  // accounts: AccountResponce[] = [];
-  // message: string = '';
-
-  // constructor(private accountService: BankAccountService) {}
-
-  // ngOnInit(): void {
-  //   this.loadAllAccounts();
-  // }
-
-  // loadAllAccounts(): void {
-  //   this.accountService.getAllAccount().subscribe({
-  //     next: (data) => this.accounts = data,
-  //     error: (err) => console.error('Error fetching accounts', err)
-  //   });
-  // }
-
-  // approveAccount(accountId: number): void {
-  //   this.accountService.approveAccount(accountId).subscribe({
-  //     next: (updatedAccount) => {
-  //       this.message = 'Account approved successfully!';
-  //       const index = this.accounts.findIndex(acc => acc.id === updatedAccount.id);
-  //       if (index !== -1) {
-  //         this.accounts[index] = updatedAccount;
-  //       }
-  //     },
-  //     error: (err) => {
-  //       console.error('Error approving account', err);
-  //       this.message = 'Error approving account.';
-  //     }
-  //   });
-  // }
-
-  // // updateAccountStatus(account: AccountResponce): void {
-  // //   this.accountService.updateAccountStatus(account.id, account.status).subscribe({
-  // //     next: (updated) => {
-  // //       this.message = `Status updated to ${account.status}`;
-  // //     },
-  // //     error: (err) => {
-  // //       console.error('Error updating status', err);
-  // //       this.message = 'Error updating account status.';
-  // //     }
-  // //   });
-  // }
-
-
-
+  
 
 
   accounts: AccountResponce[] = [];

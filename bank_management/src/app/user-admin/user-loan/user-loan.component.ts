@@ -14,15 +14,15 @@ import { BankTraferService } from '../../service/bank-trafer.service';
 })
 export class UserLoanComponent{
 
-  transact: Transaction[] = [];
+  // transact: Transactions[] = [];
 
-  constructor(private transactionService: BankTraferService) {}
+  // constructor(private transactionService: BankTraferService) {}
 
-  loadTransactions(accountId: number) {
-    this.transactionService.getTransactions(accountId).subscribe(data => {
-      this.transact = data;
-    });
-  }
+  // loadTransactions(accountId: number) {
+  //   this.transactionService.getTransactions(accountId).subscribe(data => {
+  //     this.transact = data;
+  //   });
+  // }
   
   
 }

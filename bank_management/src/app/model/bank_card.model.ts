@@ -7,7 +7,7 @@ export interface CardRequest{
 export interface CardResponse{
     cardNumber: string;
     cardType: 'VISA' | 'MASTERCARD' | 'DEBIT' | 'CREDIT';
-    cardStatus: 'PENDING' | 'APPROVED' | 'REJECTED';
+    cardStatus: 'PENDING' | 'APPROVED' | 'REJECTED' | 'ACTIVE';
     expiry_date: Date;
     id: number;
     availableBalance: number;
@@ -20,7 +20,7 @@ export interface GetAllInfo{
     id : number;
     cardNumber : string;
     cardType : 'VISA' | 'MASTERCARD' | 'DEBIT' | 'CREDIT';
-    status : 'PENDING' | 'APPROVED' | 'REJECTED';
+    status : 'PENDING' | 'APPROVED' | 'REJECTED' | 'ACTIVE';
     openedDate : Date;
     availableBalance : number;
 }

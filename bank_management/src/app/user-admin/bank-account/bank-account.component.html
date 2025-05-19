@@ -6,15 +6,40 @@
 </div>
 
 
-        <h3>Your Accounts</h3>
+<h3>Your Accounts</h3>
+<table border="1" cellspacing="0" cellpadding="8" style="width:100%; border-collapse: collapse;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th>Account Number</th>
+      <th>User Name</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Available Balance</th>
+      <th>Opened Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let account of accounts">
+      <td>{{ account.accountNumber }}</td>
+      <td>{{ account.userName }}</td>
+      <td>{{ account.type }}</td>
+      <td>{{ account.status }}</td>
+      <td>{{ account.availableBalance }}</td>
+      <td>{{ account.openedDate || 'Pending' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        <!-- <h3>Your Accounts</h3>
         <ul *ngFor="let account of accounts">
-            <!-- Sample data for display -->
+           
             <li >
               {{account.accountNumber}} - {{account.userName}} - {{account.type}} - {{account.status}} - 
                Balance: {{account.availableBalance}} - Opened: {{account.openedDate || 'Pending'}}
             </li>
         </ul>
- 
+  -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

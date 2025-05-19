@@ -1,6 +1,32 @@
+<div class="transfer-container">
+  <h2>💸 Balance Transfer</h2>
+
+  <form [formGroup]="transferForm" (ngSubmit)="onTransfer()">
+    <div class="form-group">
+      <label>From Account ID</label>
+      <input type="number" formControlName="fromAccountId" />
+    </div>
+
+    <div class="form-group">
+      <label>To Account ID</label>
+      <input type="number" formControlName="toAccountId" />
+    </div>
+
+    <div class="form-group">
+      <label>Amount</label>
+      <input type="number" formControlName="amount" />
+    </div>
+
+    <button type="submit" [disabled]="transferForm.invalid">Transfer Funds</button>
+  </form>
+
+  <div *ngIf="message" class="message success">✅ {{ message }}</div>
+  <div *ngIf="error" class="message error">❌ {{ error }}</div>
+</div>
+
 
 <!-- src/app/components/transfer/transfer.component.html -->
-<div class="p-4 max-w-md mx-auto bg-white shadow rounded">
+<!-- <div class="p-4 max-w-md mx-auto bg-white shadow rounded">
   <h2 class="text-xl font-bold mb-4">Balance Transfer</h2>
 
   <form [formGroup]="transferForm" (ngSubmit)="onTransfer()">
@@ -26,120 +52,4 @@
 
   <div *ngIf="message" class="text-green-600 mt-3">{{ message }}</div>
   <div *ngIf="error" class="text-red-600 mt-3">{{ error }}</div>
-</div>
-
-<!--history-->
-
-<!-- <div class="header">
-    <span>Transactions</span>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal"  (click)="openModal()" data-bs-target="#exampleModal">
-        <i class="bi bi-arrow-right-square-fill" style="margin-right: 8px;"></i>Add
-    </button>
-  </div>
-
-<div class="table-container">
-    <div class="table-wrapper">
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>To / From</th>
-                <th>Amount</th>
-                <th>Account</th>
-                <th>Status</th>
-                <th>Payment Method</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2025-04-28</td>
-                <td>John Doe</td>
-                <td>$500.00</td>
-                <td>Savings</td>
-                <td><span class="status completed">Completed</span></td>
-                <td>Credit Card</td>
-            </tr>
-            <tr>
-                <td>2025-04-27</td>
-                <td>Jane Smith</td>
-                <td>$250.00</td>
-                <td>Checking</td>
-                <td><span class="status pending">Pending</span></td>
-                <td>Bank Transfer</td>
-            </tr>
-            <tr>
-                <td>2025-04-26</td>
-                <td>Acme Corp</td>
-                <td>$1,200.00</td>
-                <td>Business</td>
-                <td><span class="status failed">Failed</span></td>
-                <td>PayPal</td>
-            </tr>
-            <tr>
-                <td>2025-04-25</td>
-                <td>Sarah Lee</td>
-                <td>$750.00</td>
-                <td>Savings</td>
-                <td><span class="status completed">Completed</span></td>
-                <td>Debit Card</td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-</div>
-
-
-
-
-  <div class="modal fade" id="tranaction" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form id="transactionForm">
-                <div class="form-group">
-                    <label for="creationDate">Creation Date</label>
-                    <input type="date" id="creationDate" name="creationDate" required>
-                </div>
-                <div class="form-group">
-                    <label for="keywords">Keywords</label>
-                    <textarea id="keywords" name="keywords" placeholder="e.g., invoice, payment, client" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <select id="status" name="status" required>
-                        <option value="" disabled selected>Select Status</option>
-                        <option value="completed">Completed</option>
-                        <option value="pending">Pending</option>
-                        <option value="failed">Failed</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="accounts">Accounts</label>
-                    <select id="accounts" name="accounts" required>
-                        <option value="" disabled selected>Select Account</option>
-                        <option value="savings">Savings</option>
-                        <option value="checking">Checking</option>
-                        <option value="business">Business</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="payment">Payment Method</label>
-                    <select id="payment" name="payment" required>
-                        <option value="" disabled selected>Select Payment Method</option>
-                        <option value="credit_card">Credit Card</option>
-                        <option value="bank_transfer">Bank Transfer</option>
-                        <option value="paypal">PayPal</option>
-                        <option value="debit_card">Debit Card</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
-        </div>
-
-      </div>
-    </div>
-  </div> -->
+</div> -->

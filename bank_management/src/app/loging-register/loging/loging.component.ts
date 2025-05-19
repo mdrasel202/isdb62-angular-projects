@@ -31,7 +31,9 @@ export class LogingComponent {
       .subscribe({
         next: (res) => {
           this.auth.setToken(res.access_token);
-          // this.router.navigate(['/admin']);
+          localStorage.setItem('id', res.id);
+          //localStorage.setItem('role', res.role)
+          //const role = localStorage.getItem('role');
           const role = this.auth.getUserRole();
 
           //role based navigation

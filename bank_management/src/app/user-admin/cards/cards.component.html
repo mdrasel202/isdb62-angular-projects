@@ -8,37 +8,40 @@
 
 <hr />
 
-<table *ngIf="userCards.length > 0; else noCards">
-  <tr *ngFor="let card of userCards">
-    <td>{{ card.cardNumber }}</td>
-    <td>{{ card.cardType }}</td>
-    <td>{{ card.openedDate | date: 'shortDate' }}</td>
-    <td>{{ card.availableBalance | currency }}</td>
-  </tr>
-</table>
 
-<ng-template #noCards>
-  <p>No approved cards available.</p>
-</ng-template>
-
-<!-- <h2>My Approved Cards</h2>
-<table *ngIf="userCards.length > 0; else noCards">
-  <thead>
+<table *ngIf="userCards.length > 0; else noCards" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse;">
+  <thead style="background-color: #f4f4f4;">
     <tr>
       <th>Card Number</th>
       <th>Card Type</th>
       <th>Opened Date</th>
       <th>Available Balance</th>
+      <th>Status</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let card of userCards">
       <td>{{ card.cardNumber }}</td>
       <td>{{ card.cardType }}</td>
-      <td>{{ card.openedDate | date: 'mediumDate' }}</td>
+      <td>{{ card.openedDate | date: 'shortDate' }}</td>
       <td>{{ card.availableBalance | currency }}</td>
+      <td>{{ card.status}}</td>
     </tr>
   </tbody>
+</table>
+
+<!-- Template for empty list -->
+<ng-template #noCards>
+  <p>No cards found.</p>
+</ng-template>
+
+<!-- <table *ngIf="userCards.length > 0; else noCards">
+  <tr *ngFor="let card of userCards">
+    <td>{{ card.cardNumber }}</td>
+    <td>{{ card.cardType }}</td>
+    <td>{{ card.openedDate | date: 'shortDate' }}</td>
+    <td>{{ card.availableBalance | currency }}</td>
+  </tr>
 </table> -->
 
 <ng-template #noCards>
@@ -46,9 +49,7 @@
 </ng-template>
 
 
-
-
-
+<!--modal-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

@@ -10,7 +10,7 @@ export class BankAccountService {
 
    private approve = 'http://localhost:8081/bank/approve';
    private accountRequest = 'http://localhost:8081/bank/request'
-   private getAll = 'http://localhost:8081/bank/requests'
+   private getAll = 'http://localhost:8081/bank/getAll'
 
   constructor(private http: HttpClient) { }
 

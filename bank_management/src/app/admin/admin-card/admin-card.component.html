@@ -1,43 +1,46 @@
-<div class="container mt-4">
-  <h2 class="mb-4 text-center">Pending Card Requests</h2>
+<div class="p-4">
+  <h2 class="text-xl font-bold mb-4">Pending Card Requests</h2>
+  <table class="w-full border-collapse border border-gray-300 mb-8">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="border p-2">Card ID</th>
+        <th class="border p-2">Account ID</th>
+        <th class="border p-2">Card Type</th>
+        <th class="border p-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let card of pendingCards">
+        <td class="border p-2">{{ card.id }}</td>
+        <td class="border p-2">{{ card.accountId }}</td>
+        <td class="border p-2">{{ card.cardType }}</td>
+        <td class="border p-2">
+          <button (click)="approve(card)" class="btn btn-success mr-2" style="margin-right: 10px;">Approve</button>
+          <button (click)="reject(card)" class="btn btn-warning">Reject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div *ngIf="pendingCards.length === 0" class="alert alert-info">
-    No pending card requests.
-  </div>
-
-  <div *ngIf="pendingCards.length > 0" class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th>Card Type</th>
-          <th>Account ID</th>
-          <th>Available Balance</th>
-          <th>Expiry Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let card of pendingCards">
-          <td>{{ card.cardType }}</td>
-          <td>{{ card.accountId }}</td>
-          <td>${{ card.availableBalance }}</td>
-          <td>{{ card.expiry_date | date: 'mediumDate' }}</td>
-          <td>
-            <button class="btn btn-success btn-sm me-2" (click)="approve(card)">Approve</button>
-            <button class="btn btn-danger btn-sm" (click)="reject(card)">Reject</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h2 class="text-xl font-bold mb-4">Approved Cards</h2>
+  <table class="w-full border-collapse border border-gray-300">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="border p-2">Card ID</th>
+        <th class="border p-2">Card Number</th>
+        <th class="border p-2">Card Type</th>
+        <th class="border p-2">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let card of approvedCards">
+        <td class="border p-2">{{ card.id }}</td>
+        <td class="border p-2">{{ card.cardNumber }}</td>
+        <td class="border p-2">{{ card.cardType }}</td>
+        <td class="border p-2 text-green-600 font-semibold">{{ card.status }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<table>
-  <tr *ngFor="let card of approvedCards">
-    <td>{{ card.cardNumber }}</td>
-    <td>{{ card.cardType }}</td>
-    <td>{{ card.openedDate | date: 'shortDate' }}</td>
-    <td>{{ card.availableBalance }}</td>
-  </tr>
-</table>
 

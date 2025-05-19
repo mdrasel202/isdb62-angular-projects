@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Transaction } from '../user-admin/modal/transaction';
-import { TransferRequest } from '../model/bank_transfer.model';
+import { Transactions, TransferRequest } from '../model/bank_transfer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class BankTraferService {
     return this.http.post(`${this.apiUrl}/transfer`, request, { responseType: 'text' });
   }
 
-  getTransactions(accountId: number): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(`${this.apiUrl}/${accountId}/transactions`);
+  getTransactions(accountId: number): Observable<Transactions[]> {
+    return this.http.get<Transactions[]>(`${this.apiUrl}/${accountId}/transactions`);
   }
 }

@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AccountRequest, AccountResponce } from '../../model/bank_account.model';
 import { NgFor, NgIf } from '@angular/common';
 import { BankAccountService } from '../../service/bank-account.service';

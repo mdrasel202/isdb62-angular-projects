@@ -17,6 +17,7 @@ import { DepositsComponent } from './home/deposit/deposit.component';
 import { HomePageComponent } from './home/home-page/home-page.component';
 import { AdminCardComponent } from './admin/admin-card/admin-card.component';
 import { UserLoanComponent } from './user-admin/user-loan/user-loan.component';
+import { UserHistoryComponent } from './user-admin/user-history/user-history.component';
 
 export const routes: Routes = [
 
@@ -38,7 +39,8 @@ export const routes: Routes = [
             {path: 'transactions', component: TransactionsComponent},
             {path: 'cards', component: CardsComponent},
             {path: 'bank-account', component: BankAccountComponent},
-            {path: 'user-loan', component: UserLoanComponent}
+            {path: 'user-loan', component: UserLoanComponent},
+            {path: 'user-history', component: UserHistoryComponent}
         ]
     },
     

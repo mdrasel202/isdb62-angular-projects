@@ -5,7 +5,7 @@ export interface TransferRequest{
 }
 
 
-export interface Transaction {
+export interface Transactions {
   id: number;
   amount: number;
   description: string;

@@ -45,7 +45,8 @@ export class CardsComponent implements OnInit{
   loadApprovedCards(): void {
     this.cardService.getAllCard().subscribe(cards => {
     console.log('Response:', cards);
-    this.userCards = cards.filter(card => card.status === 'APPROVED');
+    // this.userCards = cards.filter(card => card.status === 'APPROVED');
+    this.userCards = cards;
     });
   }
 
