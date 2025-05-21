@@ -16,35 +16,41 @@ export interface LoanRequest{
 
 
 export class LoneResponse {
-    userId : number;
-    accountNumber : string;
+    loanId : number;
     amount : number;
     approvedAmount: number;
+    interestRate:number;
     availableAmount: number;
-    interestRate: number;
     dueDate: Date;
     acceptDate: Date;
     status: LoanStatus;
+    applicationDate:Date;
+    monthlyInterest:number;
+    yearLyInterest:number;
 
     constructor(
-        userId : number,
-        accountNumber : string,
+        loanId : number,
         amount : number,
         approvedAmount: number,
+        interestRate:number,
         availableAmount: number,
-        interestRate: number,
         dueDate: Date,
         acceptDate: Date,
         status: LoanStatus,
+        applicationDate:Date,
+        monthlyInterest:number,
+        yearLyInterest:number,
     ){
-        this.userId = userId;
-        this.accountNumber = accountNumber;
+        this.loanId = loanId;
         this.amount = amount;
         this.approvedAmount = approvedAmount;
-        this.availableAmount = availableAmount;
         this.interestRate = interestRate;
+        this.availableAmount = availableAmount;
         this.dueDate = dueDate;
         this.acceptDate = acceptDate;
         this.status = status;
+        this.applicationDate = applicationDate;
+        this.monthlyInterest = monthlyInterest;
+        this.yearLyInterest = yearLyInterest;
     }
 }

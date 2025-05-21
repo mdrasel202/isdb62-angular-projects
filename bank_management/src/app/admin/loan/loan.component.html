@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let lone of allLoans">
+                <!-- <tr *ngFor="let lone of allLoans">
                     <td>{{lone.userId}}</td>
                     <td>{{lone.accountNumber}}</td>
                     <td>{{lone.amount}}</td>
@@ -34,7 +34,7 @@
                     <td>{{lone.dueDate}}</td>
                     <td>{{lone.acceptDate}}</td>
                     <td>{{lone.status}}</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>
@@ -52,11 +52,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form (ngSubmit)="onSubmit()" >
+          <!-- <form (ngSubmit)="onSubmit()" >
             <div class="form-sections">
               
               <div>
-                <!-- <div class="section-title">Account Info</div> -->
+               
                 <div class="form-group">
                   <label>Account Number:</label>
                   <input type="text" name="accountNumber" [(ngModel)]="loneResponse.accountNumber" required>
@@ -80,7 +80,7 @@
       
             
               <div>
-                <!-- <div class="section-title">User Info</div> -->
+            
                
                 <div class="form-group">
                  <label>Interest Rate (%):</label>
@@ -99,7 +99,7 @@
               </div>
             </div>
             <button type="submit" class="submit-btn">Submit Loan</button>
-          </form>
+          </form> -->
         </div>
       </div>
     </div>

@@ -1,98 +1,30 @@
-<div class="header">
-    <span>Loan</span>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      <i class="bi bi-arrow-right-square-fill" style="margin-right: 8px;"></i>Request Loan
-    </button>
-  </div>
+<h2>User Loan Panel</h2>
 
-<!-- 
+<form (ngSubmit)="requestLoan()">
+  <input [(ngModel)]="loanRequest.accountNumber" name="acc" placeholder="Account #" required />
+  <input type="number" [(ngModel)]="loanRequest.amount" name="amt" placeholder="Amount" required />
+  <input type="number" [(ngModel)]="loanRequest.interestRate" name="rate" placeholder="Interest Rate (%)" required />
+  <input type="date" [(ngModel)]="loanRequest.dueDate" name="due" required />
+  <button type="submit">Request Loan</button>
+</form>
 
-  <div class="table-container">
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Account Number</th>
-                    <th>Amount</th>
-                    <th>Interest Rate</th>
-                    <th>Due Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let loan of userLoan">
-                    <td>{{loan.accountNumber}}</td>
-                    <td>{{loan.amount}}</td>
-                    <td>{{loan.interestRate}}</td>
-                    <td>{{loan.dueDate}}</td>
-                    <td>{{loan.status}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-  </div>
+<table border="1" style="margin-top: 20px">
+  <thead>
+    <tr>
+      <th>ID</th><th>Amount</th><th>Status</th><th>Monthly Interest</th><th>Yearly Interest</th><th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let loans of loan">
+      <td>{{ loans.loanId }}</td>
+      <td>{{ loans.amount }}</td>
+      <td>{{ loans.status }}</td>
+      <td>{{ loans.monthlyInterest }}</td>
+      <td>{{ loans.yearLyInterest }}</td>
+      <td>
+        <!-- <button *ngIf="loan.status === 'PENDING'" (click)="cancelLoan(loans.loanId)">Cancel</button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form #loanForm="ngForm" (ngSubmit)="submitLoanRequest(loanForm)" >
-            <div class="form-sections">
-              
-              <div class="form-group">
-                  <label>User ID:</label>
-                  <input type="number" name="userId" [(ngModel)]="loanRequest.userId" required />
-              </div>
-              <div class="form-group">
-                  <label>Account Number:</label>
-                  <input type="text" name="accountNumber" [(ngModel)]="loanRequest.accountNumber" required />
-              </div>
-              <div class="form-group">
-                  <label>Amount:</label>
-                  <input type="number" name="amount" [(ngModel)]="loanRequest.amount" required />
-              </div>
-              <div class="form-group">
-                  <label>Interest Rate (%):</label>
-                  <input type="number" name="interestRate" [(ngModel)]="loanRequest.interestRate" required />
-              </div>
-              <div class="form-group">
-                  <label>Due Date:</label>
-                  <input type="date" name="dueDate" [(ngModel)]="loanRequest.dueDate" required />
-              </div>
-    
-            </div>
-            <button type="submit" class="submit-btn">Submit Request</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
-  <!--history-->
- <!-- transaction-history.component.html -->
-<!-- <div class="p-4">
-  <h2 class="text-lg font-bold mb-3">Transaction History</h2>
-  <table class="w-full border">
-    <thead>
-      <tr class="bg-gray-100">
-        <th class="p-2 border">Date</th>
-        <th class="p-2 border">Description</th>
-        <th class="p-2 border">Amount</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let tx of transact">
-        <td class="p-2 border">{{ tx.date }}</td>
-        <td class="p-2 border">{{ tx.description }}</td>
-        <td class="p-2 border">{{ tx.amount }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
