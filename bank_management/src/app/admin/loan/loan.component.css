@@ -12,7 +12,9 @@
       border-bottom: 2px dashed white; /* Dashed border at the bottom */
       margin-top: 50px;
     }
-    
+    h2{
+      margin-top: 24px;
+    }
     .header span{
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 19px;

@@ -1,26 +1,52 @@
 <h2>User Loan Panel</h2>
 
 <form (ngSubmit)="requestLoan()">
-  <input [(ngModel)]="loanRequest.accountNumber" name="acc" placeholder="Account #" required />
-  <input type="number" [(ngModel)]="loanRequest.amount" name="amt" placeholder="Amount" required />
-  <input type="number" [(ngModel)]="loanRequest.interestRate" name="rate" placeholder="Interest Rate (%)" required />
-  <input type="date" [(ngModel)]="loanRequest.dueDate" name="due" required />
-  <button type="submit">Request Loan</button>
+  <div>
+    <label for="#">Account Number</label>
+    <input [(ngModel)]="loanRequest.accountNumber" name="acc" required />
+  </div>
+  <div>
+    <label for="#">Amount</label>
+    <input type="number" [(ngModel)]="loanRequest.amount" name="amt"required />
+  </div>
+  <div>
+    <label for="#">Interest Rate</label>
+    <input type="number" [(ngModel)]="loanRequest.interestRate" name="rate"  required />
+  </div>
+  <div>
+    <label for="#">Date</label>
+    <input type="date" [(ngModel)]="loanRequest.dueDate" name="due" required />
+  </div>
+  <div>
+    <button type="submit" style="margin-top: 10px;">Request Loan</button>
+  </div>
 </form>
+
+
+ 
 
 <table border="1" style="margin-top: 20px">
   <thead>
     <tr>
-      <th>ID</th><th>Amount</th><th>Status</th><th>Monthly Interest</th><th>Yearly Interest</th><th>Actions</th>
+      <th>Account Number</th>
+      <th>Amount</th>
+      <th>Approve Amount</th>
+      <th>Monthly Interest</th>
+      <th>Yearly Interest</th>
+      <th>Accept Date</th>
+      <th>Status</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let loans of loan">
-      <td>{{ loans.loanId }}</td>
+      <td>{{ loans.accountNumber }}</td>
+      <td>{{loans.approvedAmount}}</td>
       <td>{{ loans.amount }}</td>
-      <td>{{ loans.status }}</td>
       <td>{{ loans.monthlyInterest }}</td>
       <td>{{ loans.yearLyInterest }}</td>
+      <td>{{loans.acceptDate}}</td>
+      <td>{{ loans.status }}</td>
       <td>
         <!-- <button *ngIf="loan.status === 'PENDING'" (click)="cancelLoan(loans.loanId)">Cancel</button> -->
       </td>

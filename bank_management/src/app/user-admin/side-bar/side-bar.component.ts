@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LoanRequest } from '../../model/bank_loan.model';
-import { LoanService } from '../../service/loan.service';
 
 @Component({
   selector: 'app-side-bar',

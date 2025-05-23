@@ -5,8 +5,44 @@
     </button>
   </div>
 
+<h2>Admin Loan Approval Panel</h2>
 
-  <!--table-->
+<table border="1">
+  <thead>
+    <tr>
+      <th>Account Number</th>
+      <th>Amount</th>
+      <th>Interest</th>
+      <th>Due Date</th>
+      <th>Accept Date</th>
+      <th>Monthly Interest</th>
+      <th>YearLy Interest</th>
+      <th>Approve Amount</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let loan of pendingLoan">
+      <td>{{ loan.accountNumber}}</td>
+      <td>{{ loan.amount }}</td>
+      <td>{{ loan.interestRate }}%</td>
+      <td>{{ loan.dueDate }}</td>
+      <td>{{loan.acceptDate}}</td>
+      <td>{{loan.monthlyInterest}}</td>
+      <td>{{loan.yearLyInterest}}</td>
+      <td>
+        <input type="number" [(ngModel)]="loan.approvedAmount" />
+      </td>
+      <td>
+        <button (click)="approveLoan(loan)">Approve</button>
+        <!-- <button (click)="approveLoan(loan.loanId, loan.approvedAmount)">Approve</button> -->
+        <!-- <button (click)="cancelLoan(loan.id)">Cancel</button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+ <!--
   <div class="table-container">
     <div class="table-wrapper">
         <table>
@@ -24,7 +60,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr *ngFor="let lone of allLoans">
+               <tr *ngFor="let lone of allLoans">
                     <td>{{lone.userId}}</td>
                     <td>{{lone.accountNumber}}</td>
                     <td>{{lone.amount}}</td>
@@ -34,16 +70,16 @@
                     <td>{{lone.dueDate}}</td>
                     <td>{{lone.acceptDate}}</td>
                     <td>{{lone.status}}</td>
-                </tr> -->
+                </tr> 
             </tbody>
         </table>
     </div>
   </div>
-  <!--table end-->
+  <table end-->
 
 
   <!--modal-->
-   <!-- Modal -->
+   <!-- Modal 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -52,7 +88,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <!-- <form (ngSubmit)="onSubmit()" >
+           <form (ngSubmit)="onSubmit()" >
             <div class="form-sections">
               
               <div>
@@ -99,8 +135,9 @@
               </div>
             </div>
             <button type="submit" class="submit-btn">Submit Loan</button>
-          </form> -->
+          </form>
         </div>
       </div>
     </div>
   </div>
+-->

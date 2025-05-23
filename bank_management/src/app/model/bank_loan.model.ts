@@ -17,6 +17,7 @@ export interface LoanRequest{
 
 export class LoneResponse {
     loanId : number;
+    accountNumber:string;
     amount : number;
     approvedAmount: number;
     interestRate:number;
@@ -30,6 +31,7 @@ export class LoneResponse {
 
     constructor(
         loanId : number,
+        accountNumber:string,
         amount : number,
         approvedAmount: number,
         interestRate:number,
@@ -42,6 +44,7 @@ export class LoneResponse {
         yearLyInterest:number,
     ){
         this.loanId = loanId;
+        this.accountNumber= accountNumber;
         this.amount = amount;
         this.approvedAmount = approvedAmount;
         this.interestRate = interestRate;

@@ -12,7 +12,7 @@ import { BankLoanService } from '../../service/bank-loan.service';
 })
 export class UserLoanComponent implements OnInit{
 
-  userId: number = 0;
+  userId: number = 1;
 
   loan : LoneResponse[] = [];
 
@@ -25,7 +25,7 @@ export class UserLoanComponent implements OnInit{
   // loanCreate(): void{
   //   const 
     loanRequest : LoanRequest= {
-      userId : 0,
+      userId : this.userId,
       accountNumber : '',
       amount : 0,
       interestRate : 0,
@@ -33,6 +33,7 @@ export class UserLoanComponent implements OnInit{
     };
   
     requestLoan(): void{
+      this.loanRequest.userId = this.userId;
       this.bankLoanService.requestLoan(this.loanRequest).subscribe(() => this.loadLoans());
     }
 
