@@ -44,4 +44,19 @@ export class CardsComponent implements OnInit{
     this.userCards = cards;
     });
   }
+
+
+  getCardTypeClass(type: string): string {
+  switch (type.toUpperCase()) {
+    case 'ATM':
+      return 'atm-type';
+    case 'CREDIT':
+      return 'credit-type';
+    case 'DEBIT':
+      return 'debit-type';
+    default:
+      return '';
+  }
+}
+
 }

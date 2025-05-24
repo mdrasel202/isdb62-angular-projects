@@ -37,6 +37,10 @@
         <button (click)="approveLoan(loan)">Approve</button>
         <!-- <button (click)="approveLoan(loan.loanId, loan.approvedAmount)">Approve</button> -->
         <!-- <button (click)="cancelLoan(loan.id)">Cancel</button> -->
+          <button 
+        *ngIf="loan.status === 'PENDING' || loan.status === 'APPROVED'" 
+        (click)="cancelLoanAdmin(loan.loanId)"
+      >Cancel</button>
       </td>
     </tr>
   </tbody>

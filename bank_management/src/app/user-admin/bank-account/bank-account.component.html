@@ -7,7 +7,7 @@
 
 
 <h3>Your Accounts</h3>
-<table border="1" cellspacing="0" cellpadding="8" style="width:100%; border-collapse: collapse;">
+<table border="1" >
   <thead>
     <tr style="background-color: #f2f2f2;">
       <th>Account Number</th>
@@ -23,12 +23,18 @@
       <td>{{ account.accountNumber }}</td>
       <td>{{ account.userName }}</td>
       <td>{{ account.type }}</td>
-      <td>{{ account.status }}</td>
+      <td [ngClass]="getStatus(account.status)">{{ account.status }}</td>
       <td>{{ account.availableBalance }}</td>
       <td>{{ account.openedDate || 'Pending' }}</td>
     </tr>
   </tbody>
 </table>
+
+<!-- <div *ngIf="showAlert" class="alert-box">
+  <span class="close-btn" (click)="closeAlert()">&times;</span>
+  {{ alertMessage }}
+</div> -->
+
 
 
         <!-- <h3>Your Accounts</h3>

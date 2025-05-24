@@ -228,3 +228,78 @@ th {
   background-color: #f9f9f9;
   font-weight: bold;
 }
+
+
+/*card*/
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Base card styling */
+.atm-card {
+  background: linear-gradient(135deg, #ff5f6d, #ffc371);
+  border-radius: 16px;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', sans-serif;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.atm-card:hover {
+  transform: scale(1.02);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card-type {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-status {
+  background-color: #4caf50;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Card body */
+.card-body {
+  margin-top: 20px;
+}
+
+.card-number {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  margin-bottom: 12px;
+}
+
+/* Type-based card colors */
+.atm-card.debit {
+  background: linear-gradient(135deg, #1f4037, #99f2c8);
+}
+
+.atm-card.credit {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+}
+
+.atm-card.virtual {
+  background: linear-gradient(135deg, #667db6, #0082c8);
+}
+
+

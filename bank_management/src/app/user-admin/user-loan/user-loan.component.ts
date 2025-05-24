@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanRequest, LoneResponse } from '../../model/bank_loan.model';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { BankLoanService } from '../../service/bank-loan.service';
 
 @Component({
   selector: 'app-user-loan',
-  imports: [FormsModule, NgFor],
+  imports: [FormsModule, NgFor, NgIf, NgClass],
   templateUrl: './user-loan.component.html',
   styleUrl: './user-loan.component.css'
 })
@@ -41,9 +41,44 @@ export class UserLoanComponent implements OnInit{
       this.bankLoanService.getUserLoans(this.userId).subscribe((data) => this.loan = data);
     }
 
-    cancelLoan():void{
+     canceUserlLoan(id: number): void {
+     this.bankLoanService.cancelLoan(id).subscribe({
+      next : (response) => {
+        alert('Loan cancelled by user')
+        this.refreshLoans();
+      },
+      error: (error) => {
+        console.error('Cancel error', error)
+      }
+     });
+  }
 
-    }
-    //  cancelLoan(id: number): void {
-    //  this.loanService.cancelLoanByUser(id).subscribe(() => this.loadLoans());
+  refreshLoans(): void{
+
+  }
+
+  // getStatusStyle(status: string): any{
+  //   switch(status){
+  //     case 'PENDING':
+  //       return {color : 'orange', fontWeight: 'bold'};
+  //     case 'APPROVED' :
+  //       return {color : 'green', fontWeight: 'bold'};
+  //     case 'CANCELLED' :
+  //       return {color : 'red', fontWeight: 'bold'};
+  //     default:
+  //       return{};      
+  //   }
+  getStatusClass(status: string): string {
+  switch (status) {
+    case 'PENDING':
+      return 'pending-status';
+    case 'APPROVED':
+      return 'approved-status';
+    case 'CANCEL':
+      return 'cancel-status';
+    default:
+      return '';
+  }
+}
+
 }

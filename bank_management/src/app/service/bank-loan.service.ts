@@ -30,4 +30,8 @@ export class BankLoanService {
   approveLoan(loanId : number, approvedAmount : number): Observable<LoneResponse>{
     return this.http.post<LoneResponse>(`${this.baseUrl}/approved/${loanId}?amount=${approvedAmount}`, {});
   }
+
+  cancelLoan(id : number):Observable<LoneResponse>{
+    return this.http.post<LoneResponse>(`${this.baseUrl}/cancel/${id}`, {});
+  }
 }

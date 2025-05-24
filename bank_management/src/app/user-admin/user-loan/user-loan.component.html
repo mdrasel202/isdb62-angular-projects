@@ -46,9 +46,9 @@
       <td>{{ loans.monthlyInterest }}</td>
       <td>{{ loans.yearLyInterest }}</td>
       <td>{{loans.acceptDate}}</td>
-      <td>{{ loans.status }}</td>
+      <td [ngClass]="getStatusClass(loans.status)">{{ loans.status }}</td>
       <td>
-        <!-- <button *ngIf="loan.status === 'PENDING'" (click)="cancelLoan(loans.loanId)">Cancel</button> -->
+        <button *ngIf="loans.status === 'PENDING'" (click)="canceUserlLoan(loans.loanId)">Cancel</button>
       </td>
     </tr>
   </tbody>

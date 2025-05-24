@@ -93,3 +93,18 @@ button:hover {
   background-color: #a71d2a;
 }
 
+
+/*status*/
+.pending-status {
+  color: orange;
+  font-weight: bold;
+}
+.approved-status {
+  color: green;
+  font-weight: bold;
+}
+.cancel-status {
+  color: red;
+  font-weight: bold;
+}
+

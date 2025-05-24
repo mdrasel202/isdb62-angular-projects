@@ -1,18 +1,21 @@
 import { Component} from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AccountRequest, AccountResponce } from '../../model/bank_account.model';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { BankAccountService } from '../../service/bank-account.service';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-bank-account',
-  imports: [FormsModule, ReactiveFormsModule,  FormsModule, NgFor ],
+  imports: [FormsModule, ReactiveFormsModule,  FormsModule, NgFor, NgClass],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.css'
 })
 export class BankAccountComponent{
+
+  // alertMessage: string = '';
+  // showAlert: boolean = false;
 
   accounts: AccountResponce[] = [];
   userId = 1; // from auth/session
@@ -31,11 +34,19 @@ requestAccount() {
   this.accountService.requestAccount(this.accountRequest).subscribe({
     next: (res) => {
       alert('Account requested successfully');
+      // this.alertMessage = '✅ Account requested successfully!';
+      // this.showAlert = true;
       this.loadUserAccounts();
     },
     error: (err) => {
       console.error(err);
       alert('Failed to request account');
+      // if(err.status === 409 || (err.error && err.error.message?.includes('already exists'))){
+      //   this.alertMessage = '⚠️ Account with this information already exists.';
+      // } else {
+      //   this.alertMessage = '❌ Failed to request account.';
+      // }
+      // this.showAlert = true;
     }
   });
 }
@@ -50,53 +61,16 @@ ngOnInit() {
   this.loadUserAccounts();
 }
 
+getStatus(status : string): any{
+  switch(status){
+    case 'REQUESTED' :
+      return 'requested-status';
+    case 'ACTIVE' :
+      return 'active-status';  
+  }
+ }
 
-  // accountForm: FormGroup;
-  // message: string = '';
-
-  // constructor(
-  //   private fb: FormBuilder,
-  //   private accountService: BankAccountService
-  // ) {
-  //   this.accountForm = this.fb.group({
-  //     userId: ['', Validators.required],
-  //     type: ['SAVING', Validators.required]
-  //   });
-  // }
-
-  // onSubmit(): void {
-  //   if (this.accountForm.valid) {
-  //     const requestData: AccountRequest = this.accountForm.value;
-
-  //     this.accountService.requestAccount(requestData).subscribe({
-  //       next: () => {
-  //         this.message = 'Account request submitted successfully.';
-  //         this.accountForm.reset({ type: 'SAVING' });
-  //       },
-  //       error: (err) => {
-  //         console.error('Error:', err);
-  //         this.message = 'Failed to submit account request.';
-  //       }
-  //     });
-  //   }
-  // }
-  
-//   id = Number(localStorage.getItem('id'));
-//   type : string = '';
-
-
-//   constructor(private bankAccountService : BankAccountService){}
-
-// accountRequest(){
-
-//   const requestBody = {
-//      userId: this.id,
-//      type: this.type
-
-//   }
-//   this.bankAccountService.requestAccount(requestBody).subscribe({
-// next: (res) =>{
-//   console.log("request sent successfully.", res);
-// }
-//   });
+//  closeAlert(){
+//   this.showAlert = false;
+//  }
 }

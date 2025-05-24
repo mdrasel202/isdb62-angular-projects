@@ -61,30 +61,3 @@ export class AdminCardComponent implements OnInit{
     });
   }
 }
-
-  // requestedCards: CardResponse[] = [];
-
-  // constructor(private cardService: CardService) {}
-
-  // ngOnInit(): void {
-  //   this.loadRequestedCards();
-  // }
-
-  // loadRequestedCards(): void {
-  //   this.cardService.getAllCard().subscribe(res => {
-  //     this.requestedCards = res;
-  //   });
-  // }
-
-  // approveCard(card: CardResponse): void {
-  //   const request: CardRequest = {
-  //     bankAccountId: card.id,
-  //     cardType: card.card as 'DEBIT' | 'CREDIT',
-  //   };
-
-  //   this.cardService.approveCard(request).subscribe(res => {
-  //     alert(`Card Approved: ${res.cardNumber}`);
-  //     this.loadRequestedCards();
-  //   });
-  // }
-
