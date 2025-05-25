@@ -1,29 +1,31 @@
 <h2>User Loan Panel</h2>
 
 <form (ngSubmit)="requestLoan()">
-  <div>
-    <label for="#">Account Number</label>
-    <input [(ngModel)]="loanRequest.accountNumber" name="acc" required />
+  <div class="forms" style="display: flex;">
+    <div>
+      <label for="#">Account Number</label>
+      <input [(ngModel)]="loanRequest.accountNumber" name="acc" required />
+    </div>
+    <div>
+      <label for="#">Amount</label>
+      <input type="number" [(ngModel)]="loanRequest.amount" name="amt" required />
+    </div>
+    <div>
+      <label for="#">Interest Rate</label>
+      <input type="number" [(ngModel)]="loanRequest.interestRate" name="rate" required />
+    </div>
+    <div>
+      <label for="#">Date</label>
+      <input type="date" [(ngModel)]="loanRequest.dueDate" name="due" required />
+    </div>
   </div>
   <div>
-    <label for="#">Amount</label>
-    <input type="number" [(ngModel)]="loanRequest.amount" name="amt"required />
-  </div>
-  <div>
-    <label for="#">Interest Rate</label>
-    <input type="number" [(ngModel)]="loanRequest.interestRate" name="rate"  required />
-  </div>
-  <div>
-    <label for="#">Date</label>
-    <input type="date" [(ngModel)]="loanRequest.dueDate" name="due" required />
-  </div>
-  <div>
-    <button type="submit" style="margin-top: 10px;">Request Loan</button>
+    <button type="submit" style="margin-top: 20px; ">Request Loan</button>
   </div>
 </form>
 
 
- 
+
 
 <table border="1" style="margin-top: 20px">
   <thead>
@@ -53,4 +55,3 @@
     </tr>
   </tbody>
 </table>
-

@@ -25,13 +25,21 @@ export class CardsComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadApprovedCards();
+
+    setInterval(() => {
+    this.loadApprovedCards();
+  }, 3000);
   }
 
   requestCard(): void {
     this.cardService.requestCard(this.cardRequest).subscribe({
-      next: () => {
-        alert('Card request submitted successfully!');
-        this.loadApprovedCards();
+      next: (res) => {
+        // alert('Card request submitted successfully!');
+        if(confirm("Card request submitted successfully!")){
+          this.loadApprovedCards();
+          location.reload();
+        }
+        
       },
       error: () => alert('Error submitting request.')
     });
@@ -39,7 +47,7 @@ export class CardsComponent implements OnInit{
 
   loadApprovedCards(): void {
     this.cardService.getAllCard().subscribe(cards => {
-    console.log('Response:', cards);
+    // console.log('Response:', cards);
     // this.userCards = cards.filter(card => card.status === 'APPROVED');
     this.userCards = cards;
     });

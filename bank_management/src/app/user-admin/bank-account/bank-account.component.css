@@ -48,10 +48,11 @@
 }
 
 h3 {
-    text-align: center;
+    /* text-align: center; */
     color: #333;
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
+    margin-top: 23px;
 }
 form {
     background-color: #ffffff;
@@ -189,11 +190,11 @@ button:hover {
 /*status css*/
 .requested-status{
   color: orange;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 .active-status {
   color: green;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 /*aleart*/

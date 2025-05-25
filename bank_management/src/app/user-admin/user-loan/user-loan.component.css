@@ -8,7 +8,7 @@ form {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-around;
-  /* flex-direction: column; */
+  flex-direction: column;
   gap: 5px;
 }
 h2{
@@ -62,7 +62,7 @@ thead {
 }
 
 th, td {
-  padding: 12px 16px;
+  padding: 12px 15px;
   border-bottom: 1px solid #ddd;
 }
 

@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AccountRequest, AccountResponce } from '../../model/bank_account.model';
 import { NgClass, NgFor, NgIf } from '@angular/common';
@@ -12,7 +12,7 @@ declare var bootstrap: any;
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.css'
 })
-export class BankAccountComponent{
+export class BankAccountComponent implements OnInit{
 
   // alertMessage: string = '';
   // showAlert: boolean = false;
@@ -33,14 +33,18 @@ constructor(private accountService: BankAccountService) {}
 requestAccount() {
   this.accountService.requestAccount(this.accountRequest).subscribe({
     next: (res) => {
-      alert('Account requested successfully');
+      // alert('Account requested successfully');
+      if (confirm(`${res.message}`)) {
+          this.loadUserAccounts();
+          location.reload();
+      }
       // this.alertMessage = '✅ Account requested successfully!';
       // this.showAlert = true;
-      this.loadUserAccounts();
+      // this.loadUserAccounts();
     },
     error: (err) => {
       console.error(err);
-      alert('Failed to request account');
+      alert(`Failed to request account`);
       // if(err.status === 409 || (err.error && err.error.message?.includes('already exists'))){
       //   this.alertMessage = '⚠️ Account with this information already exists.';
       // } else {
@@ -59,6 +63,10 @@ loadUserAccounts() {
 
 ngOnInit() {
   this.loadUserAccounts();
+  
+  setInterval(() => {
+    this.loadUserAccounts();
+  }, 3000); // Reload every 3000 milliseconds (3 seconds)
 }
 
 getStatus(status : string): any{
