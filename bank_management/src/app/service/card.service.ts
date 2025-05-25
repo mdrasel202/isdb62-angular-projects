@@ -11,8 +11,9 @@ export class CardService {
   private cardRequest = 'http://localhost:8081/cards/request';
   private cardCreate = 'http://localhost:8081/cards/create';
   private getAll = 'http://localhost:8081/cards/all';
-  private rejectCar = 'http://localhost:8081/cards/reject'
-  private updateCar = 'http://localhost:8081/cards/update'
+  private rejectCar = 'http://localhost:8081/cards/reject';
+  private updateCar = 'http://localhost:8081/cards/update';
+  private approvedCard = 'http://localhost:8081/cards/approve';
 
   constructor(private http : HttpClient) { }
 
@@ -21,7 +22,7 @@ export class CardService {
   }
 
   approveCard(data: CardRequest): Observable<CardResponse>{
-    return this.http.put<CardResponse>(this.updateCar, data);
+    return this.http.post<CardResponse>(this.approvedCard, data);
   }
 
   getAllCard(): Observable<GetAllInfo[]>{

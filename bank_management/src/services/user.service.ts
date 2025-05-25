@@ -62,16 +62,3 @@ interface UserResponse {
   lastName?: string;
   phone?: string;
 }
-
-
-
-// export class Register{
-//     constructor(
-//         public firstName : String,
-//         public lastName : String,
-//         public email : String,
-//         public password : String,
-//         public phone : String,
-//         public role : String
-//     ){}
-// }

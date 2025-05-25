@@ -24,9 +24,9 @@
 
 
     /*table*/
-    body {
+    /* body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #d4f4dd, #2e7d32); /* Low green to deep green */
+        background: linear-gradient(135deg, #d4f4dd, #2e7d32); /* Low green to deep green 
         display: flex;
         justify-content: center;
         align-items: center;
@@ -62,7 +62,7 @@
       }
       
       th {
-        background: linear-gradient(90deg, #388e3c, #1b5e20); /* Deep green tones for header */
+        background: linear-gradient(90deg, #388e3c, #1b5e20); /* Deep green tones for header 
         color: white;
         font-weight: 600;
         text-transform: uppercase;
@@ -74,11 +74,11 @@
       }
       
       tr:nth-child(even) {
-        background: #f1f8f1; /* Light green-tinted background for even rows */
+        background: #f1f8f1; 
       }
       
       tr:hover {
-        background: #e8f5e9; /* Slightly greener hover effect */
+        background: #e8f5e9; 
         transform: scale(1);
         transition: all 0.2s ease;
       }
@@ -107,7 +107,7 @@
       
       .balance, .available-balance {
         font-weight: 600;
-        color: #1b5e20; /* Deep green for balance text */
+        color: #1b5e20; 
       }
       
       @media (max-width: 768px) {
@@ -120,9 +120,9 @@
             border-radius: 10px;
         }
       }
-      
+       */
       /* Scrollable table for smaller screens */
-      .table-wrapper {
+      /* .table-wrapper {
         max-height: 500px;
         overflow-y: auto;
         scrollbar-width: thin;
@@ -138,121 +138,93 @@
       }
       
       .table-wrapper::-webkit-scrollbar-thumb {
-        background: #388e3c; /* Deep green scrollbar */
+        background: #388e3c; 
         border-radius: 4px;
-      }
+      } */
     /*table end*/
     /*modal*/
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f2f6fa;
-  margin: 0;
-  padding: 40px;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 10px;
 }
 
-/* Modal Trigger Button */
-.open-modal-btn {
-  background: #6a5acd;
+thead {
+  background-color: #2f3e5c;
   color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
 }
 
-.open-modal-btn:hover {
-  background: #5941c5;
-}
-/* Close Button */
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 20px;
-  background: none;
-  border: none;
-  color: #aaa;
-  cursor: pointer;
-}
-
-.close-btn:hover {
-  color: #333;
-}
-
-/* Form Styles */
-.form-sections {
-  display: grid;
-  /* grid-template-columns: repeat(3, 1fr); */
-  /* gap: 30px; */
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  color: #555;
+thead th {
+  padding: 12px 16px;
+  text-align: left;
   font-weight: 600;
 }
 
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 10px 12px;
+thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+tbody tr {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background-color: #f5f7fa;
+}
+
+tbody td {
+  padding: 12px 16px;
+  color: #333;
+}
+
+input[type="number"] {
+  width: 100px;
+  padding: 5px;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 14px;
-  background: #fdfdfd;
+  border-radius: 6px;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-  border-color: #6a5acd;
-  outline: none;
-}
-
-.section-title {
-  font-size: 18px;
-  margin-bottom: 20px;
-  color: #444;
-  border-left: 4px solid #6a5acd;
-  padding-left: 10px;
-}
-
-.submit-btn {
-  display: block;
-  width: 200px;
-  margin: 30px auto 0;
-  padding: 12px;
-  font-size: 16px;
-  background: #6a5acd;
-  color: white;
+button {
+  padding: 6px 12px;
+  margin-right: 6px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
 }
 
-.submit-btn:hover {
-  background: #5941c5;
+button:first-child {
+  background-color: #4caf50;
+  color: white;
 }
 
-@media (max-width: 900px) {
-  .form-sections {
-    grid-template-columns: 1fr;
-  }
+button:first-child:hover {
+  background-color: #43a047;
 }
 
-
-/*active inactive*/
-.status-active {
-  color: green;
-  font-weight: bold;
+button:last-child {
+  background-color: #f44336;
+  color: white;
 }
 
-.status-inactive {
+button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+/* Amount text in red with ₹ symbol */
+.amount-red {
   color: red;
   font-weight: bold;
 }

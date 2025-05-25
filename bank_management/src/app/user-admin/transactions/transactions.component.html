@@ -1,4 +1,4 @@
-<div class="transfer-container">
+<!-- <div class="transfer-container">
   <h2>💸 Balance Transfer</h2>
 
   <form [formGroup]="transferForm" (ngSubmit)="onTransfer()">
@@ -22,34 +22,56 @@
 
   <div *ngIf="message" class="message success">✅ {{ message }}</div>
   <div *ngIf="error" class="message error">❌ {{ error }}</div>
+</div> -->
+<div class="balance-transfer-container">
+  <h2 class="heading">💸 Balance Transfer</h2>
+
+  <form [formGroup]="transferForm" (ngSubmit)="onTransfer()">
+    <table class="form-table">
+      <tr>
+        <td><label for="fromAccount">From Account ID</label></td>
+        <td><input id="fromAccount" type="number" formControlName="fromAccountId" class="input" /></td>
+      </tr>
+      <tr>
+        <td><label for="toAccount">To Account ID</label></td>
+        <td><input id="toAccount" type="number" formControlName="toAccountId" class="input" /></td>
+      </tr>
+      <tr>
+        <td><label for="transferAmount">Amount</label></td>
+        <td><input id="transferAmount" type="number" formControlName="amount" class="input" /></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="submit-cell">
+          <button type="submit" [disabled]="transferForm.invalid" class="submit-btn">Transfer Funds</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <div *ngIf="message" class="alert success">✅ {{ message }}</div>
+  <div *ngIf="error" class="alert error">❌ {{ error }}</div>
 </div>
 
 
-<!-- src/app/components/transfer/transfer.component.html -->
-<!-- <div class="p-4 max-w-md mx-auto bg-white shadow rounded">
-  <h2 class="text-xl font-bold mb-4">Balance Transfer</h2>
-
-  <form [formGroup]="transferForm" (ngSubmit)="onTransfer()">
-    <div class="mb-3">
-      <label class="block font-medium mb-1">From Account ID</label>
-      <input type="number" formControlName="fromAccountId" class="w-full border p-2 rounded" />
-    </div>
-
-    <div class="mb-3">
-      <label class="block font-medium mb-1">To Account ID</label>
-      <input type="number" formControlName="toAccountId" class="w-full border p-2 rounded" />
-    </div>
-
-    <div class="mb-3">
-      <label class="block font-medium mb-1">Amount</label>
-      <input type="number" formControlName="amount" class="w-full border p-2 rounded" />
-    </div>
-
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded" [disabled]="transferForm.invalid">
-      Transfer
-    </button>
-  </form>
-
-  <div *ngIf="message" class="text-green-600 mt-3">{{ message }}</div>
-  <div *ngIf="error" class="text-red-600 mt-3">{{ error }}</div>
-</div> -->
+<!-- transaction-history.component.html -->
+<div class="transaction-container">
+  <h2>📄 Transaction History</h2>
+  <table class="transaction-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tx of transact">
+        <td>{{ tx.date }}</td>
+        <td>{{ tx.description }}</td>
+        <td [ngClass]="{ 'positive': tx.amount >= 0, 'negative': tx.amount < 0 }">
+          ₹{{ tx.amount }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

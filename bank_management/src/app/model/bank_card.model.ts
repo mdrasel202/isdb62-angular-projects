@@ -2,6 +2,7 @@ export interface CardRequest{
     bankAccountId : number;
     cardType : 'VISA' | 'MASTERCARD' | 'DEBIT' | 'CREDIT';
     status?: 'PENDING' | 'APPROVED' | 'REJECTED';
+    cardId?: number;
 }
 
 export interface CardResponse{

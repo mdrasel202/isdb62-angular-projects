@@ -6,7 +6,7 @@ import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-loan',
-  imports: [ FormsModule, NgFor, NgIf],
+  imports: [ FormsModule, NgFor],
   templateUrl: './loan.component.html',
   styleUrl: './loan.component.css'
 })
@@ -24,12 +24,33 @@ export class LoanComponent implements OnInit{
   }
 
   loanPendingLoans(): void{
-    this.bankLoanService.getPendingLoans().subscribe((loanRequest) => this.pendingLoan = loanRequest);
+    this.bankLoanService.getPendingLoans().subscribe(loans => this.pendingLoan = loans);
   }
 
-  approveLoan(loan : LoneResponse): void{
-    this.bankLoanService.approveLoan(loan.loanId, loan.approvedAmount).subscribe(() => this.loanPendingLoans());
+  // approveLoan(loan : LoneResponse): void{
+  //   this.bankLoanService.approveLoan(loan.loanId, loan.approvedAmount).subscribe(() => {
+  //     alert('Loan Approved');
+  //     this.loanPendingLoans()});
+  // }
+  // admin-loan.component.ts
+approveLoan(loan: LoneResponse): void {
+  if (!loan.approvedAmount || loan.approvedAmount <= 0) {
+    alert("Please enter a valid approved amount.");
+    return;
   }
+
+  this.bankLoanService.approveLoan(loan.loanId, loan.approvedAmount).subscribe({
+    next: () => {
+      alert('Loan Approved');
+      this.loanPendingLoans();
+    },
+    error: (err) => {
+      console.error('Error approving loan:', err);
+      alert('Approval failed. See console.');
+    }
+  });
+}
+
 
   cancelLoanAdmin(id : number): void{
     this.bankLoanService.cancelLoan(id).subscribe({

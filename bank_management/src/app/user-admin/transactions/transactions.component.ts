@@ -1,18 +1,21 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { BankTraferService } from '../../service/bank-trafer.service';
-import { TransferRequest } from '../../model/bank_transfer.model';
+import { Transactions, TransferRequest } from '../../model/bank_transfer.model';
 import { FormBuilder, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgIf } from '@angular/common';;
+import { CommonModule, NgFor, NgIf } from '@angular/common';;
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-transactions',
-  imports: [FormsModule, NgIf, ReactiveFormsModule],
+  imports: [FormsModule, NgIf, ReactiveFormsModule, NgFor, CommonModule],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
-export class TransactionsComponent {
+export class TransactionsComponent implements OnInit{
+
+  transact: Transactions[] = [];
+
   transferForm: FormGroup;
   message: string = '';
   error: string = '';
@@ -44,6 +47,17 @@ export class TransactionsComponent {
         this.message = '';
       }
     });
+  }
+
+  ngOnInit(): void {
+    const userId = Number(localStorage.getItem("id"));
+    this.loadTransactions(userId);
+  }
+
+  loadTransactions(accountId : number){
+    this.transactionService.getTransactions(accountId).subscribe(data =>{
+      this.transact = data;
+    })
   }
   }
 

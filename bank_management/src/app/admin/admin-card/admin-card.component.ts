@@ -39,11 +39,12 @@ export class AdminCardComponent implements OnInit{
  approve(card: CardResponse) {
   const req: CardRequest = {
     bankAccountId: card.accountId,
-    cardType: card.cardType,
+    cardType: card.cardType
   };
 
   this.cardService.approveCard(req).subscribe({
     next: () => {
+      alert("Card approved successfully");
       this.pendingCards = this.pendingCards.filter(c => c.id !== card.id);
     },
     error: (err) => console.error('Approval failed', err)
@@ -52,10 +53,12 @@ export class AdminCardComponent implements OnInit{
   reject(card: CardResponse) {
     const req: CardRequest = {
       bankAccountId: card.accountId,
-      cardType: card.cardType
+      cardType: card.cardType,
+      cardId:card.id
     };
 
     this.cardService.rejectCard(req).subscribe({
+      
       next: () => this.loadPendingCards(),
       error: (err) => console.error('Rejection error', err)
     });

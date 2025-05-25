@@ -1,91 +1,160 @@
-/* Base container styling */
-.transfer-container {
-  max-width: 420px;
-  margin: 3rem auto;
+.balance-transfer-container {
+  margin: 2rem auto;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  position: relative;
+  background: #fefefe;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* Heading */
-.transfer-container h2 {
+.heading {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 1.5rem;
   color: #333;
 }
 
-/* Input group */
-.form-group {
-  margin-bottom: 1.2rem;
+.form-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
 }
 
-.form-group label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+.form-table td {
+  vertical-align: middle;
+}
+
+label {
+  font-weight: 500;
   color: #444;
 }
 
-.form-group input {
+.input {
   width: 100%;
-  padding: 0.6rem 0.8rem;
+  padding: 8px 10px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.3s;
 }
 
-.form-group input:focus {
+.input:focus {
   border-color: #007bff;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
 }
 
-/* Button */
-button[type="submit"] {
-  width: 100%;
-  padding: 0.75rem;
-  background: linear-gradient(to right, #0066ff, #0099ff);
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+.submit-cell {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.submit-btn {
+  padding: 10px 20px;
   font-size: 1rem;
-  transition: background 0.3s, box-shadow 0.2s;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-button[disabled] {
-  background: #aaa;
+.submit-btn:disabled {
+  background-color: #aaa;
   cursor: not-allowed;
 }
 
-button:hover:not([disabled]) {
-  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.3);
+.submit-btn:hover:not(:disabled) {
+  background-color: #0056b3;
 }
 
-/* Message Styling */
-.message {
+.alert {
   margin-top: 1rem;
-  padding: 0.75rem;
-  border-radius: 8px;
-  font-weight: 500;
-  text-align: center;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
 .success {
-  background-color: #d1f7d6;
-  color: #207f32;
-  border: 1px solid #a6e4ae;
+  background-color: #d4edda;
+  color: #155724;
 }
 
 .error {
-  background-color: #ffe3e3;
-  color: #c43d3d;
-  border: 1px solid #ffb2b2;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+
+
+
+.transaction-container {
+  margin: 50px auto;
+  background: linear-gradient(to right, #f8f9fc, #f1f4f9);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+.transaction-container h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #2b2e4a;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.transaction-table thead {
+  background-color: #394867;
+  color: #ffffff;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 18px 20px;
+  text-align: left;
+}
+
+.transaction-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.3s ease;
+}
+
+.transaction-table tbody tr:hover {
+  background-color: #f1f8ff;
+  cursor: pointer;
+}
+
+.transaction-table td {
+  color: #333;
+  font-size: 15px;
+}
+
+.transaction-table td.positive {
+  color: #2ecc71;
+  font-weight: 600;
+}
+
+.transaction-table td.negative {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .transaction-container {
+    padding: 20px;
+  }
+
+  .transaction-table th,
+  .transaction-table td {
+    padding: 14px 12px;
+    font-size: 14px;
+  }
 }
