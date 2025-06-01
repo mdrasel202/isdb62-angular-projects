@@ -1,7 +1,8 @@
 .header {
-  background: linear-gradient(135deg, #00d4ff, #007bff); /* Red color matching the image */
+  /* background: linear-gradient(135deg, #00d4ff, #007bff);  */
+  background: #394867;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,19 +22,21 @@
 }
 
 .header button {
-  background-color: white;
-  color: #000;
-  border: none;
-  padding: 10px 17px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 15px;
+  margin-right: 10px;
+    border: none;
+    background: #00d4ff;
+    color: #1a1a1a;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 .header button:hover {
-  background-color: #000;
-  color: #fff;
+ background: #007bff;
+}
+
+.header button i {
+    margin-right: 5px;
 }
 
 /*modal*/

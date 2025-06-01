@@ -1,5 +1,5 @@
 export interface CardRequest{
-    bankAccountId : number;
+    accountNumber : string;
     cardType : 'VISA' | 'MASTERCARD' | 'DEBIT' | 'CREDIT';
     status?: 'PENDING' | 'APPROVED' | 'REJECTED';
     cardId?: number;

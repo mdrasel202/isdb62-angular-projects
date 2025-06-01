@@ -1,6 +1,7 @@
 .dropdown{
   /* background: linear-gradient(90deg, #559b58, #1b5e20); */
-  background: linear-gradient(135deg, #00d4ff, #007bff);
+  /* background: linear-gradient(135deg, #00d4ff, #007bff); */
+  background: #394867;
   padding: 11px 0px;
   border-radius: 10px
 }

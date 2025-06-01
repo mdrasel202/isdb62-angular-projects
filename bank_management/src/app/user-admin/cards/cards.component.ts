@@ -18,12 +18,22 @@ export class CardsComponent implements OnInit{
 
   userCards: GetAllInfo[] = [];
 
- cardRequest: CardRequest = { bankAccountId: 0, cardType: 'VISA' };
+ cardRequest: CardRequest = { accountNumber: '', cardType: 'VISA' };
   approvedCards: CardResponse[] = [];
 
-  constructor(private cardService: CardService) {}
+  constructor(private cardService: CardService, private bankaccountService : BankAccountService) {}
+
+  userAccountNumbers :  string[] = [];
 
   ngOnInit(): void {
+    this.bankaccountService.getAllAccount().subscribe(accounts => {
+    this.userAccountNumbers = accounts.map(acc => acc.accountNumber);
+    if (this.userAccountNumbers.length > 0) {
+      this.cardRequest.accountNumber = this.userAccountNumbers[0]; // default
+    }
+  });
+
+
     this.loadApprovedCards();
 
     setInterval(() => {

@@ -59,6 +59,8 @@ export class TransactionsComponent implements OnInit{
       this.transact = data;
     })
   }
+  
+
   }
 
 

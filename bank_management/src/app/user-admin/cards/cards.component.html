@@ -1,7 +1,7 @@
 <div class="header">
   <span>User Card Info</span>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <i class="bi bi-arrow-right-square-fill" style="margin-right: 8px;"></i> Request 
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 15%;font-size: 13px;">
+    <i class="fas fa-user-plus"></i> Request 
   </button>
 </div>
 
@@ -34,8 +34,16 @@
            <h3>Request a New Card</h3>
 <form (ngSubmit)="requestCard()" #cardForm="ngForm">
   <div class="form-group">
-    <label for="bankAccountId">Bank Account ID</label>
-    <input type="number" id="bankAccountId" name="bankAccountId" [(ngModel)]="cardRequest.bankAccountId" required />
+    <label for="bankAccountId">Bank Account Number</label>
+    <!-- <input type="number" id="accountNumber" name="accountNumber" [(ngModel)]="cardRequest.accountNumber" required />
+      -->
+    <select id="accountNumber" name="accountNumber" class="form-control"
+          [(ngModel)]="cardRequest.accountNumber" required>
+    <option value="" disabled selected>Select Account Number</option>
+    <option *ngFor="let accNum of userAccountNumbers" [value]="accNum">
+      {{ accNum }}
+    </option>
+  </select>
   </div>
 
   <div class="form-group">

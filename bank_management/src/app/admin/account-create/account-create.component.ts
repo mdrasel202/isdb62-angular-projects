@@ -45,7 +45,21 @@ export class AccountCreateComponent implements OnInit{
     }
   });
 }
+  getStatusClas(status : string): string{
+    switch(status){
+      case 'ACTIVE':
+        return 'active-status';
+      case 'INACTIVE':
+        return 'inactive-status';
+      case 'SUSPEND':
+        return 'suspend-status';
+      case 'REQUESTED':
+        return 'requested-status';
+      default :
+        return 'unknow-status'; 
 
+    }
+  }
 
 
 }

@@ -38,123 +38,77 @@
 }
 
 /*table design*/
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #d4f4dd, #2e7d32); /* Low green to deep green */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 20px;
+.transaction-container {
+  margin: 50px auto;
+  background: linear-gradient(to right, #f8f9fc, #f1f4f9);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
 }
 
-.table-container {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  max-width: 1200px;
-  width: 100%;
-  margin-top: 40px;
+.transaction-container h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #2b2e4a;
 }
 
-table {
+.transaction-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
-}
-
-th, td {
-  padding: 16px;
-  text-align: left;
-  font-size: 14px;
-  color: #333;
-  white-space: nowrap;
+  border-radius: 12px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  background-color: #fff;
 }
 
-th {
-  background: linear-gradient(90deg, #388e3c, #1b5e20); /* Deep green tones for header */
-  color: white;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.transaction-table thead {
+  background-color: #394867;
+  color: #ffffff;
 }
 
-tr {
+.transaction-table th,
+.transaction-table td {
+  padding: 18px 20px;
+  text-align: left;
+}
+
+.transaction-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
   transition: background 0.3s ease;
 }
 
-tr:nth-child(even) {
-  background: #f1f8f1; /* Light green-tinted background for even rows */
+.transaction-table tbody tr:hover {
+  background-color: #f1f8ff;
+  cursor: pointer;
 }
 
-tr:hover {
-  background: #e8f5e9; /* Slightly greener hover effect */
-  transform: scale(1);
-  transition: all 0.2s ease;
+.transaction-table td {
+  /* color: #333; */
+  font-size: 15px;
 }
 
-td {
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.status-active {
-  background: #d1fae5;
-  color: #065f46;
-  padding: 6px 12px;
-  border-radius: 12px;
-  display: inline-block;
-  font-size: 12px;
-}
-
-.status-inactive {
-  background: #fee2e2;
-  color: #991b1b;
-  padding: 6px 12px;
-  border-radius: 12px;
-  display: inline-block;
-  font-size: 12px;
-}
-
-.balance, .available-balance {
+.transaction-table td.positive {
+  color: #2ecc71;
   font-weight: 600;
-  color: #1b5e20; /* Deep green for balance text */
 }
 
-@media (max-width: 768px) {
-  th, td {
-      font-size: 12px;
-      padding: 12px;
+.transaction-table td.negative {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .transaction-container {
+    padding: 20px;
   }
 
-  .table-container {
-      border-radius: 10px;
+  .transaction-table th,
+  .transaction-table td {
+    padding: 14px 12px;
+    font-size: 14px;
   }
 }
 
-/* Scrollable table for smaller screens */
-.table-wrapper {
-  max-height: 500px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #388e3c #e5e7eb;
-}
-
-.table-wrapper::-webkit-scrollbar {
-  width: 8px;
-}
-
-.table-wrapper::-webkit-scrollbar-track {
-  background: #e5e7eb;
-}
-
-.table-wrapper::-webkit-scrollbar-thumb {
-  background: #388e3c; /* Deep green scrollbar */
-  border-radius: 4px;
-}
 /*table end*/
 
 
@@ -272,3 +226,39 @@ body {
   color: red;
   font-weight: bold;
 }
+
+/* status*/
+.active-status {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.inactive-status {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.suspend-status {
+  color: #fd7e14;
+  font-weight: bold;
+}
+
+.requested-status {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.unknown-status {
+  color: gray;
+  font-weight: bold;
+}
+
+/* component.css or component.scss */
+/*status css*/
+/* .requested-status{
+  color: orange;
+}
+.active-status {
+  color: rgb(1, 82, 1);
+} */
+

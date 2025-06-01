@@ -38,7 +38,7 @@ export class AdminCardComponent implements OnInit{
 
  approve(card: CardResponse) {
   const req: CardRequest = {
-    bankAccountId: card.accountId,
+    accountNumber: card.accountId.toString(),
     cardType: card.cardType
   };
 
@@ -52,7 +52,7 @@ export class AdminCardComponent implements OnInit{
 }
   reject(card: CardResponse) {
     const req: CardRequest = {
-      bankAccountId: card.accountId,
+      accountNumber: card.accountId.toString(),
       cardType: card.cardType,
       cardId:card.id
     };

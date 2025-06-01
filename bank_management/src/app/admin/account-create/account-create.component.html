@@ -1,12 +1,11 @@
 
-<div class="container mt-4">
-  <h2 class="mb-3">Bank Account Management</h2>
+<div class="transaction-container">
+  <!-- <h2 class="mb-3">Bank Account Management</h2> -->
 
-  <h4>Accounts Awaiting Activation</h4>
-  <table class="table table-bordered table-striped">
+  <h4>📄 Accounts Awaiting Activation</h4>
+  <table class="transaction-table">
     <thead class="thead-dark">
       <tr>
-        <th>ID</th>
         <th>Account Number</th>
         <th>User</th>
         <th>Type</th>
@@ -18,11 +17,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let acc of accounts">
-        <td>{{ acc.id }}</td>
         <td>{{ acc.accountNumber }}</td>
         <td>{{ acc.userName }}</td>
         <td>{{ acc.type }}</td>
-        <td>{{ acc.status }}</td>
+        <td [ngClass]="getStatusClas(acc.status)">{{ acc.status }}</td>
         <td>{{ acc.availableBalance | currency }}</td>
         <td>{{ acc.openedDate }}</td>
         <td>
