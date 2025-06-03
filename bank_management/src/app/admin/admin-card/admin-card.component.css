@@ -351,3 +351,16 @@ button.reject {
   background-color: #dc3545;
 }
 
+/*status*/
+.pending-status{
+    color: #ffc107;
+    font-weight: bold;
+}
+.aproves-status{
+    color: #28a745;
+    font-weight: bold;
+}
+.rejected-status{
+    color: #dc3545;
+    font-weight: bold;
+}

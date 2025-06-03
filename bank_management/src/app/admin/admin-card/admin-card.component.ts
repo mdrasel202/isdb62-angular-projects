@@ -36,9 +36,14 @@ export class AdminCardComponent implements OnInit{
   }
 
 
- approve(card: CardResponse) {
-  const req: CardRequest = {
-    accountNumber: card.accountId.toString(),
+approve(card: CardResponse) {
+  if (!card.accountNumber) {
+    console.error("Missing account number for card:", card);
+    return;
+  }
+
+    const req: CardRequest = {
+    accountNumber: card.accountNumber,
     cardType: card.cardType
   };
 
@@ -50,17 +55,35 @@ export class AdminCardComponent implements OnInit{
     error: (err) => console.error('Approval failed', err)
   });
 }
-  reject(card: CardResponse) {
-    const req: CardRequest = {
-      accountNumber: card.accountId.toString(),
-      cardType: card.cardType,
-      cardId:card.id
-    };
 
-    this.cardService.rejectCard(req).subscribe({
-      
-      next: () => this.loadPendingCards(),
-      error: (err) => console.error('Rejection error', err)
-    });
+  reject(card: CardResponse) {
+  if (!card.accountNumber) {
+    console.error("Missing account number for card:", card);
+    return;
   }
+
+  const req: CardRequest = {
+    accountNumber: card.accountNumber,
+    cardType: card.cardType,
+    cardId: card.id
+  };
+
+  this.cardService.rejectCard(req).subscribe({
+    next: () => this.loadPendingCards(),
+    error: (err) => console.error('Rejection error', err)
+  });
+}
+
+getStatusColor(status : string): string{
+  switch(status){
+    case 'PENDING':
+      return 'pending-status';
+    case 'APPROVED':
+      return 'aproves-status';
+    case 'REJECTED' :
+      return 'rejected-status';
+    default :
+      return 'unknow-status';       
+  }
+}
 }

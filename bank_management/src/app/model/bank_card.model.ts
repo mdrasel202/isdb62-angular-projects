@@ -12,9 +12,10 @@ export interface CardResponse{
     expiry_date: Date;
     id: number;
     availableBalance: number;
-    accountId : number;
+    accouuserntId : number;
     openedDate : Date;
     status : 'PENDING' | 'APPROVED' | 'REJECTED';
+    accountNumber:string;
 }
 
 export interface GetAllInfo{

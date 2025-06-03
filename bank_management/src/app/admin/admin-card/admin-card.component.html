@@ -1,46 +1,70 @@
-<div class="p-4">
-  <h2 class="text-xl font-bold mb-4">Pending Card Requests</h2>
-  <table class="w-full border-collapse border border-gray-300 mb-8">
-    <thead class="bg-gray-100">
+<div class="container mt-4">
+
+  <!-- Pending Cards Section -->
+  <h2 class="mb-3">Pending Card Requests</h2>
+  <div *ngIf="pendingCards.length === 0" class="alert alert-info">
+    No pending card requests.
+  </div>
+
+  <table *ngIf="pendingCards.length > 0" class="table table-bordered table-striped">
+    <thead>
       <tr>
-        <th class="border p-2">Card ID</th>
-        <th class="border p-2">Account ID</th>
-        <th class="border p-2">Card Type</th>
-        <th class="border p-2">Actions</th>
+        <!-- <th>ID</th> -->
+        <th>Card Number</th>
+        <th>Account Number</th>
+        <th>Card Type</th>
+        <th>Available Balance</th>
+        <!-- <th>Opened Date</th>
+        <th>Status</th> -->
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let card of pendingCards">
-        <td class="border p-2">{{ card.id }}</td>
-        <td class="border p-2">{{ card.accountId }}</td>
-        <td class="border p-2">{{ card.cardType }}</td>
-        <td class="border p-2">
-          <button (click)="approve(card)" class="btn btn-success mr-2" style="margin-right: 10px;">Approve</button>
-          <button (click)="reject(card)" class="btn btn-warning">Reject</button>
+        <!-- <td>{{ card.id }}</td> -->
+        <td>{{ card.cardNumber }}</td>
+        <td>{{ card.accountNumber }}</td>
+        <td>{{ card.cardType }}</td>
+        <td>{{ card.availableBalance | currency }}</td>
+        <!-- <td>{{ card.openedDate | date }}</td>
+        <td>{{ card.status }}</td> -->
+        <td>
+          <button class="btn btn-success btn-sm me-2" (click)="approve(card)">Approve</button>
+          <button class="btn btn-danger btn-sm" (click)="reject(card)">Reject</button>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <h2 class="text-xl font-bold mb-4">Approved Cards</h2>
-  <table class="w-full border-collapse border border-gray-300">
-    <thead class="bg-gray-100">
+  <hr class="my-5">
+
+  <!-- Approved Cards Section -->
+  <h2 class="mb-3">Approved Cards</h2>
+  <div *ngIf="approvedCards.length === 0" class="alert alert-secondary">
+    No approved cards to display.
+  </div>
+
+  <table *ngIf="approvedCards.length > 0" class="table table-hover">
+    <thead>
       <tr>
-        <th class="border p-2">Card ID</th>
-        <th class="border p-2">Card Number</th>
-        <th class="border p-2">Card Type</th>
-        <th class="border p-2">Status</th>
+        <!-- <th>ID</th> -->
+        <th>Card Number</th>
+        <th>Card Type</th>
+        <th>Opened Date</th>
+        <th>Available Balance</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let card of approvedCards">
-        <td class="border p-2">{{ card.id }}</td>
-        <td class="border p-2">{{ card.cardNumber }}</td>
-        <td class="border p-2">{{ card.cardType }}</td>
-        <td class="border p-2 text-green-600 font-semibold">{{ card.status }}</td>
+        <!-- <td>{{ card.id }}</td> -->
+        <td>{{ card.cardNumber }}</td>
+        <td>{{ card.cardType }}</td>
+        <td>{{ card.openedDate | date }}</td>
+        <td>{{ card.availableBalance | currency }}</td>
+        <td [ngClass]="getStatusColor(card.status)">{{ card.status }}</td>
       </tr>
     </tbody>
   </table>
+
 </div>
-
-
