@@ -1,1 +1,85 @@
-<p>admin-deposit works!</p>
+<!-- <div *ngIf="loading">Loading pending deposits...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<table *ngIf="pendingDeposit.length > 0" border="1" cellpadding="5" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Account Number</th>
+      <th>Deposit Amount</th>
+      <th>Interest Rate</th>
+      <th>Status</th>
+      <th>Start Date</th>
+      <th>Maturity Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let deposit of pendingDeposit">
+      <td>{{ deposit.id }}</td>
+      <td>{{ deposit.accountNumber }}</td>
+      <td>{{ deposit.depositAmount | currency }}</td>
+      <td>{{ deposit.interestRateLabel }}</td>
+      <td>{{ deposit.bankDepositStatus }}</td>
+      <td>{{ deposit.startDate | date:'mediumDate' }}</td>
+      <td>{{ deposit.maturityDatel | date:'mediumDate' }}</td>
+      <td>
+        <button (click)="approveDeposit(deposit.id)">Approve</button>
+        <button (click)="cancelDeposit(deposit.id)">Cancel</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && pendingDeposit.length === 0">
+  No pending deposits found.
+</div> -->
+
+
+
+<div class="admin-container">
+  <h2>Bank Deposits</h2>
+
+  <!-- Error/Loading -->
+  <div *ngIf="loading" class="loading">Loading deposits...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <!-- Deposits Table -->
+  <table *ngIf="pendingDeposit.length > 0" class="admin-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Account #</th>
+        <th>Amount</th>
+        <th>Interest</th>
+        <th>Rate</th>
+        <th>Status</th>
+        <th>Start</th>
+        <th>Maturity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of pendingDeposit">
+        <td>{{ d.id }}</td>
+        <td>{{ d.accountNumber }}</td>
+        <td>{{ d.depositAmount | currency }}</td>
+        <td>{{ d.interestEarned | currency }}</td>
+        <td>{{ d.interestRateLabel }}</td>
+        <td [ngClass]="d.bankDepositStatus.toLowerCase()">{{ d.bankDepositStatus }}</td>
+        <td>{{ d.startDate | date: 'mediumDate' }}</td>
+        <td>{{ d.maturityDatel | date: 'mediumDate' }}</td>
+        <td>
+          <button *ngIf="d.bankDepositStatus === 'PENDING'" class="approve-btn" (click)="approveDeposit(d.id)">Approve</button>
+          <button *ngIf="d.bankDepositStatus === 'PENDING'" class="cancel-btn" (click)="cancelDeposit(d.id)">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && pendingDeposit.length === 0">
+    <p>No deposit records found.</p>
+  </div>
+</div>
+
+

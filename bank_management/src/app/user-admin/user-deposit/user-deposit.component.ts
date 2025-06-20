@@ -1,11 +1,68 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BankDepositRequest, BankDepositResponse, BankDepositStatus } from '../../model/bank_deposit.model';
+import { BankDepositService } from '../../service/bank-deposit.service';
+import { FormsModule} from '@angular/forms';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-user-deposit',
-  imports: [],
+  imports: [FormsModule, CommonModule, NgIf],
   templateUrl: './user-deposit.component.html',
   styleUrl: './user-deposit.component.css'
 })
-export class UserDepositComponent {
+export class UserDepositComponent implements OnInit{
 
+ request: BankDepositRequest = {
+    accountNumber: '',
+    depositAmount: 0,
+    bankDepositInterestRate: '10%' // default
+  };
+
+  deposits: BankDepositResponse[] = [];
+  errorMessage: string = '';
+  successMessage: string = '';
+
+  constructor(private depositService: BankDepositService) {}
+
+  ngOnInit(): void {
+  }
+
+  createDeposit(): void {
+    this.errorMessage = '';
+    this.successMessage = '';
+    this.request.bankDepositStatus = BankDepositStatus.PENDING;
+
+    this.depositService.createDeposit(this.request).subscribe({
+      next: (res) => {
+        this.successMessage = 'Deposit request submitted successfully!';
+        this.getDeposits(); // refresh
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message || 'Failed to submit deposit.';
+      }
+    });
+  }
+
+  getDeposits(): void {
+    if (!this.request.accountNumber) {
+      this.errorMessage = 'Please enter an account number first.';
+      return;
+    }
+
+    this.depositService.getDepositsByAccount(this.request.accountNumber).subscribe({
+      next: (res) => {
+        this.deposits = res;
+      },
+      error: (err) => {
+        this.errorMessage = 'Error fetching deposits.';
+      }
+    });
+  }
+
+  getAlls(): void{
+    this.depositService.getAll().subscribe({
+      next: (res) => this.deposits = res,
+      error: (err) => this.errorMessage = 'Failed to load deposits.'
+    });
+  }
 }

@@ -19,6 +19,8 @@ import { AdminCardComponent } from './admin/admin-card/admin-card.component';
 import { UserLoanComponent } from './user-admin/user-loan/user-loan.component';
 import { UserDepositComponent } from './user-admin/user-deposit/user-deposit.component';
 import { AdminDepositComponent } from './admin/admin-deposit/admin-deposit.component';
+import { UserWithdrawalComponent } from './user-admin/user-withdrawal/user-withdrawal.component';
+import { AdminWithdrawalComponent } from './admin/admin-withdrawal/admin-withdrawal.component';
 
 export const routes: Routes = [
 
@@ -41,7 +43,8 @@ export const routes: Routes = [
             {path: 'cards', component: CardsComponent},
             {path: 'bank-account', component: BankAccountComponent},
             {path: 'user-loan', component: UserLoanComponent},
-            {path: 'user-deposit', component: UserDepositComponent}
+            {path: 'user-deposit', component: UserDepositComponent},
+            {path: 'user-withdraw', component: UserWithdrawalComponent}
         ]
     },
     
@@ -54,7 +57,8 @@ export const routes: Routes = [
             {path: 'deposit', component:DepositComponent},
             {path: 'loan', component:LoanComponent},
             {path: 'admin_card', component:AdminCardComponent},
-            {path: 'admin-deposit', component: AdminDepositComponent}
+            {path: 'admin-deposit', component: AdminDepositComponent},
+            {path: 'admin-withdraw', component: AdminWithdrawalComponent}
         ] 
     },
 

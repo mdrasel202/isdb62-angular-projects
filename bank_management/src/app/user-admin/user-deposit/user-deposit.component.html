@@ -1,1 +1,120 @@
-<p>user-deposit works!</p>
+<!-- <div class="deposit-container">
+  <h2>💰 Bank Deposit</h2>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+
+  <form (ngSubmit)="createDeposit()">
+    <div>
+      <label>Account Number</label>
+      <input type="text" [(ngModel)]="request.accountNumber" name="accountNumber" required>
+    </div>
+
+    <div>
+      <label>Deposit Amount</label>
+      <input type="number" [(ngModel)]="request.depositAmount" name="depositAmount" required>
+    </div>
+
+    <div>
+      <label>Interest Rate</label>
+      <select [(ngModel)]="request.bankDepositInterestRate" name="bankDepositInterestRate">
+        <option value="10%">10%</option>
+        <option value="15%">15%</option>
+        <option value="20%">20%</option>
+      </select>
+    </div>
+
+    <button type="submit">Submit Deposit</button>
+    <button type="button" (click)="getDeposits()">🔄 Load My Deposits</button>
+  </form>
+
+  <hr>
+
+  <div *ngIf="deposits.length > 0">
+    <h3>📋 My Deposit Records</h3>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Amount</th>
+          <th>Interest</th>
+          <th>Status</th>
+          <th>Start Date</th>
+          <th>Maturity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let deposit of deposits">
+          <td>{{ deposit.id }}</td>
+          <td>{{ deposit.depositAmount }}</td>
+          <td>{{ deposit.interestEarned }}</td>
+          <td>{{ deposit.bankDepositStatus }}</td>
+          <td>{{ deposit.startDate | date }}</td>
+          <td>{{ deposit.maturityDatel | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+<div class="container">
+
+  <!-- Deposit Form -->
+  <h3>Request Bank Deposit</h3>
+  <form (ngSubmit)="createDeposit()">
+    <label>Account Number:</label>
+    <input type="text" [(ngModel)]="request.accountNumber" name="accountNumber" required /><br /><br />
+
+    <label>Deposit Amount:</label>
+    <input type="number" [(ngModel)]="request.depositAmount" name="depositAmount" required /><br /><br />
+
+    <label>Interest Rate:</label>
+    <select [(ngModel)]="request.bankDepositInterestRate" name="interestRate">
+      <option value="10%">10%</option>
+      <option value="15%">15%</option>
+      <option value="20%">20%</option>
+    </select><br /><br />
+
+    <button type="submit">Submit Deposit</button>
+    <button type="button" (click)="getDeposits()">My Deposits</button>
+    <button type="button" (click)="getAlls()">All Deposits</button>
+  </form>
+
+  <!-- Success/Error Message -->
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <!-- Deposit List -->
+  <div *ngIf="deposits.length > 0">
+    <h4>Deposit List</h4>
+    <table border="1" cellpadding="6" cellspacing="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Account #</th>
+          <th>Amount</th>
+          <th>Interest</th>
+          <th>Rate</th>
+          <th>Status</th>
+          <th>Start Date</th>
+          <th>Maturity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let deposit of deposits">
+          <td>{{ deposit.id }}</td>
+          <td>{{ deposit.accountNumber }}</td>
+          <td>{{ deposit.depositAmount | currency }}</td>
+          <td>{{ deposit.interestEarned | currency }}</td>
+          <td>{{ deposit.interestRateLabel }}</td>
+          <td>{{ deposit.bankDepositStatus }}</td>
+          <td>{{ deposit.startDate | date: 'mediumDate' }}</td>
+          <td>{{ deposit.maturityDatel | date: 'mediumDate' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="deposits.length === 0 && !errorMessage">
+    <p>No deposits found.</p>
+  </div>
+</div>
