@@ -1,3 +1,27 @@
+
+.header {
+  /* background: linear-gradient(135deg, #00d4ff, #007bff);  */
+  background: #394867;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px 5px 0 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 2px dashed white; /* Dashed border at the bottom */
+  margin-top: 50px;
+}
+
+.header span{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 19px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
 .balance-transfer-container {
   margin: 2rem auto;
   padding: 2rem;

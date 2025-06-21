@@ -19,7 +19,9 @@ export class UserWithdrawalComponent {
 
   constructor(private withdrawalService: WithdrawalService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAlls();
+  }
 
   withdraw(): void {
     this.successMessage = '';
@@ -32,10 +34,12 @@ export class UserWithdrawalComponent {
 
     this.withdrawalService.withdrawal(request).subscribe({
   next: (res) => {
-    this.successMessage = res; // no need for res.message
+    this.successMessage = res.message; // no need for res.message
+    this.loadWithdrawals();
   },
   error: (err) => {
-    this.errorMessage = err.error || 'Something went wrong';
+    this.errorMessage = err.error?.error || 'Something went wrong';
+    this.loadWithdrawals();
   }
 });
   }
@@ -44,5 +48,16 @@ export class UserWithdrawalComponent {
     this.withdrawalService.getUserWithdrawal(this.accountNumber).subscribe(data => {
       this.withdrawals = data;
     });
+  }
+
+  getAlls(): void{
+    this.withdrawalService.getAllWithdrawal().subscribe({
+      next: (data) => {
+        this.withdrawals = data;
+      },
+      error: (err) => {
+        console.error('Error loading all withdrawals', err);
+      }
+    })
   }
 }

@@ -1,1 +1,25 @@
-<p>admin-withdrawal works!</p>
+<div class="container">
+  <h2>All User Withdrawal History</h2>
+
+  <table *ngIf="withdrawals.length > 0; else noWithdrawals" border="1" cellpadding="10">
+    <thead>
+      <tr>
+        <th>Account Number</th>
+        <th>Amount</th>
+        <th>Transaction Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tx of withdrawals; let i = index">
+        <td>{{ tx.accountNumber }}</td>
+        <td>{{ tx.amount }}</td>
+        <td>{{ tx.timestamp | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noWithdrawals>
+    <p>No withdrawals found.</p>
+  </ng-template>
+</div>
+

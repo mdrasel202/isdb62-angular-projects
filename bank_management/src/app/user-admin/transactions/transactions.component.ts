@@ -25,8 +25,8 @@ export class TransactionsComponent implements OnInit{
     private transactionService: BankTraferService
   ) {
     this.transferForm = this.fb.group({
-      fromAccountId: ['', Validators.required],
-      toAccountId: ['', Validators.required],
+      fromAccountNumber: ['', Validators.required],
+      toAccountNumber: ['', Validators.required],
       amount: ['', [Validators.required, Validators.min(1)]]
     });
   }
@@ -41,6 +41,10 @@ export class TransactionsComponent implements OnInit{
         this.message = res;
         this.error = '';
         this.transferForm.reset();
+
+        // 🔁 Reload transaction list after successful transfer
+      const userId = Number(localStorage.getItem("id"));
+      this.loadTransactions(userId);
       },
       error: (err) => {
         this.error = err.error;

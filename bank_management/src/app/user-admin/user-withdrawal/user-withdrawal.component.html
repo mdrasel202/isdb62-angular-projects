@@ -1,3 +1,11 @@
+<div class="header">
+  <span>User Card Info</span>
+  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 15%;font-size: 13px;">
+    <i class="fas fa-user-plus"></i> Request 
+  </button> -->
+</div>
+
+
 <div class="container">
   <h2>User Withdraw Panel</h2>
 
@@ -18,15 +26,15 @@
   <table class="table table-bordered mt-2" *ngIf="withdrawals.length > 0">
     <thead>
       <tr>
+        <th>Account Number</th>
         <th>Amount</th>
-        <th>Status</th>
         <th>Timestamp</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let w of withdrawals">
+        <td>{{w.accountNumber}}</td>
         <td>{{ w.amount }}</td>
-        <td>{{ w.status }}</td>
         <td>{{ w.timestamp | date:'short' }}</td>
       </tr>
     </tbody>

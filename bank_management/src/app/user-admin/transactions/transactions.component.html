@@ -1,53 +1,68 @@
 
-<div class="balance-transfer-container">
-  <h2 class="heading">💸 Balance Transfer</h2>
-
-  <form [formGroup]="transferForm" (ngSubmit)="onTransfer()">
-    <table class="form-table">
-      <tr>
-        <td><label for="fromAccount">From Account ID</label></td>
-        <td><input id="fromAccount" type="number" formControlName="fromAccountId" class="input" /></td>
-      </tr>
-      <tr>
-        <td><label for="toAccount">To Account ID</label></td>
-        <td><input id="toAccount" type="number" formControlName="toAccountId" class="input" /></td>
-      </tr>
-      <tr>
-        <td><label for="transferAmount">Amount</label></td>
-        <td><input id="transferAmount" type="number" formControlName="amount" class="input" /></td>
-      </tr>
-      <tr>
-        <td colspan="2" class="submit-cell">
-          <button type="submit" [disabled]="transferForm.invalid" class="submit-btn">Transfer Funds</button>
-        </td>
-      </tr>
-    </table>
-  </form>
-
-  <div *ngIf="message" class="alert success">✅ {{ message }}</div>
-  <div *ngIf="error" class="alert error">❌ {{ error }}</div>
+<div class="header">
+  <span>Balance Transfer</span>
 </div>
 
 
-<!-- transaction-history.component.html -->
+<div class="balance-transfer-container">
+  <h2 class="heading">💸 Transfer Money</h2>
+
+   <form [formGroup]="transferForm" (ngSubmit)="onTransfer()">
+    <div class="mb-3">
+      <label>From Account Number</label>
+      <input formControlName="fromAccountNumber" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>To Account Number</label>
+      <input formControlName="toAccountNumber" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Amount</label>
+      <input type="number" formControlName="amount" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Transfer</button>
+  </form>
+
+   <div *ngIf="message" class="alert alert-success mt-2">{{ message }}</div>
+   <div *ngIf="error" class="alert alert-danger mt-2">{{ error }}</div>
+</div>
+
+
+
 <div class="transaction-container">
   <h2>📄 Transaction History</h2>
-  <table class="transaction-table">
+  <table class="table table-striped" *ngIf="transact.length > 0">
     <thead>
       <tr>
-        <th>Date</th>
-        <th>Description</th>
         <th>Amount</th>
+        <th>Description</th>
+        <th>Date</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let tx of transact">
-        <td>{{ tx.date }}</td>
-        <td>{{ tx.description }}</td>
-        <td [ngClass]="{ 'positive': tx.amount >= 0, 'negative': tx.amount < 0 }">
-          ₹{{ tx.amount }}
-        </td>
+      <tr *ngFor="let t of transact">
+        <td>{{ t.amount | number:'1.2-2' | currency:'BDT ':'symbol':'1.0-0' }}</td>
+        <td>{{ t.description }}</td>
+        <td>{{ t.date | date:'shortDate' }}</td>
       </tr>
     </tbody>
   </table>
 </div>
+
+
+<!-- <div class="container mt-4">
+  <h2>Transfer Money</h2>
+
+
+
+  <div *ngIf="message" class="alert alert-success mt-2">{{ message }}</div>
+  <div *ngIf="error" class="alert alert-danger mt-2">{{ error }}</div>
+
+  <hr />
+
+  <h4 class="mt-4">Transaction History</h4>
+  
+</div> -->

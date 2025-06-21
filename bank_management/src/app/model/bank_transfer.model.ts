@@ -1,6 +1,6 @@
 export interface TransferRequest{
-  fromAccountId: number;
-  toAccountId: number;
+  fromAccountNumber: string;
+  toAccountNumber: string;
   amount: number;
 }
 
