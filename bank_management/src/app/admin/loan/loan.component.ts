@@ -6,7 +6,7 @@ import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-loan',
-  imports: [ FormsModule, NgFor],
+  imports: [ FormsModule, NgFor, NgIf],
   templateUrl: './loan.component.html',
   styleUrl: './loan.component.css'
 })
@@ -16,40 +16,47 @@ export class LoanComponent implements OnInit{
   // approvedLoan? : BankLoanService;
 
  pendingLoan : LoneResponse[] = [];
+ approveAmount : number = 0;
+ allLoans : LoneResponse[] = [];
 
  constructor(private bankLoanService : BankLoanService){};
 
  ngOnInit(): void {
     this.loanPendingLoans();
+    this.loadAllloans();
   }
 
   loanPendingLoans(): void{
     this.bankLoanService.getPendingLoans().subscribe(loans => this.pendingLoan = loans);
   }
 
-  // approveLoan(loan : LoneResponse): void{
-  //   this.bankLoanService.approveLoan(loan.loanId, loan.approvedAmount).subscribe(() => {
-  //     alert('Loan Approved');
-  //     this.loanPendingLoans()});
+  // approveLoan(id: number): void {
+  //   this.bankLoanService.approveLoan(id, this.approveAmount).subscribe(() => {
+  //     alert("Loan Approved");
+  //     this.loanPendingLoans();
+  //     this.loadAllloans();
+  //   });
   // }
-  // admin-loan.component.ts
-approveLoan(loan: LoneResponse): void {
-  if (!loan.approvedAmount || loan.approvedAmount <= 0) {
-    alert("Please enter a valid approved amount.");
+  approveLoan(id: number, amount: number | undefined): void {
+  if (amount === undefined || amount <= 0) {
+    alert('Please enter a valid approved amount.');
     return;
   }
 
-  this.bankLoanService.approveLoan(loan.loanId, loan.approvedAmount).subscribe({
+  this.bankLoanService.approveLoan(id, amount).subscribe({
     next: () => {
-      alert('Loan Approved');
+      alert("Loan Approved");
       this.loanPendingLoans();
+      this.loadAllloans();
     },
     error: (err) => {
-      console.error('Error approving loan:', err);
-      alert('Approval failed. See console.');
+      console.error("Approval failed", err);
+      alert("Approval failed. See console for details.");
     }
   });
 }
+
+
 
 
   cancelLoanAdmin(id : number): void{
@@ -63,6 +70,13 @@ approveLoan(loan: LoneResponse): void {
       }
     
     });
+  }
+
+  loadAllloans(): void{
+    this.bankLoanService.getAllLoans().subscribe(res => {
+  console.log("Loans: ", res); // <-- Debug
+  this.allLoans = res;
+});
   }
 
   refreshLoans(): void{

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AdminDepositComponent implements OnInit{
   pendingDeposit : BankDepositResponse [] = []; 
+  allDeposits: BankDepositResponse[] = [];
   loading = false;
   error = '';
 
@@ -19,6 +20,7 @@ export class AdminDepositComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadPendingDeposits();
+    this.loadAllDeposit();
   }
 
   loadPendingDeposits(): void {
@@ -56,15 +58,12 @@ export class AdminDepositComponent implements OnInit{
   }
 
   loadAllDeposit(): void {
-    this.loading = true;
     this.depositService.getAll().subscribe({
       next: (res) => {
-        this.pendingDeposit = res;
-        this.loading = false;
+        this.allDeposits = res;
       },
       error: () => {
-        this.error = 'Failed to load deposits';
-        this.loading = false;
+        this.error = 'Failed to load all deposits';
       }
     });
   }

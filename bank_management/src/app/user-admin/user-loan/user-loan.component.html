@@ -1,8 +1,5 @@
 <div class="header">
   <span>Bank Loan</span>
-  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 15%;font-size: 13px;">
-    <i class="fas fa-user-plus"></i> Request 
-  </button> -->
 </div>
 
 <form (ngSubmit)="requestLoan()">
@@ -46,13 +43,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let loans of loan">
+     <tr *ngFor="let loans of loan">
       <td>{{ loans.accountNumber }}</td>
-      <td>{{loans.approvedAmount}}</td>
       <td>{{ loans.amount }}</td>
-      <td>{{ loans.monthlyInterest }}</td>
-      <td>{{ loans.yearLyInterest }}</td>
-      <td>{{loans.acceptDate}}</td>
+      <td>{{ loans.approvedAmount > 0 ? loans.approvedAmount : '-' }}</td>
+      <td>{{ loans.status === 'APPROVED' ? (loans.monthlyInterest | number:'1.2-2') : '-' }}</td>
+      <td>{{ loans.status === 'APPROVED' ? (loans.yearlyInterest | number:'1.2-2') : '-' }}</td>
+      <td>{{ loans.acceptDate || '-' }}</td>
       <td [ngClass]="getStatusClass(loans.status)">{{ loans.status }}</td>
       <td>
         <button *ngIf="loans.status === 'PENDING'" (click)="canceUserlLoan(loans.loanId)">Cancel</button>

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanRequest, LoneResponse } from '../../model/bank_loan.model';
 import { FormsModule } from '@angular/forms';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { BankLoanService } from '../../service/bank-loan.service';
 
 @Component({
   selector: 'app-user-loan',
-  imports: [FormsModule, NgFor, NgIf, NgClass],
+  imports: [FormsModule, NgFor, NgIf, NgClass, CommonModule],
   templateUrl: './user-loan.component.html',
   styleUrl: './user-loan.component.css'
 })
@@ -56,18 +56,7 @@ export class UserLoanComponent implements OnInit{
   refreshLoans(): void{
 
   }
-
-  // getStatusStyle(status: string): any{
-  //   switch(status){
-  //     case 'PENDING':
-  //       return {color : 'orange', fontWeight: 'bold'};
-  //     case 'APPROVED' :
-  //       return {color : 'green', fontWeight: 'bold'};
-  //     case 'CANCELLED' :
-  //       return {color : 'red', fontWeight: 'bold'};
-  //     default:
-  //       return{};      
-  //   }
+  
   getStatusClass(status: string): string {
   switch (status) {
     case 'PENDING':

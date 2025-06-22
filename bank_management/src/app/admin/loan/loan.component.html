@@ -1,50 +1,6 @@
-<div class="header">
+<!-- <div class="header">
     <span>Loan</span>
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      <i class="bi bi-arrow-right-square-fill" style="margin-right: 8px;"></i>Open an Account
-    </button> -->
   </div>
-
-<!-- <h2>Admin Loan Approval Panel</h2>
-
-<table border="1">
-  <thead>
-    <tr>
-      <th>Account Number</th>
-      <th>Amount</th>
-      <th>Interest</th>
-      <th>Due Date</th>
-      <th>Accept Date</th>
-      <th>Monthly Interest</th>
-      <th>YearLy Interest</th>
-      <th>Approve Amount</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let loan of pendingLoan">
-      <td>{{ loan.accountNumber}}</td>
-      <td>{{ loan.amount }}</td>
-      <td>{{ loan.interestRate }}%</td>
-      <td>{{ loan.dueDate }}</td>
-      <td>{{loan.acceptDate}}</td>
-      <td>{{loan.monthlyInterest}}</td>
-      <td>{{loan.yearLyInterest}}</td>
-      <td>
-        <input type="number" [(ngModel)]="loan.approvedAmount" />
-      </td>
-      <td>
-        <button (click)="approveLoan(loan)">Approve</button>
-        <!-- <button (click)="approveLoan(loan.loanId, loan.approvedAmount)">Approve</button>
-        <!-- <button (click)="cancelLoan(loan.id)">Cancel</button>
-          <button 
-        *ngIf="loan.status === 'PENDING' || loan.status === 'APPROVED'" 
-        (click)="cancelLoanAdmin(loan.loanId)"
-      >Cancel</button>
-      </td>
-    </tr>
-  </tbody>
-</table> -->
 
 <table>
   <thead>
@@ -74,4 +30,103 @@
       </td>
     </tr>
   </tbody>
+</table> -->
+
+<!-- <h2>Pending Loan Requests</h2>
+<table>
+  <tr>
+    <th>ID</th><th>Amount</th><th>Approve Amount</th><th>Action</th>
+  </tr>
+  <tr *ngFor="let loan of pendingLoan">
+    <td>{{ loan.loanId }}</td>
+    <td>{{ loan.amount }}</td>
+    <td>
+      <input type="number" [(ngModel)]="approveAmount" />
+    </td>
+    <td>
+      <button (click)="approveLoan(loan.loanId)">Approve</button>
+      <button (click)="cancelLoanAdmin(loan.loanId)">Cancel</button>
+    </td>
+  </tr>
 </table>
+
+<h2>All Loan History</h2>
+<table>
+  <tr>
+    <th>ID</th><th>Account</th><th>Status</th><th>Approved</th><th>Monthly</th><th>Yearly</th>
+  </tr>
+  <tr *ngFor="let loan of allLoans">
+    <td>{{ loan.loanId }}</td>
+    <td>{{ loan.accountNumber }}</td>
+    <td>{{ loan.status }}</td>
+    <td>{{ loan.approvedAmount }}</td>
+    <td>{{ loan.monthlyInterest }}</td>
+    <td>{{ loan.yearLyInterest }}</td>
+  </tr>
+</table> -->
+
+
+<div class="container">
+  <h2>Pending Loans</h2>
+  <table class="table table-bordered" *ngIf="pendingLoan.length > 0">
+    <thead>
+      <tr>
+        <th>Account Number</th>
+        <th>Requested Amount</th>
+        <th>Approved Amount</th>
+        <th>Monthly Interest</th>
+        <th>Yearly Interest</th>
+        <th>Status</th>
+        <th>Approve Amount</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr *ngFor="let loan of pendingLoan">
+  <td>{{ loan.accountNumber }}</td>
+  <td>{{ loan.amount }}</td>
+  <td>{{ loan.approvedAmount }}</td>
+  <td>{{ loan.monthlyInterest }}</td>
+  <td>{{ loan.yearlyInterest }}</td>
+  <td>{{ loan.status }}</td>
+  <td>
+    <input type="number" [(ngModel)]="loan.approveAmount" class="form-control" />
+  </td>
+  <td>
+    <button (click)="approveLoan(loan.loanId, loan.approveAmount)" class="btn btn-success btn-sm">Approve</button>
+    <button (click)="cancelLoanAdmin(loan.loanId)" class="btn btn-danger btn-sm">Cancel</button>
+  </td>
+</tr>
+
+    </tbody>
+  </table>
+
+  <div *ngIf="pendingLoan.length === 0">
+    <p>No pending loans found.</p>
+  </div>
+
+  <hr/>
+
+  <h2>All Loans</h2>
+  <table class="table table-striped" *ngIf="allLoans.length > 0">
+    <thead>
+      <tr>
+        <th>Account Number</th>
+        <th>Approved</th>
+        <th>Monthly</th>
+        <th>Yearly</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of allLoans">
+        <td>{{ loan.accountNumber }}</td>
+        <td>{{ loan.approvedAmount }}</td>
+        <td>{{ loan.monthlyInterest }}</td>
+        <td>{{ loan.yearlyInterest }}</td>
+        <td>{{ loan.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
