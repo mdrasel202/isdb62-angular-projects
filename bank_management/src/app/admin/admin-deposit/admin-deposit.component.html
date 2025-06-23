@@ -25,8 +25,8 @@
       <tr *ngFor="let d of pendingDeposit">
         <td>{{ d.id }}</td>
         <td>{{ d.accountNumber }}</td>
-        <td>{{ d.depositAmount | currency }}</td>
-        <td>{{ d.interestEarned | currency }}</td>
+        <td>{{ d.depositAmount | currency: 'BDT ':'symbol':'1.2-2' }}</td>
+        <td>{{ d.interestEarned | currency: 'BDT ':'symbol':'1.2-2'}}</td>
         <td>{{ d.interestRateLabel }}</td>
         <td [ngClass]="d.bankDepositStatus.toLowerCase()">{{ d.bankDepositStatus }}</td>
         <td>{{ d.startDate | date: 'mediumDate' }}</td>
@@ -61,8 +61,8 @@
   <tbody>
     <tr *ngFor="let d of allDeposits">
       <td>{{ d.accountNumber }}</td>
-      <td>{{ d.depositAmount | currency }}</td>
-      <td>{{ d.interestEarned | currency }}</td>
+      <td>{{ d.depositAmount | currency: 'BDT ':'symbol':'1.2-2' }}</td>
+      <td>{{ d.interestEarned | currency: 'BDT ':'symbol':'1.2-2' }}</td>
       <td>{{ d.interestRateLabel }}</td>
       <td [ngClass]="d.bankDepositStatus.toLowerCase()">{{ d.bankDepositStatus }}</td>
       <td>{{ d.startDate | date: 'mediumDate' }}</td>

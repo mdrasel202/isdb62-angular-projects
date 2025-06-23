@@ -25,7 +25,7 @@
         <td>{{ account.userName }}</td>
         <td>{{ account.type }}</td>
         <td [ngClass]="getStatus(account.status)">{{ account.status }}</td>
-        <td>{{ account.availableBalance }}</td>
+        <td>{{ account.availableBalance | currency: 'BDT ':'symbol':'1.2-2' }}</td>
         <td>{{ account.openedDate || 'Pending' }}</td>
       </tr>
     </tbody>

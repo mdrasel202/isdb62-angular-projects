@@ -1,14 +1,14 @@
 import { Component, OnInit} from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AccountRequest, AccountResponce } from '../../model/bank_account.model';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { BankAccountService } from '../../service/bank-account.service';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-bank-account',
-  imports: [FormsModule, ReactiveFormsModule,  FormsModule, NgFor, NgClass],
+  imports: [FormsModule, ReactiveFormsModule,  FormsModule, NgFor, NgClass, CommonModule],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.css'
 })

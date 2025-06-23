@@ -21,7 +21,7 @@
         <td>{{ acc.userName }}</td>
         <td>{{ acc.type }}</td>
         <td [ngClass]="getStatusClas(acc.status)">{{ acc.status }}</td>
-        <td>{{ acc.availableBalance | currency }}</td>
+        <td>{{ acc.availableBalance | currency: 'BDT ':'symbol':'1.2-2' }}</td>
         <td>{{ acc.openedDate }}</td>
         <td>
           <button

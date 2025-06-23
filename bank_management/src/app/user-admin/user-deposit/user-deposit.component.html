@@ -48,8 +48,8 @@
       <tbody>
         <tr *ngFor="let deposit of deposits">
           <td>{{ deposit.accountNumber }}</td>
-          <td>{{ deposit.depositAmount | currency }}</td>
-          <td>{{ deposit.interestEarned | currency }}</td>
+          <td>{{ deposit.depositAmount | currency: 'BDT ':'symbol':'1.2-2' }}</td>
+          <td>{{ deposit.interestEarned | currency: 'BDT ':'symbol':'1.2-2' }}</td>
           <td>{{ deposit.interestRateLabel }}</td>
           <td>{{ deposit.bankDepositStatus }}</td>
           <td>{{ deposit.startDate | date: 'mediumDate' }}</td>
