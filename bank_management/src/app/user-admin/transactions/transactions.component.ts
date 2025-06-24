@@ -29,6 +29,8 @@ export class TransactionsComponent implements OnInit{
       toAccountNumber: ['', Validators.required],
       amount: ['', [Validators.required, Validators.min(1)]]
     });
+
+    
   }
 
   onTransfer(): void {
@@ -66,43 +68,3 @@ export class TransactionsComponent implements OnInit{
   
 
   }
-
-
-
-
-  // transaction: Transaction[]=[];
-
-  // isEditing: boolean = false;
-
-  // newtransaction: Transaction ={
-  //   tranaction_id:0,
-  //   tranaction_date:new Date,
-  //   tranaction_from:'',
-  //   tranaction_amount:0,
-  //   tranaction_account:'',
-  //   tranaction_status:'',
-  //   tranaction_payment:''
-  // }
-
-  // openModal(transaction?: Transaction){
-  //   if(transaction){
-  //     this.newtransaction = {...transaction};
-  //     this.isEditing = true;
-  //   }else{
-  //     this.newtransaction = new Transaction(0,new Date(),'',0,'','','');
-  //     this.isEditing = false;
-  //   }
-
-  //   const modalElement = document.getElementById('tranaction');
-  //   if(modalElement){
-  //     const modal = new bootstrap.Modal(modalElement);
-  //     modal.show();
-  //   }
-  // }
-
-  // @Input() isOpen = false;
-
-  // closeModal() {
-  //   this.isOpen = false;
-  // }
-

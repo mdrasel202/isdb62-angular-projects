@@ -27,9 +27,14 @@ export class BankLoanService {
     return this.http.get<LoneResponse[]>(this.loanPending);
   }
 
-  approveLoan(loanId : number, approvedAmount : number): Observable<LoneResponse>{
-    return this.http.post<LoneResponse>(`${this.baseUrl}/approved/${loanId}?amount=${approvedAmount}`, {});
-  }
+approveLoan(loanId: number, approvedAmount: number): Observable<LoneResponse> {
+  return this.http.post<LoneResponse>(
+    `${this.baseUrl}/approved/${loanId}`,
+    { amount: approvedAmount } // This matches LoanApprovedDTO
+  );
+}
+
+
 
 //   approveLoan(id: number, amount: number): Observable<any> {
 //   return this.http.post(`${this.baseUrl}/approved/${id}?amount=${amount}`, null);

@@ -34,7 +34,7 @@ export class UserWithdrawalComponent {
 
     this.withdrawalService.withdrawal(request).subscribe({
   next: (res) => {
-    this.successMessage = res.message; // no need for res.message
+    this.successMessage = res.message; 
     this.loadWithdrawals();
   },
   error: (err) => {

@@ -29,14 +29,7 @@ export class LoanComponent implements OnInit{
   loanPendingLoans(): void{
     this.bankLoanService.getPendingLoans().subscribe(loans => this.pendingLoan = loans);
   }
-
-  // approveLoan(id: number): void {
-  //   this.bankLoanService.approveLoan(id, this.approveAmount).subscribe(() => {
-  //     alert("Loan Approved");
-  //     this.loanPendingLoans();
-  //     this.loadAllloans();
-  //   });
-  // }
+  
   approveLoan(id: number, amount: number | undefined): void {
   if (amount === undefined || amount <= 0) {
     alert('Please enter a valid approved amount.');
