@@ -44,10 +44,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let t of transact">
-        <td>{{ t.amount | number:'1.2-2' | currency:'BDT ':'symbol':'1.0-0' }}</td>
-        <td>{{ t.description }}</td>
-        <td>{{ t.date | date:'shortDate' }}</td>
-      </tr>
+  <td>{{ t.amount | currency:'BDT ':'symbol':'1.2-2' }}</td>
+  <td>{{ t.description }}</td>
+  <td>{{ t.date | date:'shortDate' }}</td>
+</tr>
+
     </tbody>
   </table>
 </div>

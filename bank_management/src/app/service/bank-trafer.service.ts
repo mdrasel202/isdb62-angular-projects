@@ -19,4 +19,9 @@ export class BankTraferService {
   getTransactions(accountId: number): Observable<Transactions[]> {
     return this.http.get<Transactions[]>(`${this.apiUrl}/${accountId}/transactions`);
   }
+
+   // ✅ Request to /getAlls
+  getAllTransactions(): Observable<Transactions[]> {
+    return this.http.get<Transactions[]>(`${this.apiUrl}/getAlls`);
+  }
 }

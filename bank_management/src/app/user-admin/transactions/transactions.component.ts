@@ -16,6 +16,8 @@ export class TransactionsComponent implements OnInit{
 
   transact: Transactions[] = [];
 
+  allTransactions: Transactions[] = [];
+
   transferForm: FormGroup;
   message: string = '';
   error: string = '';
@@ -29,8 +31,6 @@ export class TransactionsComponent implements OnInit{
       toAccountNumber: ['', Validators.required],
       amount: ['', [Validators.required, Validators.min(1)]]
     });
-
-    
   }
 
   onTransfer(): void {
@@ -47,6 +47,7 @@ export class TransactionsComponent implements OnInit{
         // 🔁 Reload transaction list after successful transfer
       const userId = Number(localStorage.getItem("id"));
       this.loadTransactions(userId);
+      this.loadAllTransactionss();
       },
       error: (err) => {
         this.error = err.error;
@@ -55,16 +56,23 @@ export class TransactionsComponent implements OnInit{
     });
   }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     const userId = Number(localStorage.getItem("id"));
-    this.loadTransactions(userId);
+    this.loadTransactions(userId);        // Only current user's
+    this.loadAllTransactionss();          // All transactions
   }
 
-  loadTransactions(accountId : number){
-    this.transactionService.getTransactions(accountId).subscribe(data =>{
+  loadTransactions(accountId: number) {
+    this.transactionService.getTransactions(accountId).subscribe(data => {
+      console.log('User transactions:', data);
       this.transact = data;
-    })
+    });
   }
-  
 
+  loadAllTransactionss() {
+    this.transactionService.getAllTransactions().subscribe(data => {
+      console.log('All transactions:', data);
+      this.allTransactions = data;
+    });
+  }
   }
