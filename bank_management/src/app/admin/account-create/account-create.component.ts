@@ -6,7 +6,7 @@ import { AccountResponce } from '../../model/bank_account.model';
 
 @Component({
   selector: 'app-account-create',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, NgFor],
   templateUrl: './account-create.component.html',
   styleUrl: './account-create.component.css'
 })
@@ -14,6 +14,7 @@ export class AccountCreateComponent implements OnInit{
 
   accounts: AccountResponce[] = [];
   message: string = '';
+  allAccount: AccountResponce[] = [];
 
   constructor(private accountService: BankAccountService) {}
 

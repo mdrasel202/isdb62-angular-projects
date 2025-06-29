@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BankDepositRequest, BankDepositResponse, BankDepositStatus } from '../../model/bank_deposit.model';
 import { BankDepositService } from '../../service/bank-deposit.service';
 import { FormsModule} from '@angular/forms';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule,  NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-user-deposit',
@@ -12,10 +12,12 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 })
 export class UserDepositComponent implements OnInit{
 
+  BankDepositStatus = BankDepositStatus;
+
  request: BankDepositRequest = {
     accountNumber: '',
     depositAmount: 0,
-    bankDepositInterestRate: '10%' // default
+    bankDepositStatus : BankDepositStatus.SUCCESS
   };
 
   deposits: BankDepositResponse[] = [];
@@ -30,7 +32,6 @@ export class UserDepositComponent implements OnInit{
   createDeposit(): void {
     this.errorMessage = '';
     this.successMessage = '';
-    this.request.bankDepositStatus = BankDepositStatus.PENDING;
 
     this.depositService.createDeposit(this.request).subscribe({
       next: (res) => {

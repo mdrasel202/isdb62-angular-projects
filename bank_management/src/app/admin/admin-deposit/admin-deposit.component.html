@@ -2,47 +2,6 @@
 <div class="admin-container">
   <h2>Bank Deposits</h2>
 
-  <!-- Error/Loading -->
-  <div *ngIf="loading" class="loading">Loading deposits...</div>
-  <div *ngIf="error" class="error">{{ error }}</div>
-
-  <!-- Deposits Table -->
-  <table *ngIf="pendingDeposit.length > 0" class="admin-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Account #</th>
-        <th>Amount</th>
-        <th>Interest</th>
-        <th>Rate</th>
-        <th>Status</th>
-        <th>Start</th>
-        <th>Maturity</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let d of pendingDeposit">
-        <td>{{ d.id }}</td>
-        <td>{{ d.accountNumber }}</td>
-        <td>{{ d.depositAmount | currency: 'BDT ':'symbol':'1.2-2' }}</td>
-        <td>{{ d.interestEarned | currency: 'BDT ':'symbol':'1.2-2'}}</td>
-        <td>{{ d.interestRateLabel }}</td>
-        <td [ngClass]="d.bankDepositStatus.toLowerCase()">{{ d.bankDepositStatus }}</td>
-        <td>{{ d.startDate | date: 'mediumDate' }}</td>
-        <td>{{ d.maturityDatel | date: 'mediumDate' }}</td>
-        <td>
-          <button *ngIf="d.bankDepositStatus === 'PENDING'" class="approve-btn" (click)="approveDeposit(d.id)">Approve</button>
-          <button *ngIf="d.bankDepositStatus === 'PENDING'" class="cancel-btn" (click)="cancelDeposit(d.id)">Cancel</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div *ngIf="!loading && pendingDeposit.length === 0">
-    <p>No deposit records found.</p>
-  </div>
-</div>
 
 <!-- All Deposits Table -->
 <h3 style="margin-top: 40px;">All Deposits</h3>
@@ -51,22 +10,16 @@
     <tr>
       <th>Account</th>
       <th>Amount</th>
-      <th>Interest</th>
-      <th>Rate</th>
       <th>Status</th>
-      <th>Start</th>
-      <th>Maturity</th>
+      <th>Date</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let d of allDeposits">
       <td>{{ d.accountNumber }}</td>
       <td>{{ d.depositAmount | currency: 'BDT ':'symbol':'1.2-2' }}</td>
-      <td>{{ d.interestEarned | currency: 'BDT ':'symbol':'1.2-2' }}</td>
-      <td>{{ d.interestRateLabel }}</td>
       <td [ngClass]="d.bankDepositStatus.toLowerCase()">{{ d.bankDepositStatus }}</td>
-      <td>{{ d.startDate | date: 'mediumDate' }}</td>
-      <td>{{ d.maturityDatel | date: 'mediumDate' }}</td>
+      <td>{{d.depositDate}}</td>
     </tr>
   </tbody>
 </table>

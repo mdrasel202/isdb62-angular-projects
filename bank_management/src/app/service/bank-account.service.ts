@@ -27,14 +27,4 @@ export class BankAccountService {
   const url = `http://localhost:8081/bank/approve/${id}`;
   return this.http.post<AccountResponce>(url, null);
 }
-
-
-  // approveAccount(id: number): Observable<AccountResponce[]> {
-  //   return this.http.post<AccountResponce[]>(this.approve);
-  // }
-
-//   approveAccount(id: number): Observable<AccountResponce> {
-//   const url = `${this.approve}/${id}`;
-//   return this.http.post<AccountResponce>(url, null);
-// }
 }

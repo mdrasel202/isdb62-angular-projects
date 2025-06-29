@@ -7,6 +7,11 @@
 
   <!-- Deposit Form -->
   <h3>Request Bank Deposit</h3>
+
+   <!-- Success/Error Message -->
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
   <form (ngSubmit)="createDeposit()">
     <label>Account Number:</label>
     <input type="text" [(ngModel)]="request.accountNumber" name="accountNumber" required /><br /><br />
@@ -14,21 +19,20 @@
     <label>Deposit Amount:</label>
     <input type="number" [(ngModel)]="request.depositAmount" name="depositAmount" required /><br /><br />
 
-    <label>Interest Rate:</label>
-    <select [(ngModel)]="request.bankDepositInterestRate" name="interestRate">
-      <option value="10%">10%</option>
-      <option value="15%">15%</option>
-      <option value="20%">20%</option>
-    </select><br /><br />
+    <!-- <div>
+      <label for="status">Deposit Status</label>
+      <select [(ngModel)]="request.bankDepositStatus" name="bankDepositStatus">
+        <option [ngValue]="BankDepositStatus.SUCCESS">Success</option>
+        <option [ngValue]="BankDepositStatus.FAILED">Failed</option>
+      </select>
+    </div> -->
 
     <button type="submit">Submit Deposit</button>
     <button type="button" (click)="getDeposits()">My Deposits</button>
     <button type="button" (click)="getAlls()">All Deposits</button>
   </form>
 
-  <!-- Success/Error Message -->
-  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
-  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+ 
 
   <!-- Deposit List -->
   <div *ngIf="deposits.length > 0">
@@ -38,22 +42,16 @@
         <tr>
           <th>Account</th>
           <th>Amount</th>
-          <th>Interest</th>
-          <th>Rate</th>
           <th>Status</th>
-          <th>Start Date</th>
-          <th>Maturity</th>
+          <th>Date</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let deposit of deposits">
           <td>{{ deposit.accountNumber }}</td>
           <td>{{ deposit.depositAmount | currency: 'BDT ':'symbol':'1.2-2' }}</td>
-          <td>{{ deposit.interestEarned | currency: 'BDT ':'symbol':'1.2-2' }}</td>
-          <td>{{ deposit.interestRateLabel }}</td>
           <td>{{ deposit.bankDepositStatus }}</td>
-          <td>{{ deposit.startDate | date: 'mediumDate' }}</td>
-          <td>{{ deposit.maturityDatel | date: 'mediumDate' }}</td>
+          <td>{{deposit.depositDate}}</td>
         </tr>
       </tbody>
     </table>
